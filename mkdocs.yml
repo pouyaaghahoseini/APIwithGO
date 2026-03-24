@@ -1,24 +1,53 @@
-site_name: SD610 - Distributed Systems
+site_name: APIwithGO
 
 theme:
   name: material
-  features:
-    - navigation.tabs
-    - navigation.sections
-    - content.code.copy
+  palette:
+    # Light mode
+    - scheme: default
+      primary: indigo
+      accent: blue
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+
+    # Dark mode
+    - scheme: slate
+      primary: indigo
+      accent: blue
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
 
 markdown_extensions:
   - admonition
   - codehilite
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.superfences
+  - pymdownx.inlinehilite
   - toc:
       permalink: true
 
 nav:
   - Home: index.md
-  - Unit 1:
-      - Lesson 1: unit1/lesson1.md
-      - Lesson 2: unit1/lesson2.md
-  - Unit 2:
-      - Introduction: unit2/intro.md
-
-  
+  - Unit 1 - Go Crash Course:
+      - Lesson: unit1/lesson.md
+      - Exercise 1: unit1/exercise1.md
+      - Exercise 1 Solution: unit1/exercise1_solution.md
+      - Exercise 2: unit1/exercise2.md
+      - Exercise 2 Solution: unit1/exercise2_solution.md
+  - Unit 2 - Basic HTTP Server:
+      - Lesson: unit2/lesson.md
+      - Exercise 1: unit2/exercise1.md
+      - Exercise 1 Solution: unit2/exercise1_solution.md
+      - Exercise 2: unit2/exercise2.md
+      - Exercise 2 Solution: unit2/exercise2_solution.md
+  # - Unit 3 - API Structure & Routing:
+  # - Unit 4 - Authentication & Authorization:
+  # - Unit 5 - API Versioning:
+  # - Unit 6 - Swagger/OpenAPI Documentation:
+  # - Unit 7 - Caching:
+  # - Unit 8 - Pagination:
+  # - Unit 9 - Rate Limiting:
+  # - Unit 10 - Complete Integration Example:
