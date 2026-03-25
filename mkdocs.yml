@@ -32,19 +32,29 @@ markdown_extensions:
 nav:
   - Home: index.md
   - Unit 1 - Go Crash Course:
-      - Lesson: unit1/lesson.md
-      - Exercise 1: unit1/exercise1.md
-      - Exercise 1 Solution: unit1/exercise1_solution.md
-      - Exercise 2: unit1/exercise2.md
-      - Exercise 2 Solution: unit1/exercise2_solution.md
+      - Lesson: unit1/unit1_go_crash_course.md
+      - Exercise 1: unit1/unit1_exercise1.md
+      - Exercise 1 Solution: unit1/unit1_exercise1_solution.md
+      - Exercise 2: unit1/unit1_exercise2.md
+      - Exercise 2 Solution: unit1/unit1_exercise2_solution.md
   - Unit 2 - Basic HTTP Server:
-      - Lesson: unit2/lesson.md
-      - Exercise 1: unit2/exercise1.md
-      - Exercise 1 Solution: unit2/exercise1_solution.md
-      - Exercise 2: unit2/exercise2.md
-      - Exercise 2 Solution: unit2/exercise2_solution.md
-  # - Unit 3 - API Structure & Routing:
-  # - Unit 4 - Authentication & Authorization:
+      - Lesson: unit2/unit2_basic_http_server.md
+      - Exercise 1: unit2/unit2_exercise1.md
+      - Exercise 1 Solution: unit2/unit2_exercise1_solution.md
+      - Exercise 2: unit2/unit2_exercise2.md
+      - Exercise 2 Solution: unit2/unit2_exercise2_solution.md
+  - Unit 3 - API Structure & Routing:
+      - Lesson: unit3/unit3_api_structure_and_routing.md
+      - Exercise 1: unit3/unit3_exercise1.md
+      - Exercise 1 Solution: unit3/unit3_exercise1_solution.md
+      - Exercise 2: unit3/unit3_exercise2.md
+      - Exercise 2 Solution: unit3/unit3_exercise2_solution.md
+  - Unit 4 - Authentication & Authorization:
+      - Lesson: unit4/unit4_authentication_and_authorization.md
+      - Exercise 1: unit4/unit4_exercise1.md
+      - Exercise 1 Solution: unit4/unit4_exercise1_solution.md
+      - Exercise 2: unit4/unit4_exercise2.md
+      - Exercise 2 Solution: unit4/unit4_exercise2_solution.md
   # - Unit 5 - API Versioning:
   # - Unit 6 - Swagger/OpenAPI Documentation:
   # - Unit 7 - Caching:
