@@ -1,0 +1,2528 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../unit4_exercise1/">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Exercise 2 - APIwithGO</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#unit-4-exercise-2-social-media-api-evolution-v1-v2-v3" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="APIwithGO" class="md-header__button md-logo" aria-label="APIwithGO" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            APIwithGO
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Exercise 2
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="APIwithGO" class="md-nav__button md-logo" aria-label="APIwithGO" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    APIwithGO
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Unit 1 - Go Crash Course
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Unit 1 - Go Crash Course
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unit1/unit1_go_crash_course/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lesson
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unit1/unit1_exercise1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercise 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unit1/unit1_exercise1_solution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercise 1 Solution
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unit1/unit1_exercise2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercise 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unit1/unit1_exercise2_solution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercise 2 Solution
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Unit 2 - Basic HTTP Server
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Unit 2 - Basic HTTP Server
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unit2/unit2_basic_http_server.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lesson
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unit2/unit2_exercise1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercise 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unit2/unit2_exercise1_solution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercise 1 Solution
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unit2/unit2_exercise2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercise 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unit2/unit2_exercise2_solution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercise 2 Solution
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Unit 3 - API Structure & Routing
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Unit 3 - API Structure & Routing
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unit3/unit3_api_structure_and_routing.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lesson
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unit3/unit3_exercise1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercise 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unit3/unit3_exercise1_solution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercise 1 Solution
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unit3/unit3_exercise2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercise 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unit3/unit3_exercise2_solution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercise 2 Solution
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Unit 4 - Authentication & Authorization
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Unit 4 - Authentication & Authorization
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../unit4_authentication_and_authorization.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lesson
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../unit4_exercise1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercise 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../unit4_exercise1_solution.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercise 1 Solution
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercise 2
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercise 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#objective" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objective
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#api-evolution-story" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        API Evolution Story
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="API Evolution Story">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#v1-initial-release-simple-posts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        V1: Initial Release (Simple Posts)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#v2-enhanced-engagement-6-months-later" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        V2: Enhanced Engagement (6 months later)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#v3-rich-content-1-year-later" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        V3: Rich Content (1 year later)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Requirements
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Requirements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#endpoints-to-implement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Endpoints to Implement
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shared-database-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Shared Database Model
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#special-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Special Requirements
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#starter-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Starter Code
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sample-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sample Data
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing-scenarios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Testing Scenarios
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Testing Scenarios">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#test-all-versions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test All Versions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-progressive-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test Progressive Features
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-content-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test Content Features
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check-analytics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Check Analytics
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#requirements_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Requirements
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Requirements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#version-headers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Version Headers
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conversion-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conversion Rules
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bonus-challenges" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bonus Challenges
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Bonus Challenges">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bonus-1-version-negotiation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bonus 1: Version Negotiation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bonus-2-gradual-rollout" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bonus 2: Gradual Rollout
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bonus-3-usage-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bonus 3: Usage Metrics
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bonus-4-automatic-migration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bonus 4: Automatic Migration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bonus-5-compatibility-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bonus 5: Compatibility Layer
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hints" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hints
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Hints">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hint-1-extract-mentionshashtags" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hint 1: Extract Mentions/Hashtags
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hint-2-analytics-tracking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hint 2: Analytics Tracking
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hint-3-conversion-to-v2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hint 3: Conversion to V2
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-youre-learning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What You're Learning
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../unit4_exercise2_solution.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercise 2 Solution
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#objective" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objective
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#api-evolution-story" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        API Evolution Story
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="API Evolution Story">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#v1-initial-release-simple-posts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        V1: Initial Release (Simple Posts)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#v2-enhanced-engagement-6-months-later" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        V2: Enhanced Engagement (6 months later)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#v3-rich-content-1-year-later" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        V3: Rich Content (1 year later)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Requirements
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Requirements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#endpoints-to-implement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Endpoints to Implement
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shared-database-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Shared Database Model
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#special-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Special Requirements
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#starter-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Starter Code
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sample-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sample Data
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing-scenarios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Testing Scenarios
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Testing Scenarios">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#test-all-versions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test All Versions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-progressive-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test Progressive Features
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-content-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test Content Features
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check-analytics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Check Analytics
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#requirements_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Requirements
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Requirements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#version-headers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Version Headers
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conversion-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conversion Rules
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bonus-challenges" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bonus Challenges
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Bonus Challenges">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bonus-1-version-negotiation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bonus 1: Version Negotiation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bonus-2-gradual-rollout" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bonus 2: Gradual Rollout
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bonus-3-usage-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bonus 3: Usage Metrics
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bonus-4-automatic-migration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bonus 4: Automatic Migration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bonus-5-compatibility-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bonus 5: Compatibility Layer
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hints" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hints
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Hints">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hint-1-extract-mentionshashtags" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hint 1: Extract Mentions/Hashtags
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hint-2-analytics-tracking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hint 2: Analytics Tracking
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hint-3-conversion-to-v2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hint 3: Conversion to V2
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-youre-learning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What You're Learning
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="unit-4-exercise-2-social-media-api-evolution-v1-v2-v3">Unit 4 - Exercise 2: Social Media API Evolution (v1 → v2 → v3)<a class="headerlink" href="#unit-4-exercise-2-social-media-api-evolution-v1-v2-v3" title="Permanent link">&para;</a></h1>
+<p><strong>Difficulty</strong>: Advanced<br />
+<strong>Estimated Time</strong>: 60-75 minutes<br />
+<strong>Concepts Covered</strong>: Progressive versioning, adapter pattern, feature flags, version analytics</p>
+<hr />
+<h2 id="objective">Objective<a class="headerlink" href="#objective" title="Permanent link">&para;</a></h2>
+<p>Build a social media API that evolves through three versions, showing realistic API evolution:
+- <strong>V1</strong>: Basic posts with simple structure
+- <strong>V2</strong>: Added reactions, better user info
+- <strong>V3</strong>: Added media support, mentions, hashtags</p>
+<p>Learn how to manage multiple versions, track usage, and help clients migrate.</p>
+<hr />
+<h2 id="api-evolution-story">API Evolution Story<a class="headerlink" href="#api-evolution-story" title="Permanent link">&para;</a></h2>
+<h3 id="v1-initial-release-simple-posts">V1: Initial Release (Simple Posts)<a class="headerlink" href="#v1-initial-release-simple-posts" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kd">type</span><span class="w"> </span><span class="nx">PostV1</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="nx">ID</span><span class="w">        </span><span class="kt">int</span><span class="w">       </span><span class="s">`json:&quot;id&quot;`</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="nx">Author</span><span class="w">    </span><span class="kt">string</span><span class="w">    </span><span class="s">`json:&quot;author&quot;`</span><span class="w">  </span><span class="c1">// Just username</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="nx">Content</span><span class="w">   </span><span class="kt">string</span><span class="w">    </span><span class="s">`json:&quot;content&quot;`</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="nx">Likes</span><span class="w">     </span><span class="kt">int</span><span class="w">       </span><span class="s">`json:&quot;likes&quot;`</span><span class="w">   </span><span class="c1">// Simple counter</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="nx">CreatedAt</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Time</span><span class="w"> </span><span class="s">`json:&quot;created_at&quot;`</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="p">}</span>
+</code></pre></div>
+<p><strong>Limitations</strong>:
+- No author details
+- Only "likes", no other reactions
+- No media support</p>
+<hr />
+<h3 id="v2-enhanced-engagement-6-months-later">V2: Enhanced Engagement (6 months later)<a class="headerlink" href="#v2-enhanced-engagement-6-months-later" title="Permanent link">&para;</a></h3>
+<p><strong>Breaking Changes</strong>:
+- Author is now an object (not string)
+- Likes → Reactions (multiple types)</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kd">type</span><span class="w"> </span><span class="nx">PostV2</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="nx">ID</span><span class="w">        </span><span class="kt">int</span><span class="w">       </span><span class="s">`json:&quot;id&quot;`</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="nx">Author</span><span class="w">    </span><span class="nx">Author</span><span class="w">    </span><span class="s">`json:&quot;author&quot;`</span><span class="w">  </span><span class="c1">// Full author object</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="nx">Content</span><span class="w">   </span><span class="kt">string</span><span class="w">    </span><span class="s">`json:&quot;content&quot;`</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="nx">Reactions</span><span class="w"> </span><span class="nx">Reactions</span><span class="w"> </span><span class="s">`json:&quot;reactions&quot;`</span><span class="w">  </span><span class="c1">// Multiple reaction types</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">    </span><span class="nx">CreatedAt</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Time</span><span class="w"> </span><span class="s">`json:&quot;created_at&quot;`</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="p">}</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="kd">type</span><span class="w"> </span><span class="nx">Author</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">    </span><span class="nx">Username</span><span class="w">    </span><span class="kt">string</span><span class="w"> </span><span class="s">`json:&quot;username&quot;`</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">    </span><span class="nx">DisplayName</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="s">`json:&quot;display_name&quot;`</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">    </span><span class="nx">AvatarURL</span><span class="w">   </span><span class="kt">string</span><span class="w"> </span><span class="s">`json:&quot;avatar_url&quot;`</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="p">}</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="kd">type</span><span class="w"> </span><span class="nx">Reactions</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="w">    </span><span class="nx">Like</span><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="s">`json:&quot;like&quot;`</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="w">    </span><span class="nx">Love</span><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="s">`json:&quot;love&quot;`</span>
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="w">    </span><span class="nx">Haha</span><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="s">`json:&quot;haha&quot;`</span>
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="w">    </span><span class="nx">Wow</span><span class="w">   </span><span class="kt">int</span><span class="w"> </span><span class="s">`json:&quot;wow&quot;`</span>
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="w">    </span><span class="nx">Total</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="s">`json:&quot;total&quot;`</span>
+<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="p">}</span>
+</code></pre></div>
+<hr />
+<h3 id="v3-rich-content-1-year-later">V3: Rich Content (1 year later)<a class="headerlink" href="#v3-rich-content-1-year-later" title="Permanent link">&para;</a></h3>
+<p><strong>Breaking Changes</strong>:
+- Added media attachments
+- Added mentions
+- Added hashtags
+- Reactions → ReactionsV3 (with user lists)</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kd">type</span><span class="w"> </span><span class="nx">PostV3</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="nx">ID</span><span class="w">          </span><span class="kt">int</span><span class="w">          </span><span class="s">`json:&quot;id&quot;`</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="nx">Author</span><span class="w">      </span><span class="nx">Author</span><span class="w">       </span><span class="s">`json:&quot;author&quot;`</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="nx">Content</span><span class="w">     </span><span class="kt">string</span><span class="w">       </span><span class="s">`json:&quot;content&quot;`</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="nx">Media</span><span class="w">       </span><span class="p">[]</span><span class="nx">Media</span><span class="w">      </span><span class="s">`json:&quot;media&quot;`</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span><span class="nx">Mentions</span><span class="w">    </span><span class="p">[]</span><span class="kt">string</span><span class="w">     </span><span class="s">`json:&quot;mentions&quot;`</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">    </span><span class="nx">Hashtags</span><span class="w">    </span><span class="p">[]</span><span class="kt">string</span><span class="w">     </span><span class="s">`json:&quot;hashtags&quot;`</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">    </span><span class="nx">Reactions</span><span class="w">   </span><span class="nx">ReactionsV3</span><span class="w">  </span><span class="s">`json:&quot;reactions&quot;`</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">    </span><span class="nx">CommentCount</span><span class="w"> </span><span class="kt">int</span><span class="w">         </span><span class="s">`json:&quot;comment_count&quot;`</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">    </span><span class="nx">ShareCount</span><span class="w">  </span><span class="kt">int</span><span class="w">          </span><span class="s">`json:&quot;share_count&quot;`</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">    </span><span class="nx">CreatedAt</span><span class="w">   </span><span class="nx">time</span><span class="p">.</span><span class="nx">Time</span><span class="w">    </span><span class="s">`json:&quot;created_at&quot;`</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="p">}</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="kd">type</span><span class="w"> </span><span class="nx">Media</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">    </span><span class="nx">Type</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="s">`json:&quot;type&quot;`</span><span class="w"> </span><span class="c1">// &quot;image&quot;, &quot;video&quot;</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="w">    </span><span class="nx">URL</span><span class="w">  </span><span class="kt">string</span><span class="w"> </span><span class="s">`json:&quot;url&quot;`</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="p">}</span>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a>
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="kd">type</span><span class="w"> </span><span class="nx">ReactionsV3</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="w">    </span><span class="nx">Summary</span><span class="w"> </span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">int</span><span class="w">      </span><span class="s">`json:&quot;summary&quot;`</span>
+<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="w">    </span><span class="nx">Details</span><span class="w"> </span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">][]</span><span class="kt">string</span><span class="w"> </span><span class="s">`json:&quot;details&quot;`</span><span class="w"> </span><span class="c1">// reaction -&gt; usernames</span>
+<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a><span class="p">}</span>
+</code></pre></div>
+<hr />
+<h2 id="requirements">Requirements<a class="headerlink" href="#requirements" title="Permanent link">&para;</a></h2>
+<h3 id="endpoints-to-implement">Endpoints to Implement<a class="headerlink" href="#endpoints-to-implement" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Version</th>
+<th>Method</th>
+<th>Path</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>V1</td>
+<td>GET</td>
+<td>/api/v1/posts</td>
+<td>List posts (V1 format)</td>
+</tr>
+<tr>
+<td>V1</td>
+<td>POST</td>
+<td>/api/v1/posts</td>
+<td>Create post (V1)</td>
+</tr>
+<tr>
+<td>V1</td>
+<td>POST</td>
+<td>/api/v1/posts/{id}/like</td>
+<td>Like a post</td>
+</tr>
+<tr>
+<td>V2</td>
+<td>GET</td>
+<td>/api/v2/posts</td>
+<td>List posts (V2 format)</td>
+</tr>
+<tr>
+<td>V2</td>
+<td>POST</td>
+<td>/api/v2/posts</td>
+<td>Create post (V2)</td>
+</tr>
+<tr>
+<td>V2</td>
+<td>POST</td>
+<td>/api/v2/posts/{id}/react</td>
+<td>Add reaction</td>
+</tr>
+<tr>
+<td>V3</td>
+<td>GET</td>
+<td>/api/v3/posts</td>
+<td>List posts (V3 format)</td>
+</tr>
+<tr>
+<td>V3</td>
+<td>POST</td>
+<td>/api/v3/posts</td>
+<td>Create post with media</td>
+</tr>
+<tr>
+<td>V3</td>
+<td>POST</td>
+<td>/api/v3/posts/{id}/react</td>
+<td>React with details</td>
+</tr>
+</tbody>
+</table>
+<h3 id="shared-database-model">Shared Database Model<a class="headerlink" href="#shared-database-model" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kd">type</span><span class="w"> </span><span class="nx">PostRecord</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="nx">ID</span><span class="w">           </span><span class="kt">int</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="nx">AuthorID</span><span class="w">     </span><span class="kt">int</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="nx">Content</span><span class="w">      </span><span class="kt">string</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">    </span><span class="nx">MediaURLs</span><span class="w">    </span><span class="p">[]</span><span class="kt">string</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">    </span><span class="nx">Mentions</span><span class="w">     </span><span class="p">[]</span><span class="kt">string</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">    </span><span class="nx">Hashtags</span><span class="w">     </span><span class="p">[]</span><span class="kt">string</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">    </span><span class="nx">Reactions</span><span class="w">    </span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">][]</span><span class="kt">string</span><span class="w">  </span><span class="c1">// reaction type -&gt; list of usernames</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">    </span><span class="nx">CommentCount</span><span class="w"> </span><span class="kt">int</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">    </span><span class="nx">ShareCount</span><span class="w">   </span><span class="kt">int</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">    </span><span class="nx">CreatedAt</span><span class="w">    </span><span class="nx">time</span><span class="p">.</span><span class="nx">Time</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="p">}</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="kd">type</span><span class="w"> </span><span class="nx">UserRecord</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="w">    </span><span class="nx">ID</span><span class="w">          </span><span class="kt">int</span>
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="w">    </span><span class="nx">Username</span><span class="w">    </span><span class="kt">string</span>
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="w">    </span><span class="nx">DisplayName</span><span class="w"> </span><span class="kt">string</span>
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="w">    </span><span class="nx">AvatarURL</span><span class="w">   </span><span class="kt">string</span>
+<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="special-requirements">Special Requirements<a class="headerlink" href="#special-requirements" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Version Analytics</strong>: Track which version each request uses</li>
+<li><strong>Migration Hints</strong>: V1 and V2 should suggest upgrading</li>
+<li><strong>Adapter Pattern</strong>: V1 and V2 handlers can call V3 logic internally</li>
+<li><strong>Feature Flags</strong>: Some V3 features can be enabled in V2</li>
+<li><strong>Deprecation Timeline</strong>: V1 deprecated, V2 current, V3 latest</li>
+</ol>
+<hr />
+<h2 id="starter-code">Starter Code<a class="headerlink" href="#starter-code" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">    </span><span class="s">&quot;encoding/json&quot;</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">    </span><span class="s">&quot;fmt&quot;</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">    </span><span class="s">&quot;net/http&quot;</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">    </span><span class="s">&quot;strings&quot;</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">    </span><span class="s">&quot;sync&quot;</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">    </span><span class="s">&quot;time&quot;</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">    </span><span class="s">&quot;github.com/gorilla/mux&quot;</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="p">)</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="c1">// =============================================================================</span>
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="c1">// V1 MODELS</span>
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="c1">// =============================================================================</span>
+<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a>
+<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="kd">type</span><span class="w"> </span><span class="nx">PostV1</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="w">    </span><span class="nx">ID</span><span class="w">        </span><span class="kt">int</span><span class="w">       </span><span class="s">`json:&quot;id&quot;`</span>
+<a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a><span class="w">    </span><span class="nx">Author</span><span class="w">    </span><span class="kt">string</span><span class="w">    </span><span class="s">`json:&quot;author&quot;`</span>
+<a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a><span class="w">    </span><span class="nx">Content</span><span class="w">   </span><span class="kt">string</span><span class="w">    </span><span class="s">`json:&quot;content&quot;`</span>
+<a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a><span class="w">    </span><span class="nx">Likes</span><span class="w">     </span><span class="kt">int</span><span class="w">       </span><span class="s">`json:&quot;likes&quot;`</span>
+<a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a><span class="w">    </span><span class="nx">CreatedAt</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Time</span><span class="w"> </span><span class="s">`json:&quot;created_at&quot;`</span>
+<a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a><span class="p">}</span>
+<a id="__codelineno-4-25" name="__codelineno-4-25" href="#__codelineno-4-25"></a>
+<a id="__codelineno-4-26" name="__codelineno-4-26" href="#__codelineno-4-26"></a><span class="c1">// =============================================================================</span>
+<a id="__codelineno-4-27" name="__codelineno-4-27" href="#__codelineno-4-27"></a><span class="c1">// V2 MODELS</span>
+<a id="__codelineno-4-28" name="__codelineno-4-28" href="#__codelineno-4-28"></a><span class="c1">// =============================================================================</span>
+<a id="__codelineno-4-29" name="__codelineno-4-29" href="#__codelineno-4-29"></a>
+<a id="__codelineno-4-30" name="__codelineno-4-30" href="#__codelineno-4-30"></a><span class="kd">type</span><span class="w"> </span><span class="nx">PostV2</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-31" name="__codelineno-4-31" href="#__codelineno-4-31"></a><span class="w">    </span><span class="nx">ID</span><span class="w">        </span><span class="kt">int</span><span class="w">       </span><span class="s">`json:&quot;id&quot;`</span>
+<a id="__codelineno-4-32" name="__codelineno-4-32" href="#__codelineno-4-32"></a><span class="w">    </span><span class="nx">Author</span><span class="w">    </span><span class="nx">Author</span><span class="w">    </span><span class="s">`json:&quot;author&quot;`</span>
+<a id="__codelineno-4-33" name="__codelineno-4-33" href="#__codelineno-4-33"></a><span class="w">    </span><span class="nx">Content</span><span class="w">   </span><span class="kt">string</span><span class="w">    </span><span class="s">`json:&quot;content&quot;`</span>
+<a id="__codelineno-4-34" name="__codelineno-4-34" href="#__codelineno-4-34"></a><span class="w">    </span><span class="nx">Reactions</span><span class="w"> </span><span class="nx">Reactions</span><span class="w"> </span><span class="s">`json:&quot;reactions&quot;`</span>
+<a id="__codelineno-4-35" name="__codelineno-4-35" href="#__codelineno-4-35"></a><span class="w">    </span><span class="nx">CreatedAt</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Time</span><span class="w"> </span><span class="s">`json:&quot;created_at&quot;`</span>
+<a id="__codelineno-4-36" name="__codelineno-4-36" href="#__codelineno-4-36"></a><span class="p">}</span>
+<a id="__codelineno-4-37" name="__codelineno-4-37" href="#__codelineno-4-37"></a>
+<a id="__codelineno-4-38" name="__codelineno-4-38" href="#__codelineno-4-38"></a><span class="kd">type</span><span class="w"> </span><span class="nx">Author</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-39" name="__codelineno-4-39" href="#__codelineno-4-39"></a><span class="w">    </span><span class="nx">Username</span><span class="w">    </span><span class="kt">string</span><span class="w"> </span><span class="s">`json:&quot;username&quot;`</span>
+<a id="__codelineno-4-40" name="__codelineno-4-40" href="#__codelineno-4-40"></a><span class="w">    </span><span class="nx">DisplayName</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="s">`json:&quot;display_name&quot;`</span>
+<a id="__codelineno-4-41" name="__codelineno-4-41" href="#__codelineno-4-41"></a><span class="w">    </span><span class="nx">AvatarURL</span><span class="w">   </span><span class="kt">string</span><span class="w"> </span><span class="s">`json:&quot;avatar_url&quot;`</span>
+<a id="__codelineno-4-42" name="__codelineno-4-42" href="#__codelineno-4-42"></a><span class="p">}</span>
+<a id="__codelineno-4-43" name="__codelineno-4-43" href="#__codelineno-4-43"></a>
+<a id="__codelineno-4-44" name="__codelineno-4-44" href="#__codelineno-4-44"></a><span class="kd">type</span><span class="w"> </span><span class="nx">Reactions</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-45" name="__codelineno-4-45" href="#__codelineno-4-45"></a><span class="w">    </span><span class="nx">Like</span><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="s">`json:&quot;like&quot;`</span>
+<a id="__codelineno-4-46" name="__codelineno-4-46" href="#__codelineno-4-46"></a><span class="w">    </span><span class="nx">Love</span><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="s">`json:&quot;love&quot;`</span>
+<a id="__codelineno-4-47" name="__codelineno-4-47" href="#__codelineno-4-47"></a><span class="w">    </span><span class="nx">Haha</span><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="s">`json:&quot;haha&quot;`</span>
+<a id="__codelineno-4-48" name="__codelineno-4-48" href="#__codelineno-4-48"></a><span class="w">    </span><span class="nx">Wow</span><span class="w">   </span><span class="kt">int</span><span class="w"> </span><span class="s">`json:&quot;wow&quot;`</span>
+<a id="__codelineno-4-49" name="__codelineno-4-49" href="#__codelineno-4-49"></a><span class="w">    </span><span class="nx">Total</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="s">`json:&quot;total&quot;`</span>
+<a id="__codelineno-4-50" name="__codelineno-4-50" href="#__codelineno-4-50"></a><span class="p">}</span>
+<a id="__codelineno-4-51" name="__codelineno-4-51" href="#__codelineno-4-51"></a>
+<a id="__codelineno-4-52" name="__codelineno-4-52" href="#__codelineno-4-52"></a><span class="c1">// =============================================================================</span>
+<a id="__codelineno-4-53" name="__codelineno-4-53" href="#__codelineno-4-53"></a><span class="c1">// V3 MODELS</span>
+<a id="__codelineno-4-54" name="__codelineno-4-54" href="#__codelineno-4-54"></a><span class="c1">// =============================================================================</span>
+<a id="__codelineno-4-55" name="__codelineno-4-55" href="#__codelineno-4-55"></a>
+<a id="__codelineno-4-56" name="__codelineno-4-56" href="#__codelineno-4-56"></a><span class="kd">type</span><span class="w"> </span><span class="nx">PostV3</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-57" name="__codelineno-4-57" href="#__codelineno-4-57"></a><span class="w">    </span><span class="nx">ID</span><span class="w">           </span><span class="kt">int</span><span class="w">          </span><span class="s">`json:&quot;id&quot;`</span>
+<a id="__codelineno-4-58" name="__codelineno-4-58" href="#__codelineno-4-58"></a><span class="w">    </span><span class="nx">Author</span><span class="w">       </span><span class="nx">Author</span><span class="w">       </span><span class="s">`json:&quot;author&quot;`</span>
+<a id="__codelineno-4-59" name="__codelineno-4-59" href="#__codelineno-4-59"></a><span class="w">    </span><span class="nx">Content</span><span class="w">      </span><span class="kt">string</span><span class="w">       </span><span class="s">`json:&quot;content&quot;`</span>
+<a id="__codelineno-4-60" name="__codelineno-4-60" href="#__codelineno-4-60"></a><span class="w">    </span><span class="nx">Media</span><span class="w">        </span><span class="p">[]</span><span class="nx">Media</span><span class="w">      </span><span class="s">`json:&quot;media&quot;`</span>
+<a id="__codelineno-4-61" name="__codelineno-4-61" href="#__codelineno-4-61"></a><span class="w">    </span><span class="nx">Mentions</span><span class="w">     </span><span class="p">[]</span><span class="kt">string</span><span class="w">     </span><span class="s">`json:&quot;mentions&quot;`</span>
+<a id="__codelineno-4-62" name="__codelineno-4-62" href="#__codelineno-4-62"></a><span class="w">    </span><span class="nx">Hashtags</span><span class="w">     </span><span class="p">[]</span><span class="kt">string</span><span class="w">     </span><span class="s">`json:&quot;hashtags&quot;`</span>
+<a id="__codelineno-4-63" name="__codelineno-4-63" href="#__codelineno-4-63"></a><span class="w">    </span><span class="nx">Reactions</span><span class="w">    </span><span class="nx">ReactionsV3</span><span class="w">  </span><span class="s">`json:&quot;reactions&quot;`</span>
+<a id="__codelineno-4-64" name="__codelineno-4-64" href="#__codelineno-4-64"></a><span class="w">    </span><span class="nx">CommentCount</span><span class="w"> </span><span class="kt">int</span><span class="w">          </span><span class="s">`json:&quot;comment_count&quot;`</span>
+<a id="__codelineno-4-65" name="__codelineno-4-65" href="#__codelineno-4-65"></a><span class="w">    </span><span class="nx">ShareCount</span><span class="w">   </span><span class="kt">int</span><span class="w">          </span><span class="s">`json:&quot;share_count&quot;`</span>
+<a id="__codelineno-4-66" name="__codelineno-4-66" href="#__codelineno-4-66"></a><span class="w">    </span><span class="nx">CreatedAt</span><span class="w">    </span><span class="nx">time</span><span class="p">.</span><span class="nx">Time</span><span class="w">    </span><span class="s">`json:&quot;created_at&quot;`</span>
+<a id="__codelineno-4-67" name="__codelineno-4-67" href="#__codelineno-4-67"></a><span class="p">}</span>
+<a id="__codelineno-4-68" name="__codelineno-4-68" href="#__codelineno-4-68"></a>
+<a id="__codelineno-4-69" name="__codelineno-4-69" href="#__codelineno-4-69"></a><span class="kd">type</span><span class="w"> </span><span class="nx">Media</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-70" name="__codelineno-4-70" href="#__codelineno-4-70"></a><span class="w">    </span><span class="nx">Type</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="s">`json:&quot;type&quot;`</span>
+<a id="__codelineno-4-71" name="__codelineno-4-71" href="#__codelineno-4-71"></a><span class="w">    </span><span class="nx">URL</span><span class="w">  </span><span class="kt">string</span><span class="w"> </span><span class="s">`json:&quot;url&quot;`</span>
+<a id="__codelineno-4-72" name="__codelineno-4-72" href="#__codelineno-4-72"></a><span class="p">}</span>
+<a id="__codelineno-4-73" name="__codelineno-4-73" href="#__codelineno-4-73"></a>
+<a id="__codelineno-4-74" name="__codelineno-4-74" href="#__codelineno-4-74"></a><span class="kd">type</span><span class="w"> </span><span class="nx">ReactionsV3</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-75" name="__codelineno-4-75" href="#__codelineno-4-75"></a><span class="w">    </span><span class="nx">Summary</span><span class="w"> </span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">int</span><span class="w">      </span><span class="s">`json:&quot;summary&quot;`</span>
+<a id="__codelineno-4-76" name="__codelineno-4-76" href="#__codelineno-4-76"></a><span class="w">    </span><span class="nx">Details</span><span class="w"> </span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">][]</span><span class="kt">string</span><span class="w"> </span><span class="s">`json:&quot;details&quot;`</span>
+<a id="__codelineno-4-77" name="__codelineno-4-77" href="#__codelineno-4-77"></a><span class="p">}</span>
+<a id="__codelineno-4-78" name="__codelineno-4-78" href="#__codelineno-4-78"></a>
+<a id="__codelineno-4-79" name="__codelineno-4-79" href="#__codelineno-4-79"></a><span class="c1">// =============================================================================</span>
+<a id="__codelineno-4-80" name="__codelineno-4-80" href="#__codelineno-4-80"></a><span class="c1">// DATABASE MODELS</span>
+<a id="__codelineno-4-81" name="__codelineno-4-81" href="#__codelineno-4-81"></a><span class="c1">// =============================================================================</span>
+<a id="__codelineno-4-82" name="__codelineno-4-82" href="#__codelineno-4-82"></a>
+<a id="__codelineno-4-83" name="__codelineno-4-83" href="#__codelineno-4-83"></a><span class="kd">type</span><span class="w"> </span><span class="nx">PostRecord</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-84" name="__codelineno-4-84" href="#__codelineno-4-84"></a><span class="w">    </span><span class="nx">ID</span><span class="w">           </span><span class="kt">int</span>
+<a id="__codelineno-4-85" name="__codelineno-4-85" href="#__codelineno-4-85"></a><span class="w">    </span><span class="nx">AuthorID</span><span class="w">     </span><span class="kt">int</span>
+<a id="__codelineno-4-86" name="__codelineno-4-86" href="#__codelineno-4-86"></a><span class="w">    </span><span class="nx">Content</span><span class="w">      </span><span class="kt">string</span>
+<a id="__codelineno-4-87" name="__codelineno-4-87" href="#__codelineno-4-87"></a><span class="w">    </span><span class="nx">MediaURLs</span><span class="w">    </span><span class="p">[]</span><span class="kt">string</span>
+<a id="__codelineno-4-88" name="__codelineno-4-88" href="#__codelineno-4-88"></a><span class="w">    </span><span class="nx">Mentions</span><span class="w">     </span><span class="p">[]</span><span class="kt">string</span>
+<a id="__codelineno-4-89" name="__codelineno-4-89" href="#__codelineno-4-89"></a><span class="w">    </span><span class="nx">Hashtags</span><span class="w">     </span><span class="p">[]</span><span class="kt">string</span>
+<a id="__codelineno-4-90" name="__codelineno-4-90" href="#__codelineno-4-90"></a><span class="w">    </span><span class="nx">Reactions</span><span class="w">    </span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">][]</span><span class="kt">string</span>
+<a id="__codelineno-4-91" name="__codelineno-4-91" href="#__codelineno-4-91"></a><span class="w">    </span><span class="nx">CommentCount</span><span class="w"> </span><span class="kt">int</span>
+<a id="__codelineno-4-92" name="__codelineno-4-92" href="#__codelineno-4-92"></a><span class="w">    </span><span class="nx">ShareCount</span><span class="w">   </span><span class="kt">int</span>
+<a id="__codelineno-4-93" name="__codelineno-4-93" href="#__codelineno-4-93"></a><span class="w">    </span><span class="nx">CreatedAt</span><span class="w">    </span><span class="nx">time</span><span class="p">.</span><span class="nx">Time</span>
+<a id="__codelineno-4-94" name="__codelineno-4-94" href="#__codelineno-4-94"></a><span class="p">}</span>
+<a id="__codelineno-4-95" name="__codelineno-4-95" href="#__codelineno-4-95"></a>
+<a id="__codelineno-4-96" name="__codelineno-4-96" href="#__codelineno-4-96"></a><span class="kd">type</span><span class="w"> </span><span class="nx">UserRecord</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-97" name="__codelineno-4-97" href="#__codelineno-4-97"></a><span class="w">    </span><span class="nx">ID</span><span class="w">          </span><span class="kt">int</span>
+<a id="__codelineno-4-98" name="__codelineno-4-98" href="#__codelineno-4-98"></a><span class="w">    </span><span class="nx">Username</span><span class="w">    </span><span class="kt">string</span>
+<a id="__codelineno-4-99" name="__codelineno-4-99" href="#__codelineno-4-99"></a><span class="w">    </span><span class="nx">DisplayName</span><span class="w"> </span><span class="kt">string</span>
+<a id="__codelineno-4-100" name="__codelineno-4-100" href="#__codelineno-4-100"></a><span class="w">    </span><span class="nx">AvatarURL</span><span class="w">   </span><span class="kt">string</span>
+<a id="__codelineno-4-101" name="__codelineno-4-101" href="#__codelineno-4-101"></a><span class="p">}</span>
+<a id="__codelineno-4-102" name="__codelineno-4-102" href="#__codelineno-4-102"></a>
+<a id="__codelineno-4-103" name="__codelineno-4-103" href="#__codelineno-4-103"></a><span class="c1">// Storage</span>
+<a id="__codelineno-4-104" name="__codelineno-4-104" href="#__codelineno-4-104"></a><span class="kd">var</span><span class="w"> </span><span class="p">(</span>
+<a id="__codelineno-4-105" name="__codelineno-4-105" href="#__codelineno-4-105"></a><span class="w">    </span><span class="nx">posts</span><span class="w">      </span><span class="p">=</span><span class="w"> </span><span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="nx">PostRecord</span><span class="p">)</span>
+<a id="__codelineno-4-106" name="__codelineno-4-106" href="#__codelineno-4-106"></a><span class="w">    </span><span class="nx">users</span><span class="w">      </span><span class="p">=</span><span class="w"> </span><span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="nx">UserRecord</span><span class="p">)</span>
+<a id="__codelineno-4-107" name="__codelineno-4-107" href="#__codelineno-4-107"></a><span class="w">    </span><span class="nx">nextPostID</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span>
+<a id="__codelineno-4-108" name="__codelineno-4-108" href="#__codelineno-4-108"></a><span class="w">    </span><span class="nx">postsMu</span><span class="w">    </span><span class="nx">sync</span><span class="p">.</span><span class="nx">RWMutex</span>
+<a id="__codelineno-4-109" name="__codelineno-4-109" href="#__codelineno-4-109"></a><span class="w">    </span><span class="nx">usersMu</span><span class="w">    </span><span class="nx">sync</span><span class="p">.</span><span class="nx">RWMutex</span>
+<a id="__codelineno-4-110" name="__codelineno-4-110" href="#__codelineno-4-110"></a>
+<a id="__codelineno-4-111" name="__codelineno-4-111" href="#__codelineno-4-111"></a><span class="w">    </span><span class="c1">// Analytics</span>
+<a id="__codelineno-4-112" name="__codelineno-4-112" href="#__codelineno-4-112"></a><span class="w">    </span><span class="nx">versionStats</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">int</span><span class="p">)</span>
+<a id="__codelineno-4-113" name="__codelineno-4-113" href="#__codelineno-4-113"></a><span class="w">    </span><span class="nx">statsMu</span><span class="w">      </span><span class="nx">sync</span><span class="p">.</span><span class="nx">Mutex</span>
+<a id="__codelineno-4-114" name="__codelineno-4-114" href="#__codelineno-4-114"></a><span class="p">)</span>
+<a id="__codelineno-4-115" name="__codelineno-4-115" href="#__codelineno-4-115"></a>
+<a id="__codelineno-4-116" name="__codelineno-4-116" href="#__codelineno-4-116"></a><span class="c1">// TODO: Implement V1 handlers</span>
+<a id="__codelineno-4-117" name="__codelineno-4-117" href="#__codelineno-4-117"></a><span class="kd">func</span><span class="w"> </span><span class="nx">getPostsV1</span><span class="p">(</span><span class="nx">w</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+<a id="__codelineno-4-118" name="__codelineno-4-118" href="#__codelineno-4-118"></a><span class="kd">func</span><span class="w"> </span><span class="nx">createPostV1</span><span class="p">(</span><span class="nx">w</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+<a id="__codelineno-4-119" name="__codelineno-4-119" href="#__codelineno-4-119"></a><span class="kd">func</span><span class="w"> </span><span class="nx">likePostV1</span><span class="p">(</span><span class="nx">w</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+<a id="__codelineno-4-120" name="__codelineno-4-120" href="#__codelineno-4-120"></a>
+<a id="__codelineno-4-121" name="__codelineno-4-121" href="#__codelineno-4-121"></a><span class="c1">// TODO: Implement V2 handlers</span>
+<a id="__codelineno-4-122" name="__codelineno-4-122" href="#__codelineno-4-122"></a><span class="kd">func</span><span class="w"> </span><span class="nx">getPostsV2</span><span class="p">(</span><span class="nx">w</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+<a id="__codelineno-4-123" name="__codelineno-4-123" href="#__codelineno-4-123"></a><span class="kd">func</span><span class="w"> </span><span class="nx">createPostV2</span><span class="p">(</span><span class="nx">w</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+<a id="__codelineno-4-124" name="__codelineno-4-124" href="#__codelineno-4-124"></a><span class="kd">func</span><span class="w"> </span><span class="nx">reactToPostV2</span><span class="p">(</span><span class="nx">w</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+<a id="__codelineno-4-125" name="__codelineno-4-125" href="#__codelineno-4-125"></a>
+<a id="__codelineno-4-126" name="__codelineno-4-126" href="#__codelineno-4-126"></a><span class="c1">// TODO: Implement V3 handlers</span>
+<a id="__codelineno-4-127" name="__codelineno-4-127" href="#__codelineno-4-127"></a><span class="kd">func</span><span class="w"> </span><span class="nx">getPostsV3</span><span class="p">(</span><span class="nx">w</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+<a id="__codelineno-4-128" name="__codelineno-4-128" href="#__codelineno-4-128"></a><span class="kd">func</span><span class="w"> </span><span class="nx">createPostV3</span><span class="p">(</span><span class="nx">w</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+<a id="__codelineno-4-129" name="__codelineno-4-129" href="#__codelineno-4-129"></a><span class="kd">func</span><span class="w"> </span><span class="nx">reactToPostV3</span><span class="p">(</span><span class="nx">w</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+<a id="__codelineno-4-130" name="__codelineno-4-130" href="#__codelineno-4-130"></a>
+<a id="__codelineno-4-131" name="__codelineno-4-131" href="#__codelineno-4-131"></a><span class="c1">// TODO: Implement conversion functions</span>
+<a id="__codelineno-4-132" name="__codelineno-4-132" href="#__codelineno-4-132"></a><span class="kd">func</span><span class="w"> </span><span class="nx">postRecordToV1</span><span class="p">(</span><span class="nx">post</span><span class="w"> </span><span class="nx">PostRecord</span><span class="p">,</span><span class="w"> </span><span class="nx">author</span><span class="w"> </span><span class="nx">UserRecord</span><span class="p">)</span><span class="w"> </span><span class="nx">PostV1</span><span class="w"> </span><span class="p">{}</span>
+<a id="__codelineno-4-133" name="__codelineno-4-133" href="#__codelineno-4-133"></a><span class="kd">func</span><span class="w"> </span><span class="nx">postRecordToV2</span><span class="p">(</span><span class="nx">post</span><span class="w"> </span><span class="nx">PostRecord</span><span class="p">,</span><span class="w"> </span><span class="nx">author</span><span class="w"> </span><span class="nx">UserRecord</span><span class="p">)</span><span class="w"> </span><span class="nx">PostV2</span><span class="w"> </span><span class="p">{}</span>
+<a id="__codelineno-4-134" name="__codelineno-4-134" href="#__codelineno-4-134"></a><span class="kd">func</span><span class="w"> </span><span class="nx">postRecordToV3</span><span class="p">(</span><span class="nx">post</span><span class="w"> </span><span class="nx">PostRecord</span><span class="p">,</span><span class="w"> </span><span class="nx">author</span><span class="w"> </span><span class="nx">UserRecord</span><span class="p">)</span><span class="w"> </span><span class="nx">PostV3</span><span class="w"> </span><span class="p">{}</span>
+<a id="__codelineno-4-135" name="__codelineno-4-135" href="#__codelineno-4-135"></a>
+<a id="__codelineno-4-136" name="__codelineno-4-136" href="#__codelineno-4-136"></a><span class="c1">// TODO: Implement analytics middleware</span>
+<a id="__codelineno-4-137" name="__codelineno-4-137" href="#__codelineno-4-137"></a><span class="kd">func</span><span class="w"> </span><span class="nx">analyticsMiddleware</span><span class="p">(</span><span class="nx">version</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">http</span><span class="p">.</span><span class="nx">Handler</span><span class="p">)</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">Handler</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-138" name="__codelineno-4-138" href="#__codelineno-4-138"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">next</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">Handler</span><span class="p">)</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">Handler</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-139" name="__codelineno-4-139" href="#__codelineno-4-139"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">HandlerFunc</span><span class="p">(</span><span class="kd">func</span><span class="p">(</span><span class="nx">w</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-140" name="__codelineno-4-140" href="#__codelineno-4-140"></a><span class="w">            </span><span class="c1">// Track version usage</span>
+<a id="__codelineno-4-141" name="__codelineno-4-141" href="#__codelineno-4-141"></a><span class="w">            </span><span class="nx">next</span><span class="p">.</span><span class="nx">ServeHTTP</span><span class="p">(</span><span class="nx">w</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="p">)</span>
+<a id="__codelineno-4-142" name="__codelineno-4-142" href="#__codelineno-4-142"></a><span class="w">        </span><span class="p">})</span>
+<a id="__codelineno-4-143" name="__codelineno-4-143" href="#__codelineno-4-143"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-4-144" name="__codelineno-4-144" href="#__codelineno-4-144"></a><span class="p">}</span>
+<a id="__codelineno-4-145" name="__codelineno-4-145" href="#__codelineno-4-145"></a>
+<a id="__codelineno-4-146" name="__codelineno-4-146" href="#__codelineno-4-146"></a><span class="c1">// TODO: Implement migration hint middleware</span>
+<a id="__codelineno-4-147" name="__codelineno-4-147" href="#__codelineno-4-147"></a><span class="kd">func</span><span class="w"> </span><span class="nx">migrationHintMiddleware</span><span class="p">(</span><span class="nx">currentVersion</span><span class="p">,</span><span class="w"> </span><span class="nx">nextVersion</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">http</span><span class="p">.</span><span class="nx">Handler</span><span class="p">)</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">Handler</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-148" name="__codelineno-4-148" href="#__codelineno-4-148"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">next</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">Handler</span><span class="p">)</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">Handler</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-149" name="__codelineno-4-149" href="#__codelineno-4-149"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">HandlerFunc</span><span class="p">(</span><span class="kd">func</span><span class="p">(</span><span class="nx">w</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-150" name="__codelineno-4-150" href="#__codelineno-4-150"></a><span class="w">            </span><span class="c1">// Add headers suggesting upgrade</span>
+<a id="__codelineno-4-151" name="__codelineno-4-151" href="#__codelineno-4-151"></a><span class="w">            </span><span class="nx">next</span><span class="p">.</span><span class="nx">ServeHTTP</span><span class="p">(</span><span class="nx">w</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="p">)</span>
+<a id="__codelineno-4-152" name="__codelineno-4-152" href="#__codelineno-4-152"></a><span class="w">        </span><span class="p">})</span>
+<a id="__codelineno-4-153" name="__codelineno-4-153" href="#__codelineno-4-153"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-4-154" name="__codelineno-4-154" href="#__codelineno-4-154"></a><span class="p">}</span>
+<a id="__codelineno-4-155" name="__codelineno-4-155" href="#__codelineno-4-155"></a>
+<a id="__codelineno-4-156" name="__codelineno-4-156" href="#__codelineno-4-156"></a><span class="c1">// Admin endpoint to view analytics</span>
+<a id="__codelineno-4-157" name="__codelineno-4-157" href="#__codelineno-4-157"></a><span class="kd">func</span><span class="w"> </span><span class="nx">getVersionStats</span><span class="p">(</span><span class="nx">w</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-158" name="__codelineno-4-158" href="#__codelineno-4-158"></a><span class="w">    </span><span class="nx">statsMu</span><span class="p">.</span><span class="nx">Lock</span><span class="p">()</span>
+<a id="__codelineno-4-159" name="__codelineno-4-159" href="#__codelineno-4-159"></a><span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">statsMu</span><span class="p">.</span><span class="nx">Unlock</span><span class="p">()</span>
+<a id="__codelineno-4-160" name="__codelineno-4-160" href="#__codelineno-4-160"></a>
+<a id="__codelineno-4-161" name="__codelineno-4-161" href="#__codelineno-4-161"></a><span class="w">    </span><span class="nx">respondJSON</span><span class="p">(</span><span class="nx">w</span><span class="p">,</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">StatusOK</span><span class="p">,</span><span class="w"> </span><span class="nx">versionStats</span><span class="p">)</span>
+<a id="__codelineno-4-162" name="__codelineno-4-162" href="#__codelineno-4-162"></a><span class="p">}</span>
+<a id="__codelineno-4-163" name="__codelineno-4-163" href="#__codelineno-4-163"></a>
+<a id="__codelineno-4-164" name="__codelineno-4-164" href="#__codelineno-4-164"></a><span class="c1">// Helpers</span>
+<a id="__codelineno-4-165" name="__codelineno-4-165" href="#__codelineno-4-165"></a><span class="kd">func</span><span class="w"> </span><span class="nx">respondJSON</span><span class="p">(</span><span class="nx">w</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span><span class="w"> </span><span class="nx">status</span><span class="w"> </span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="kd">interface</span><span class="p">{})</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-166" name="__codelineno-4-166" href="#__codelineno-4-166"></a><span class="w">    </span><span class="nx">w</span><span class="p">.</span><span class="nx">Header</span><span class="p">().</span><span class="nx">Set</span><span class="p">(</span><span class="s">&quot;Content-Type&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;application/json&quot;</span><span class="p">)</span>
+<a id="__codelineno-4-167" name="__codelineno-4-167" href="#__codelineno-4-167"></a><span class="w">    </span><span class="nx">w</span><span class="p">.</span><span class="nx">WriteHeader</span><span class="p">(</span><span class="nx">status</span><span class="p">)</span>
+<a id="__codelineno-4-168" name="__codelineno-4-168" href="#__codelineno-4-168"></a><span class="w">    </span><span class="nx">json</span><span class="p">.</span><span class="nx">NewEncoder</span><span class="p">(</span><span class="nx">w</span><span class="p">).</span><span class="nx">Encode</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span>
+<a id="__codelineno-4-169" name="__codelineno-4-169" href="#__codelineno-4-169"></a><span class="p">}</span>
+<a id="__codelineno-4-170" name="__codelineno-4-170" href="#__codelineno-4-170"></a>
+<a id="__codelineno-4-171" name="__codelineno-4-171" href="#__codelineno-4-171"></a><span class="kd">func</span><span class="w"> </span><span class="nx">respondError</span><span class="p">(</span><span class="nx">w</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span><span class="w"> </span><span class="nx">status</span><span class="w"> </span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="nx">message</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-172" name="__codelineno-4-172" href="#__codelineno-4-172"></a><span class="w">    </span><span class="nx">respondJSON</span><span class="p">(</span><span class="nx">w</span><span class="p">,</span><span class="w"> </span><span class="nx">status</span><span class="p">,</span><span class="w"> </span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;error&quot;</span><span class="p">:</span><span class="w"> </span><span class="nx">message</span><span class="p">})</span>
+<a id="__codelineno-4-173" name="__codelineno-4-173" href="#__codelineno-4-173"></a><span class="p">}</span>
+<a id="__codelineno-4-174" name="__codelineno-4-174" href="#__codelineno-4-174"></a>
+<a id="__codelineno-4-175" name="__codelineno-4-175" href="#__codelineno-4-175"></a><span class="c1">// TODO: Extract mentions and hashtags from content</span>
+<a id="__codelineno-4-176" name="__codelineno-4-176" href="#__codelineno-4-176"></a><span class="kd">func</span><span class="w"> </span><span class="nx">extractMentions</span><span class="p">(</span><span class="nx">content</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">[]</span><span class="kt">string</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-177" name="__codelineno-4-177" href="#__codelineno-4-177"></a><span class="w">    </span><span class="c1">// Find all @username</span>
+<a id="__codelineno-4-178" name="__codelineno-4-178" href="#__codelineno-4-178"></a><span class="p">}</span>
+<a id="__codelineno-4-179" name="__codelineno-4-179" href="#__codelineno-4-179"></a>
+<a id="__codelineno-4-180" name="__codelineno-4-180" href="#__codelineno-4-180"></a><span class="kd">func</span><span class="w"> </span><span class="nx">extractHashtags</span><span class="p">(</span><span class="nx">content</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">[]</span><span class="kt">string</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-181" name="__codelineno-4-181" href="#__codelineno-4-181"></a><span class="w">    </span><span class="c1">// Find all #hashtag</span>
+<a id="__codelineno-4-182" name="__codelineno-4-182" href="#__codelineno-4-182"></a><span class="p">}</span>
+<a id="__codelineno-4-183" name="__codelineno-4-183" href="#__codelineno-4-183"></a>
+<a id="__codelineno-4-184" name="__codelineno-4-184" href="#__codelineno-4-184"></a><span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-185" name="__codelineno-4-185" href="#__codelineno-4-185"></a><span class="w">    </span><span class="c1">// TODO: Seed database with users and posts</span>
+<a id="__codelineno-4-186" name="__codelineno-4-186" href="#__codelineno-4-186"></a>
+<a id="__codelineno-4-187" name="__codelineno-4-187" href="#__codelineno-4-187"></a><span class="w">    </span><span class="nx">r</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">mux</span><span class="p">.</span><span class="nx">NewRouter</span><span class="p">()</span>
+<a id="__codelineno-4-188" name="__codelineno-4-188" href="#__codelineno-4-188"></a>
+<a id="__codelineno-4-189" name="__codelineno-4-189" href="#__codelineno-4-189"></a><span class="w">    </span><span class="c1">// TODO: Register V1, V2, V3 routes</span>
+<a id="__codelineno-4-190" name="__codelineno-4-190" href="#__codelineno-4-190"></a><span class="w">    </span><span class="c1">// TODO: Apply appropriate middleware to each version</span>
+<a id="__codelineno-4-191" name="__codelineno-4-191" href="#__codelineno-4-191"></a>
+<a id="__codelineno-4-192" name="__codelineno-4-192" href="#__codelineno-4-192"></a><span class="w">    </span><span class="c1">// Analytics endpoint</span>
+<a id="__codelineno-4-193" name="__codelineno-4-193" href="#__codelineno-4-193"></a><span class="w">    </span><span class="nx">r</span><span class="p">.</span><span class="nx">HandleFunc</span><span class="p">(</span><span class="s">&quot;/admin/stats&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">getVersionStats</span><span class="p">).</span><span class="nx">Methods</span><span class="p">(</span><span class="s">&quot;GET&quot;</span><span class="p">)</span>
+<a id="__codelineno-4-194" name="__codelineno-4-194" href="#__codelineno-4-194"></a>
+<a id="__codelineno-4-195" name="__codelineno-4-195" href="#__codelineno-4-195"></a><span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;Server starting on :8080&quot;</span><span class="p">)</span>
+<a id="__codelineno-4-196" name="__codelineno-4-196" href="#__codelineno-4-196"></a><span class="w">    </span><span class="nx">http</span><span class="p">.</span><span class="nx">ListenAndServe</span><span class="p">(</span><span class="s">&quot;:8080&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="p">)</span>
+<a id="__codelineno-4-197" name="__codelineno-4-197" href="#__codelineno-4-197"></a><span class="p">}</span>
+</code></pre></div>
+<hr />
+<h2 id="sample-data">Sample Data<a class="headerlink" href="#sample-data" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kd">func</span><span class="w"> </span><span class="nx">seedDatabase</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="c1">// Seed users</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">    </span><span class="nx">usersMu</span><span class="p">.</span><span class="nx">Lock</span><span class="p">()</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">    </span><span class="nx">users</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">UserRecord</span><span class="p">{</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">        </span><span class="nx">ID</span><span class="p">:</span><span class="w">          </span><span class="mi">1</span><span class="p">,</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">        </span><span class="nx">Username</span><span class="p">:</span><span class="w">    </span><span class="s">&quot;alice&quot;</span><span class="p">,</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">        </span><span class="nx">DisplayName</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Alice Johnson&quot;</span><span class="p">,</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">        </span><span class="nx">AvatarURL</span><span class="p">:</span><span class="w">   </span><span class="s">&quot;https://example.com/avatars/alice.jpg&quot;</span><span class="p">,</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="w">    </span><span class="nx">users</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">UserRecord</span><span class="p">{</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="w">        </span><span class="nx">ID</span><span class="p">:</span><span class="w">          </span><span class="mi">2</span><span class="p">,</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="w">        </span><span class="nx">Username</span><span class="p">:</span><span class="w">    </span><span class="s">&quot;bob&quot;</span><span class="p">,</span>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="w">        </span><span class="nx">DisplayName</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Bob Smith&quot;</span><span class="p">,</span>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="w">        </span><span class="nx">AvatarURL</span><span class="p">:</span><span class="w">   </span><span class="s">&quot;https://example.com/avatars/bob.jpg&quot;</span><span class="p">,</span>
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="w">    </span><span class="nx">usersMu</span><span class="p">.</span><span class="nx">Unlock</span><span class="p">()</span>
+<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a>
+<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="w">    </span><span class="c1">// Seed posts</span>
+<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a><span class="w">    </span><span class="nx">postsMu</span><span class="p">.</span><span class="nx">Lock</span><span class="p">()</span>
+<a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a><span class="w">    </span><span class="nx">posts</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">PostRecord</span><span class="p">{</span>
+<a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a><span class="w">        </span><span class="nx">ID</span><span class="p">:</span><span class="w">       </span><span class="mi">1</span><span class="p">,</span>
+<a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a><span class="w">        </span><span class="nx">AuthorID</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a><span class="w">        </span><span class="nx">Content</span><span class="p">:</span><span class="w">  </span><span class="s">&quot;Hello world! This is my first post.&quot;</span><span class="p">,</span>
+<a id="__codelineno-5-24" name="__codelineno-5-24" href="#__codelineno-5-24"></a><span class="w">        </span><span class="nx">Reactions</span><span class="p">:</span><span class="w"> </span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">][]</span><span class="kt">string</span><span class="p">{</span>
+<a id="__codelineno-5-25" name="__codelineno-5-25" href="#__codelineno-5-25"></a><span class="w">            </span><span class="s">&quot;like&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="s">&quot;bob&quot;</span><span class="p">},</span>
+<a id="__codelineno-5-26" name="__codelineno-5-26" href="#__codelineno-5-26"></a><span class="w">        </span><span class="p">},</span>
+<a id="__codelineno-5-27" name="__codelineno-5-27" href="#__codelineno-5-27"></a><span class="w">        </span><span class="nx">CreatedAt</span><span class="p">:</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">().</span><span class="nx">Add</span><span class="p">(</span><span class="o">-</span><span class="mi">24</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Hour</span><span class="p">),</span>
+<a id="__codelineno-5-28" name="__codelineno-5-28" href="#__codelineno-5-28"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-5-29" name="__codelineno-5-29" href="#__codelineno-5-29"></a>
+<a id="__codelineno-5-30" name="__codelineno-5-30" href="#__codelineno-5-30"></a><span class="w">    </span><span class="nx">posts</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">PostRecord</span><span class="p">{</span>
+<a id="__codelineno-5-31" name="__codelineno-5-31" href="#__codelineno-5-31"></a><span class="w">        </span><span class="nx">ID</span><span class="p">:</span><span class="w">       </span><span class="mi">2</span><span class="p">,</span>
+<a id="__codelineno-5-32" name="__codelineno-5-32" href="#__codelineno-5-32"></a><span class="w">        </span><span class="nx">AuthorID</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+<a id="__codelineno-5-33" name="__codelineno-5-33" href="#__codelineno-5-33"></a><span class="w">        </span><span class="nx">Content</span><span class="p">:</span><span class="w">  </span><span class="s">&quot;Check out this cool feature! @alice #golang&quot;</span><span class="p">,</span>
+<a id="__codelineno-5-34" name="__codelineno-5-34" href="#__codelineno-5-34"></a><span class="w">        </span><span class="nx">Mentions</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;alice&quot;</span><span class="p">},</span>
+<a id="__codelineno-5-35" name="__codelineno-5-35" href="#__codelineno-5-35"></a><span class="w">        </span><span class="nx">Hashtags</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;golang&quot;</span><span class="p">},</span>
+<a id="__codelineno-5-36" name="__codelineno-5-36" href="#__codelineno-5-36"></a><span class="w">        </span><span class="nx">Reactions</span><span class="p">:</span><span class="w"> </span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">][]</span><span class="kt">string</span><span class="p">{</span>
+<a id="__codelineno-5-37" name="__codelineno-5-37" href="#__codelineno-5-37"></a><span class="w">            </span><span class="s">&quot;like&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="s">&quot;alice&quot;</span><span class="p">},</span>
+<a id="__codelineno-5-38" name="__codelineno-5-38" href="#__codelineno-5-38"></a><span class="w">            </span><span class="s">&quot;love&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="s">&quot;alice&quot;</span><span class="p">},</span>
+<a id="__codelineno-5-39" name="__codelineno-5-39" href="#__codelineno-5-39"></a><span class="w">        </span><span class="p">},</span>
+<a id="__codelineno-5-40" name="__codelineno-5-40" href="#__codelineno-5-40"></a><span class="w">        </span><span class="nx">CreatedAt</span><span class="p">:</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">().</span><span class="nx">Add</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Hour</span><span class="p">),</span>
+<a id="__codelineno-5-41" name="__codelineno-5-41" href="#__codelineno-5-41"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-5-42" name="__codelineno-5-42" href="#__codelineno-5-42"></a>
+<a id="__codelineno-5-43" name="__codelineno-5-43" href="#__codelineno-5-43"></a><span class="w">    </span><span class="nx">nextPostID</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">3</span>
+<a id="__codelineno-5-44" name="__codelineno-5-44" href="#__codelineno-5-44"></a><span class="w">    </span><span class="nx">postsMu</span><span class="p">.</span><span class="nx">Unlock</span><span class="p">()</span>
+<a id="__codelineno-5-45" name="__codelineno-5-45" href="#__codelineno-5-45"></a><span class="p">}</span>
+</code></pre></div>
+<hr />
+<h2 id="testing-scenarios">Testing Scenarios<a class="headerlink" href="#testing-scenarios" title="Permanent link">&para;</a></h2>
+<h3 id="test-all-versions">Test All Versions<a class="headerlink" href="#test-all-versions" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># V1 - Get posts (simple format)</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>curl<span class="w"> </span>http://localhost:8080/api/v1/posts
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="c1"># V2 - Get posts (with reactions)</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>curl<span class="w"> </span>http://localhost:8080/api/v2/posts
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="c1"># V3 - Get posts (with media, mentions, hashtags)</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>curl<span class="w"> </span>http://localhost:8080/api/v3/posts
+</code></pre></div>
+<h3 id="test-progressive-features">Test Progressive Features<a class="headerlink" href="#test-progressive-features" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># V1 - Like a post</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>http://localhost:8080/api/v1/posts/1/like<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">  </span>-H<span class="w"> </span><span class="s2">&quot;Content-Type: application/json&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">  </span>-d<span class="w"> </span><span class="s1">&#39;{&quot;username&quot;:&quot;bob&quot;}&#39;</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="c1"># V2 - React to a post (multiple types)</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>http://localhost:8080/api/v2/posts/1/react<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="w">  </span>-H<span class="w"> </span><span class="s2">&quot;Content-Type: application/json&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="w">  </span>-d<span class="w"> </span><span class="s1">&#39;{&quot;username&quot;:&quot;alice&quot;,&quot;reaction&quot;:&quot;love&quot;}&#39;</span>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="c1"># V3 - React with full details</span>
+<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>http://localhost:8080/api/v3/posts/1/react<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="w">  </span>-H<span class="w"> </span><span class="s2">&quot;Content-Type: application/json&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a><span class="w">  </span>-d<span class="w"> </span><span class="s1">&#39;{&quot;username&quot;:&quot;charlie&quot;,&quot;reaction&quot;:&quot;wow&quot;}&#39;</span>
+</code></pre></div>
+<h3 id="test-content-features">Test Content Features<a class="headerlink" href="#test-content-features" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># V3 - Create post with mentions and hashtags</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>http://localhost:8080/api/v3/posts<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">  </span>-H<span class="w"> </span><span class="s2">&quot;Content-Type: application/json&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="w">  </span>-d<span class="w"> </span><span class="s1">&#39;{</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="s1">    &quot;author_id&quot;: 1,</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="s1">    &quot;content&quot;: &quot;Great discussion with @bob about #golang!&quot;,</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="s1">    &quot;media&quot;: [</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="s1">      {&quot;type&quot;:&quot;image&quot;,&quot;url&quot;:&quot;https://example.com/image.jpg&quot;}</span>
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="s1">    ]</span>
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="s1">  }&#39;</span>
+</code></pre></div>
+<h3 id="check-analytics">Check Analytics<a class="headerlink" href="#check-analytics" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>curl<span class="w"> </span>http://localhost:8080/admin/stats
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="c1"># Expected:</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="c1"># {</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="c1">#   &quot;v1&quot;: 5,</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="c1">#   &quot;v2&quot;: 12,</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="c1">#   &quot;v3&quot;: 28</span>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="c1"># }</span>
+</code></pre></div>
+<hr />
+<h2 id="requirements_1">Requirements<a class="headerlink" href="#requirements_1" title="Permanent link">&para;</a></h2>
+<h3 id="version-headers">Version Headers<a class="headerlink" href="#version-headers" title="Permanent link">&para;</a></h3>
+<p><strong>V1</strong> (Deprecated):
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>Deprecation: true
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>Sunset: 2024-06-30
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>Link: &lt;/api/v2/posts&gt;; rel=&quot;successor-version&quot;
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>X-Migration-Guide: https://docs.api.com/v1-to-v2
+</code></pre></div></p>
+<p><strong>V2</strong> (Current):
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>X-Upgrade-Available: v3
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>X-New-Features: media,mentions,hashtags,enhanced-reactions
+</code></pre></div></p>
+<p><strong>V3</strong> (Latest):
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>X-API-Version: 3.0
+</code></pre></div></p>
+<h3 id="conversion-rules">Conversion Rules<a class="headerlink" href="#conversion-rules" title="Permanent link">&para;</a></h3>
+<p><strong>PostRecord → V1</strong>:
+- Author: use username only
+- Likes: count all reactions</p>
+<p><strong>PostRecord → V2</strong>:
+- Author: full author object
+- Reactions: count by type</p>
+<p><strong>PostRecord → V3</strong>:
+- Include everything
+- Auto-extract mentions/hashtags if not stored</p>
+<hr />
+<h2 id="bonus-challenges">Bonus Challenges<a class="headerlink" href="#bonus-challenges" title="Permanent link">&para;</a></h2>
+<h3 id="bonus-1-version-negotiation">Bonus 1: Version Negotiation<a class="headerlink" href="#bonus-1-version-negotiation" title="Permanent link">&para;</a></h3>
+<p>Allow clients to request format:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>GET<span class="w"> </span>/api/posts
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>Accept:<span class="w"> </span>application/vnd.socialapi.v2+json
+</code></pre></div></p>
+<h3 id="bonus-2-gradual-rollout">Bonus 2: Gradual Rollout<a class="headerlink" href="#bonus-2-gradual-rollout" title="Permanent link">&para;</a></h3>
+<p>Add feature flags:
+- <code>?beta=media</code> - Enable V3 media in V2
+- <code>?beta=reactions</code> - Enable V2 reactions in V1</p>
+<h3 id="bonus-3-usage-metrics">Bonus 3: Usage Metrics<a class="headerlink" href="#bonus-3-usage-metrics" title="Permanent link">&para;</a></h3>
+<p>Track more detailed analytics:
+- Requests per endpoint per version
+- Average response time by version
+- Error rate by version</p>
+<h3 id="bonus-4-automatic-migration">Bonus 4: Automatic Migration<a class="headerlink" href="#bonus-4-automatic-migration" title="Permanent link">&para;</a></h3>
+<p>Add migration endpoint:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>POST<span class="w"> </span>/api/migrate/v1-to-v2
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="c1"># Migrates all V1 client tokens to V2</span>
+</code></pre></div></p>
+<h3 id="bonus-5-compatibility-layer">Bonus 5: Compatibility Layer<a class="headerlink" href="#bonus-5-compatibility-layer" title="Permanent link">&para;</a></h3>
+<p>Make V1 endpoints use V3 internally (adapter pattern)</p>
+<hr />
+<h2 id="hints">Hints<a class="headerlink" href="#hints" title="Permanent link">&para;</a></h2>
+<h3 id="hint-1-extract-mentionshashtags">Hint 1: Extract Mentions/Hashtags<a class="headerlink" href="#hint-1-extract-mentionshashtags" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="kn">import</span><span class="w"> </span><span class="s">&quot;regexp&quot;</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="kd">func</span><span class="w"> </span><span class="nx">extractMentions</span><span class="p">(</span><span class="nx">content</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">[]</span><span class="kt">string</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="w">    </span><span class="nx">re</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">regexp</span><span class="p">.</span><span class="nx">MustCompile</span><span class="p">(</span><span class="s">`@(\w+)`</span><span class="p">)</span>
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="w">    </span><span class="nx">matches</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">re</span><span class="p">.</span><span class="nx">FindAllStringSubmatch</span><span class="p">(</span><span class="nx">content</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>
+<a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="w">    </span><span class="nx">mentions</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">[]</span><span class="kt">string</span><span class="p">{}</span>
+<a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">match</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">range</span><span class="w"> </span><span class="nx">matches</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">match</span><span class="p">)</span><span class="w"> </span><span class="p">&gt;</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a><span class="w">            </span><span class="nx">mentions</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span><span class="nx">mentions</span><span class="p">,</span><span class="w"> </span><span class="nx">match</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-15-13" name="__codelineno-15-13" href="#__codelineno-15-13"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">mentions</span>
+<a id="__codelineno-15-14" name="__codelineno-15-14" href="#__codelineno-15-14"></a><span class="p">}</span>
+<a id="__codelineno-15-15" name="__codelineno-15-15" href="#__codelineno-15-15"></a>
+<a id="__codelineno-15-16" name="__codelineno-15-16" href="#__codelineno-15-16"></a><span class="kd">func</span><span class="w"> </span><span class="nx">extractHashtags</span><span class="p">(</span><span class="nx">content</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">[]</span><span class="kt">string</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-15-17" name="__codelineno-15-17" href="#__codelineno-15-17"></a><span class="w">    </span><span class="nx">re</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">regexp</span><span class="p">.</span><span class="nx">MustCompile</span><span class="p">(</span><span class="s">`#(\w+)`</span><span class="p">)</span>
+<a id="__codelineno-15-18" name="__codelineno-15-18" href="#__codelineno-15-18"></a><span class="w">    </span><span class="nx">matches</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">re</span><span class="p">.</span><span class="nx">FindAllStringSubmatch</span><span class="p">(</span><span class="nx">content</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<a id="__codelineno-15-19" name="__codelineno-15-19" href="#__codelineno-15-19"></a>
+<a id="__codelineno-15-20" name="__codelineno-15-20" href="#__codelineno-15-20"></a><span class="w">    </span><span class="nx">hashtags</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">[]</span><span class="kt">string</span><span class="p">{}</span>
+<a id="__codelineno-15-21" name="__codelineno-15-21" href="#__codelineno-15-21"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">match</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">range</span><span class="w"> </span><span class="nx">matches</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-15-22" name="__codelineno-15-22" href="#__codelineno-15-22"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">match</span><span class="p">)</span><span class="w"> </span><span class="p">&gt;</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-15-23" name="__codelineno-15-23" href="#__codelineno-15-23"></a><span class="w">            </span><span class="nx">hashtags</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span><span class="nx">hashtags</span><span class="p">,</span><span class="w"> </span><span class="nx">match</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<a id="__codelineno-15-24" name="__codelineno-15-24" href="#__codelineno-15-24"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-15-25" name="__codelineno-15-25" href="#__codelineno-15-25"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-15-26" name="__codelineno-15-26" href="#__codelineno-15-26"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">hashtags</span>
+<a id="__codelineno-15-27" name="__codelineno-15-27" href="#__codelineno-15-27"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="hint-2-analytics-tracking">Hint 2: Analytics Tracking<a class="headerlink" href="#hint-2-analytics-tracking" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="kd">func</span><span class="w"> </span><span class="nx">analyticsMiddleware</span><span class="p">(</span><span class="nx">version</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">http</span><span class="p">.</span><span class="nx">Handler</span><span class="p">)</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">Handler</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">next</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">Handler</span><span class="p">)</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">Handler</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">HandlerFunc</span><span class="p">(</span><span class="kd">func</span><span class="p">(</span><span class="nx">w</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="w">            </span><span class="nx">statsMu</span><span class="p">.</span><span class="nx">Lock</span><span class="p">()</span>
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="w">            </span><span class="nx">versionStats</span><span class="p">[</span><span class="nx">version</span><span class="p">]</span><span class="o">++</span>
+<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="w">            </span><span class="nx">statsMu</span><span class="p">.</span><span class="nx">Unlock</span><span class="p">()</span>
+<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a>
+<a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a><span class="w">            </span><span class="nx">next</span><span class="p">.</span><span class="nx">ServeHTTP</span><span class="p">(</span><span class="nx">w</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="p">)</span>
+<a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a><span class="w">        </span><span class="p">})</span>
+<a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="hint-3-conversion-to-v2">Hint 3: Conversion to V2<a class="headerlink" href="#hint-3-conversion-to-v2" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="kd">func</span><span class="w"> </span><span class="nx">postRecordToV2</span><span class="p">(</span><span class="nx">post</span><span class="w"> </span><span class="nx">PostRecord</span><span class="p">,</span><span class="w"> </span><span class="nx">author</span><span class="w"> </span><span class="nx">UserRecord</span><span class="p">)</span><span class="w"> </span><span class="nx">PostV2</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="w">    </span><span class="nx">reactions</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">Reactions</span><span class="p">{}</span>
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="w">    </span><span class="nx">total</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span>
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>
+<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nx">reactionType</span><span class="p">,</span><span class="w"> </span><span class="nx">users</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">range</span><span class="w"> </span><span class="nx">post</span><span class="p">.</span><span class="nx">Reactions</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a><span class="w">        </span><span class="nx">count</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">users</span><span class="p">)</span>
+<a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a><span class="w">        </span><span class="nx">total</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="nx">count</span>
+<a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a>
+<a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a><span class="w">        </span><span class="k">switch</span><span class="w"> </span><span class="nx">reactionType</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a><span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="s">&quot;like&quot;</span><span class="p">:</span>
+<a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a><span class="w">            </span><span class="nx">reactions</span><span class="p">.</span><span class="nx">Like</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">count</span>
+<a id="__codelineno-17-12" name="__codelineno-17-12" href="#__codelineno-17-12"></a><span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="s">&quot;love&quot;</span><span class="p">:</span>
+<a id="__codelineno-17-13" name="__codelineno-17-13" href="#__codelineno-17-13"></a><span class="w">            </span><span class="nx">reactions</span><span class="p">.</span><span class="nx">Love</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">count</span>
+<a id="__codelineno-17-14" name="__codelineno-17-14" href="#__codelineno-17-14"></a><span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="s">&quot;haha&quot;</span><span class="p">:</span>
+<a id="__codelineno-17-15" name="__codelineno-17-15" href="#__codelineno-17-15"></a><span class="w">            </span><span class="nx">reactions</span><span class="p">.</span><span class="nx">Haha</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">count</span>
+<a id="__codelineno-17-16" name="__codelineno-17-16" href="#__codelineno-17-16"></a><span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="s">&quot;wow&quot;</span><span class="p">:</span>
+<a id="__codelineno-17-17" name="__codelineno-17-17" href="#__codelineno-17-17"></a><span class="w">            </span><span class="nx">reactions</span><span class="p">.</span><span class="nx">Wow</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">count</span>
+<a id="__codelineno-17-18" name="__codelineno-17-18" href="#__codelineno-17-18"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-17-19" name="__codelineno-17-19" href="#__codelineno-17-19"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-17-20" name="__codelineno-17-20" href="#__codelineno-17-20"></a>
+<a id="__codelineno-17-21" name="__codelineno-17-21" href="#__codelineno-17-21"></a><span class="w">    </span><span class="nx">reactions</span><span class="p">.</span><span class="nx">Total</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">total</span>
+<a id="__codelineno-17-22" name="__codelineno-17-22" href="#__codelineno-17-22"></a>
+<a id="__codelineno-17-23" name="__codelineno-17-23" href="#__codelineno-17-23"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">PostV2</span><span class="p">{</span>
+<a id="__codelineno-17-24" name="__codelineno-17-24" href="#__codelineno-17-24"></a><span class="w">        </span><span class="nx">ID</span><span class="p">:</span><span class="w"> </span><span class="nx">post</span><span class="p">.</span><span class="nx">ID</span><span class="p">,</span>
+<a id="__codelineno-17-25" name="__codelineno-17-25" href="#__codelineno-17-25"></a><span class="w">        </span><span class="nx">Author</span><span class="p">:</span><span class="w"> </span><span class="nx">Author</span><span class="p">{</span>
+<a id="__codelineno-17-26" name="__codelineno-17-26" href="#__codelineno-17-26"></a><span class="w">            </span><span class="nx">Username</span><span class="p">:</span><span class="w">    </span><span class="nx">author</span><span class="p">.</span><span class="nx">Username</span><span class="p">,</span>
+<a id="__codelineno-17-27" name="__codelineno-17-27" href="#__codelineno-17-27"></a><span class="w">            </span><span class="nx">DisplayName</span><span class="p">:</span><span class="w"> </span><span class="nx">author</span><span class="p">.</span><span class="nx">DisplayName</span><span class="p">,</span>
+<a id="__codelineno-17-28" name="__codelineno-17-28" href="#__codelineno-17-28"></a><span class="w">            </span><span class="nx">AvatarURL</span><span class="p">:</span><span class="w">   </span><span class="nx">author</span><span class="p">.</span><span class="nx">AvatarURL</span><span class="p">,</span>
+<a id="__codelineno-17-29" name="__codelineno-17-29" href="#__codelineno-17-29"></a><span class="w">        </span><span class="p">},</span>
+<a id="__codelineno-17-30" name="__codelineno-17-30" href="#__codelineno-17-30"></a><span class="w">        </span><span class="nx">Content</span><span class="p">:</span><span class="w">   </span><span class="nx">post</span><span class="p">.</span><span class="nx">Content</span><span class="p">,</span>
+<a id="__codelineno-17-31" name="__codelineno-17-31" href="#__codelineno-17-31"></a><span class="w">        </span><span class="nx">Reactions</span><span class="p">:</span><span class="w"> </span><span class="nx">reactions</span><span class="p">,</span>
+<a id="__codelineno-17-32" name="__codelineno-17-32" href="#__codelineno-17-32"></a><span class="w">        </span><span class="nx">CreatedAt</span><span class="p">:</span><span class="w"> </span><span class="nx">post</span><span class="p">.</span><span class="nx">CreatedAt</span><span class="p">,</span>
+<a id="__codelineno-17-33" name="__codelineno-17-33" href="#__codelineno-17-33"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-17-34" name="__codelineno-17-34" href="#__codelineno-17-34"></a><span class="p">}</span>
+</code></pre></div>
+<hr />
+<h2 id="what-youre-learning">What You're Learning<a class="headerlink" href="#what-youre-learning" title="Permanent link">&para;</a></h2>
+<p>✅ Managing three concurrent API versions<br />
+✅ Progressive API evolution over time<br />
+✅ Adapter pattern (old versions using new logic)<br />
+✅ Version usage analytics<br />
+✅ Migration hints and guides<br />
+✅ Feature extraction (mentions, hashtags)<br />
+✅ Complex model conversions<br />
+✅ Real-world API lifecycle management  </p>
+<p>This exercise shows how APIs evolve in production over years!</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

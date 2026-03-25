@@ -1,0 +1,2304 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Unit 4: API Versioning - APIwithGO</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#unit-4-api-versioning" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="APIwithGO" class="md-header__button md-logo" aria-label="APIwithGO" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            APIwithGO
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Unit 4: API Versioning
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="APIwithGO" class="md-nav__button md-logo" aria-label="APIwithGO" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    APIwithGO
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Unit 1 - Go Crash Course
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Unit 1 - Go Crash Course
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unit1/unit1_go_crash_course/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lesson
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unit1/unit1_exercise1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercise 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unit1/unit1_exercise1_solution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercise 1 Solution
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unit1/unit1_exercise2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercise 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unit1/unit1_exercise2_solution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercise 2 Solution
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Unit 2 - Basic HTTP Server
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Unit 2 - Basic HTTP Server
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unit2/unit2_basic_http_server.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lesson
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unit2/unit2_exercise1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercise 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unit2/unit2_exercise1_solution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercise 1 Solution
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unit2/unit2_exercise2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercise 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unit2/unit2_exercise2_solution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercise 2 Solution
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Unit 3 - API Structure & Routing
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Unit 3 - API Structure & Routing
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unit3/unit3_api_structure_and_routing.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lesson
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unit3/unit3_exercise1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercise 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unit3/unit3_exercise1_solution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercise 1 Solution
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unit3/unit3_exercise2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercise 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unit3/unit3_exercise2_solution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercise 2 Solution
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Unit 4 - Authentication & Authorization
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Unit 4 - Authentication & Authorization
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../unit4_authentication_and_authorization.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lesson
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../unit4_exercise1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercise 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../unit4_exercise1_solution.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercise 1 Solution
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../unit4_exercise2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercise 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../unit4_exercise2_solution.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercise 2 Solution
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#41-why-api-versioning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Why API Versioning?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#42-what-constitutes-a-breaking-change" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 What Constitutes a Breaking Change?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.2 What Constitutes a Breaking Change?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#breaking-changes-require-new-version" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Breaking Changes (Require New Version)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#non-breaking-changes-safe-to-deploy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Non-Breaking Changes (Safe to Deploy)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#43-common-versioning-strategies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 Common Versioning Strategies
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.3 Common Versioning Strategies">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#strategy-1-url-path-versioning-most-common" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Strategy 1: URL Path Versioning (Most Common)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#strategy-2-request-header-versioning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Strategy 2: Request Header Versioning
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#strategy-3-query-parameter-versioning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Strategy 3: Query Parameter Versioning
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#strategy-4-content-negotiation-accept-header" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Strategy 4: Content Negotiation (Accept Header)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#44-implementing-url-path-versioning-recommended" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 Implementing URL Path Versioning (Recommended)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.4 Implementing URL Path Versioning (Recommended)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Basic Setup
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#45-code-organization-for-multiple-versions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.5 Code Organization for Multiple Versions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.5 Code Organization for Multiple Versions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#recommended-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recommended Structure
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-handlersv1usergo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example: handlers/v1/user.go
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-handlersv2usergo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example: handlers/v2/user.go
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-maingo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example: main.go
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#46-sharing-code-between-versions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.6 Sharing Code Between Versions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.6 Sharing Code Between Versions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#share-common-logic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Share Common Logic
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#convert-to-version-specific-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Convert to Version-Specific Models
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#47-deprecation-strategy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.7 Deprecation Strategy
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.7 Deprecation Strategy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#announce-deprecation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Announce Deprecation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deprecation-timeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deprecation Timeline
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#48-version-detection-and-analytics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.8 Version Detection and Analytics
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#49-migration-strategies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.9 Migration Strategies
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.9 Migration Strategies">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#strategy-1-gradual-migration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Strategy 1: Gradual Migration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#strategy-2-dual-write" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Strategy 2: Dual Write
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#strategy-3-adapter-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Strategy 3: Adapter Pattern
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#410-best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.10 Best Practices
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.10 Best Practices">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#do" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ DO
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dont" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❌ DON'T
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#411-complete-example-two-versions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.11 Complete Example: Two Versions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Takeaways
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whats-next" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What's Next?
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="unit-4-api-versioning">Unit 4: API Versioning<a class="headerlink" href="#unit-4-api-versioning" title="Permanent link">&para;</a></h1>
+<p><strong>Duration</strong>: 45-60 minutes<br />
+<strong>Prerequisites</strong>: Unit 1-3 (Go fundamentals, HTTP servers, Authentication)<br />
+<strong>Goal</strong>: Learn strategies for evolving APIs without breaking existing clients</p>
+<hr />
+<h2 id="41-why-api-versioning">4.1 Why API Versioning?<a class="headerlink" href="#41-why-api-versioning" title="Permanent link">&para;</a></h2>
+<p>APIs evolve over time. You need to:
+- Add new features
+- Change data structures
+- Fix design mistakes
+- Improve performance</p>
+<p><strong>The Problem</strong>: Existing clients depend on your current API structure. Breaking changes will crash their applications.</p>
+<p><strong>The Solution</strong>: API versioning allows you to introduce changes while maintaining backward compatibility.</p>
+<hr />
+<h2 id="42-what-constitutes-a-breaking-change">4.2 What Constitutes a Breaking Change?<a class="headerlink" href="#42-what-constitutes-a-breaking-change" title="Permanent link">&para;</a></h2>
+<h3 id="breaking-changes-require-new-version">Breaking Changes (Require New Version)<a class="headerlink" href="#breaking-changes-require-new-version" title="Permanent link">&para;</a></h3>
+<p>❌ <strong>Removing a field</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1">// v1</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="p">{</span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;John&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;john@example.com&quot;</span><span class="p">}</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1">// v2 - BREAKING!</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="p">{</span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;John&quot;</span><span class="p">}</span><span class="w">  </span><span class="c1">// email removed</span>
+</code></pre></div></p>
+<p>❌ <strong>Renaming a field</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1">// v1</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="p">{</span><span class="nt">&quot;user_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;john&quot;</span><span class="p">}</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="c1">// v2 - BREAKING!</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="p">{</span><span class="nt">&quot;username&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;john&quot;</span><span class="p">}</span><span class="w">  </span><span class="c1">// field renamed</span>
+</code></pre></div></p>
+<p>❌ <strong>Changing field types</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1">// v1</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="p">{</span><span class="nt">&quot;price&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">19.99</span><span class="p">}</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="c1">// v2 - BREAKING!</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="p">{</span><span class="nt">&quot;price&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;19.99&quot;</span><span class="p">}</span><span class="w">  </span><span class="c1">// number → string</span>
+</code></pre></div></p>
+<p>❌ <strong>Removing an endpoint</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>DELETE /api/users/{id}  // No longer available
+</code></pre></div></p>
+<p>❌ <strong>Changing authentication requirements</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>// v1: No auth required
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>GET /api/posts
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>// v2: Auth required
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>GET /api/posts  // Now returns 401 without token
+</code></pre></div></p>
+<p>❌ <strong>Changing response structure</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1">// v1</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="p">{</span><span class="nt">&quot;users&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">...</span><span class="p">]}</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="c1">// v2 - BREAKING!</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="p">{</span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;users&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">...</span><span class="p">]}}</span><span class="w">  </span><span class="c1">// Wrapped in data object</span>
+</code></pre></div></p>
+<h3 id="non-breaking-changes-safe-to-deploy">Non-Breaking Changes (Safe to Deploy)<a class="headerlink" href="#non-breaking-changes-safe-to-deploy" title="Permanent link">&para;</a></h3>
+<p>✅ <strong>Adding optional fields</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1">// v1</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="p">{</span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;John&quot;</span><span class="p">}</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="c1">// v1.1 - Safe!</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="p">{</span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;John&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;avatar&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;url&quot;</span><span class="p">}</span><span class="w">  </span><span class="c1">// New optional field</span>
+</code></pre></div></p>
+<p>✅ <strong>Adding new endpoints</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>POST /api/users/{id}/avatar  // New endpoint
+</code></pre></div></p>
+<p>✅ <strong>Adding optional query parameters</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>GET /api/posts?sort=date  // New optional parameter
+</code></pre></div></p>
+<p>✅ <strong>Making required fields optional</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1">// Before: email required</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="c1">// After: email optional (safer, more lenient)</span>
+</code></pre></div></p>
+<p>✅ <strong>Expanding enum values</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1">// Before: status: &quot;active&quot; | &quot;inactive&quot;</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="c1">// After: status: &quot;active&quot; | &quot;inactive&quot; | &quot;pending&quot;  // Added new value</span>
+</code></pre></div></p>
+<hr />
+<h2 id="43-common-versioning-strategies">4.3 Common Versioning Strategies<a class="headerlink" href="#43-common-versioning-strategies" title="Permanent link">&para;</a></h2>
+<h3 id="strategy-1-url-path-versioning-most-common">Strategy 1: URL Path Versioning (Most Common)<a class="headerlink" href="#strategy-1-url-path-versioning-most-common" title="Permanent link">&para;</a></h3>
+<p><strong>Pattern</strong>: <code>/api/v1/</code>, <code>/api/v2/</code></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="w">    </span><span class="nx">r</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">mux</span><span class="p">.</span><span class="nx">NewRouter</span><span class="p">()</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="w">    </span><span class="c1">// Version 1</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="w">    </span><span class="nx">v1</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">PathPrefix</span><span class="p">(</span><span class="s">&quot;/api/v1&quot;</span><span class="p">).</span><span class="nx">Subrouter</span><span class="p">()</span>
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="w">    </span><span class="nx">v1</span><span class="p">.</span><span class="nx">HandleFunc</span><span class="p">(</span><span class="s">&quot;/users&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">getUsersV1</span><span class="p">).</span><span class="nx">Methods</span><span class="p">(</span><span class="s">&quot;GET&quot;</span><span class="p">)</span>
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="w">    </span><span class="nx">v1</span><span class="p">.</span><span class="nx">HandleFunc</span><span class="p">(</span><span class="s">&quot;/users/{id}&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">getUserV1</span><span class="p">).</span><span class="nx">Methods</span><span class="p">(</span><span class="s">&quot;GET&quot;</span><span class="p">)</span>
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>
+<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="w">    </span><span class="c1">// Version 2</span>
+<a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="w">    </span><span class="nx">v2</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">PathPrefix</span><span class="p">(</span><span class="s">&quot;/api/v2&quot;</span><span class="p">).</span><span class="nx">Subrouter</span><span class="p">()</span>
+<a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a><span class="w">    </span><span class="nx">v2</span><span class="p">.</span><span class="nx">HandleFunc</span><span class="p">(</span><span class="s">&quot;/users&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">getUsersV2</span><span class="p">).</span><span class="nx">Methods</span><span class="p">(</span><span class="s">&quot;GET&quot;</span><span class="p">)</span>
+<a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a><span class="w">    </span><span class="nx">v2</span><span class="p">.</span><span class="nx">HandleFunc</span><span class="p">(</span><span class="s">&quot;/users/{id}&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">getUserV2</span><span class="p">).</span><span class="nx">Methods</span><span class="p">(</span><span class="s">&quot;GET&quot;</span><span class="p">)</span>
+<a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a>
+<a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a><span class="w">    </span><span class="nx">http</span><span class="p">.</span><span class="nx">ListenAndServe</span><span class="p">(</span><span class="s">&quot;:8080&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="p">)</span>
+<a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a><span class="p">}</span>
+</code></pre></div>
+<p><strong>Example</strong>:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="c1"># Client using v1</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>GET<span class="w"> </span>/api/v1/users
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="c1"># Client using v2</span>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>GET<span class="w"> </span>/api/v2/users
+</code></pre></div></p>
+<p><strong>Pros</strong>:
+- ✅ Very clear and explicit
+- ✅ Easy to route and cache
+- ✅ Simple for clients to understand
+- ✅ Most widely used in industry
+- ✅ Easy to deprecate old versions</p>
+<p><strong>Cons</strong>:
+- ❌ Version is part of URL (breaks REST purists)
+- ❌ Can lead to URL proliferation</p>
+<p><strong>Best For</strong>: Public APIs, REST APIs, most use cases</p>
+<hr />
+<h3 id="strategy-2-request-header-versioning">Strategy 2: Request Header Versioning<a class="headerlink" href="#strategy-2-request-header-versioning" title="Permanent link">&para;</a></h3>
+<p><strong>Pattern</strong>: <code>API-Version: 2</code> or <code>Accept: application/vnd.myapi.v2+json</code></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="kd">func</span><span class="w"> </span><span class="nx">versionMiddleware</span><span class="p">(</span><span class="nx">next</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">Handler</span><span class="p">)</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">Handler</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">HandlerFunc</span><span class="p">(</span><span class="kd">func</span><span class="p">(</span><span class="nx">w</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="w">        </span><span class="nx">version</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">Header</span><span class="p">.</span><span class="nx">Get</span><span class="p">(</span><span class="s">&quot;API-Version&quot;</span><span class="p">)</span>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">version</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="w">            </span><span class="nx">version</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;1&quot;</span><span class="w">  </span><span class="c1">// Default to v1</span>
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>
+<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a><span class="w">        </span><span class="nx">ctx</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">WithValue</span><span class="p">(</span><span class="nx">r</span><span class="p">.</span><span class="nx">Context</span><span class="p">(),</span><span class="w"> </span><span class="s">&quot;api-version&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">version</span><span class="p">)</span>
+<a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a><span class="w">        </span><span class="nx">next</span><span class="p">.</span><span class="nx">ServeHTTP</span><span class="p">(</span><span class="nx">w</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">WithContext</span><span class="p">(</span><span class="nx">ctx</span><span class="p">))</span>
+<a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a><span class="w">    </span><span class="p">})</span>
+<a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a><span class="p">}</span>
+<a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a>
+<a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a><span class="kd">func</span><span class="w"> </span><span class="nx">getUsers</span><span class="p">(</span><span class="nx">w</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-13-14" name="__codelineno-13-14" href="#__codelineno-13-14"></a><span class="w">    </span><span class="nx">version</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">Context</span><span class="p">().</span><span class="nx">Value</span><span class="p">(</span><span class="s">&quot;api-version&quot;</span><span class="p">).(</span><span class="kt">string</span><span class="p">)</span>
+<a id="__codelineno-13-15" name="__codelineno-13-15" href="#__codelineno-13-15"></a>
+<a id="__codelineno-13-16" name="__codelineno-13-16" href="#__codelineno-13-16"></a><span class="w">    </span><span class="k">switch</span><span class="w"> </span><span class="nx">version</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-13-17" name="__codelineno-13-17" href="#__codelineno-13-17"></a><span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="s">&quot;1&quot;</span><span class="p">:</span>
+<a id="__codelineno-13-18" name="__codelineno-13-18" href="#__codelineno-13-18"></a><span class="w">        </span><span class="nx">getUsersV1</span><span class="p">(</span><span class="nx">w</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="p">)</span>
+<a id="__codelineno-13-19" name="__codelineno-13-19" href="#__codelineno-13-19"></a><span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="s">&quot;2&quot;</span><span class="p">:</span>
+<a id="__codelineno-13-20" name="__codelineno-13-20" href="#__codelineno-13-20"></a><span class="w">        </span><span class="nx">getUsersV2</span><span class="p">(</span><span class="nx">w</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="p">)</span>
+<a id="__codelineno-13-21" name="__codelineno-13-21" href="#__codelineno-13-21"></a><span class="w">    </span><span class="k">default</span><span class="p">:</span>
+<a id="__codelineno-13-22" name="__codelineno-13-22" href="#__codelineno-13-22"></a><span class="w">        </span><span class="nx">respondError</span><span class="p">(</span><span class="nx">w</span><span class="p">,</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">StatusBadRequest</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Unsupported API version&quot;</span><span class="p">)</span>
+<a id="__codelineno-13-23" name="__codelineno-13-23" href="#__codelineno-13-23"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-13-24" name="__codelineno-13-24" href="#__codelineno-13-24"></a><span class="p">}</span>
+</code></pre></div>
+<p><strong>Example</strong>:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="c1"># Client using v1</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>curl<span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;API-Version: 1&quot;</span><span class="w"> </span>http://api.example.com/users
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="c1"># Client using v2</span>
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>curl<span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;API-Version: 2&quot;</span><span class="w"> </span>http://api.example.com/users
+</code></pre></div></p>
+<p><strong>Pros</strong>:
+- ✅ Clean URLs
+- ✅ RESTful (version is metadata, not part of resource)
+- ✅ Can version independently of URL structure</p>
+<p><strong>Cons</strong>:
+- ❌ Less discoverable
+- ❌ Harder to cache
+- ❌ More complex for clients
+- ❌ Can't test in browser easily</p>
+<p><strong>Best For</strong>: Internal APIs, GraphQL-style APIs</p>
+<hr />
+<h3 id="strategy-3-query-parameter-versioning">Strategy 3: Query Parameter Versioning<a class="headerlink" href="#strategy-3-query-parameter-versioning" title="Permanent link">&para;</a></h3>
+<p><strong>Pattern</strong>: <code>?version=2</code></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="kd">func</span><span class="w"> </span><span class="nx">getUsers</span><span class="p">(</span><span class="nx">w</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="w">    </span><span class="nx">version</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">URL</span><span class="p">.</span><span class="nx">Query</span><span class="p">().</span><span class="nx">Get</span><span class="p">(</span><span class="s">&quot;version&quot;</span><span class="p">)</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">version</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="w">        </span><span class="nx">version</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;1&quot;</span><span class="w">  </span><span class="c1">// Default</span>
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>
+<a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="w">    </span><span class="k">switch</span><span class="w"> </span><span class="nx">version</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a><span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="s">&quot;1&quot;</span><span class="p">:</span>
+<a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a><span class="w">        </span><span class="nx">getUsersV1</span><span class="p">(</span><span class="nx">w</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="p">)</span>
+<a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a><span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="s">&quot;2&quot;</span><span class="p">:</span>
+<a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a><span class="w">        </span><span class="nx">getUsersV2</span><span class="p">(</span><span class="nx">w</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="p">)</span>
+<a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a><span class="w">    </span><span class="k">default</span><span class="p">:</span>
+<a id="__codelineno-15-13" name="__codelineno-15-13" href="#__codelineno-15-13"></a><span class="w">        </span><span class="nx">respondError</span><span class="p">(</span><span class="nx">w</span><span class="p">,</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">StatusBadRequest</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Unsupported version&quot;</span><span class="p">)</span>
+<a id="__codelineno-15-14" name="__codelineno-15-14" href="#__codelineno-15-14"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-15-15" name="__codelineno-15-15" href="#__codelineno-15-15"></a><span class="p">}</span>
+</code></pre></div>
+<p><strong>Example</strong>:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>GET<span class="w"> </span>/api/users?version<span class="o">=</span><span class="m">2</span>
+</code></pre></div></p>
+<p><strong>Pros</strong>:
+- ✅ Easy to test in browser
+- ✅ Simple to implement</p>
+<p><strong>Cons</strong>:
+- ❌ Version mixed with query parameters
+- ❌ Not commonly used
+- ❌ Can interfere with caching</p>
+<p><strong>Best For</strong>: Rarely used, not recommended</p>
+<hr />
+<h3 id="strategy-4-content-negotiation-accept-header">Strategy 4: Content Negotiation (Accept Header)<a class="headerlink" href="#strategy-4-content-negotiation-accept-header" title="Permanent link">&para;</a></h3>
+<p><strong>Pattern</strong>: <code>Accept: application/vnd.myapi.v2+json</code></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="kd">func</span><span class="w"> </span><span class="nx">contentNegotiationMiddleware</span><span class="p">(</span><span class="nx">next</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">Handler</span><span class="p">)</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">Handler</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">HandlerFunc</span><span class="p">(</span><span class="kd">func</span><span class="p">(</span><span class="nx">w</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="w">        </span><span class="nx">accept</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">Header</span><span class="p">.</span><span class="nx">Get</span><span class="p">(</span><span class="s">&quot;Accept&quot;</span><span class="p">)</span>
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>
+<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a><span class="w">        </span><span class="nx">version</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="s">&quot;1&quot;</span><span class="w">  </span><span class="c1">// Default</span>
+<a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">strings</span><span class="p">.</span><span class="nx">Contains</span><span class="p">(</span><span class="nx">accept</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;vnd.myapi.v2&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a><span class="w">            </span><span class="nx">version</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;2&quot;</span>
+<a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="nx">strings</span><span class="p">.</span><span class="nx">Contains</span><span class="p">(</span><span class="nx">accept</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;vnd.myapi.v1&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a><span class="w">            </span><span class="nx">version</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;1&quot;</span>
+<a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a>
+<a id="__codelineno-17-12" name="__codelineno-17-12" href="#__codelineno-17-12"></a><span class="w">        </span><span class="nx">ctx</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">WithValue</span><span class="p">(</span><span class="nx">r</span><span class="p">.</span><span class="nx">Context</span><span class="p">(),</span><span class="w"> </span><span class="s">&quot;api-version&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">version</span><span class="p">)</span>
+<a id="__codelineno-17-13" name="__codelineno-17-13" href="#__codelineno-17-13"></a><span class="w">        </span><span class="nx">next</span><span class="p">.</span><span class="nx">ServeHTTP</span><span class="p">(</span><span class="nx">w</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">WithContext</span><span class="p">(</span><span class="nx">ctx</span><span class="p">))</span>
+<a id="__codelineno-17-14" name="__codelineno-17-14" href="#__codelineno-17-14"></a><span class="w">    </span><span class="p">})</span>
+<a id="__codelineno-17-15" name="__codelineno-17-15" href="#__codelineno-17-15"></a><span class="p">}</span>
+</code></pre></div>
+<p><strong>Example</strong>:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>curl<span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;Accept: application/vnd.myapi.v2+json&quot;</span><span class="w"> </span>http://api.example.com/users
+</code></pre></div></p>
+<p><strong>Pros</strong>:
+- ✅ True RESTful approach
+- ✅ Follows HTTP standards</p>
+<p><strong>Cons</strong>:
+- ❌ Most complex to implement
+- ❌ Hardest for clients to use
+- ❌ Not widely adopted</p>
+<p><strong>Best For</strong>: Academic REST APIs, rarely used in practice</p>
+<hr />
+<h2 id="44-implementing-url-path-versioning-recommended">4.4 Implementing URL Path Versioning (Recommended)<a class="headerlink" href="#44-implementing-url-path-versioning-recommended" title="Permanent link">&para;</a></h2>
+<h3 id="basic-setup">Basic Setup<a class="headerlink" href="#basic-setup" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="w">    </span><span class="s">&quot;encoding/json&quot;</span>
+<a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a><span class="w">    </span><span class="s">&quot;net/http&quot;</span>
+<a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a><span class="w">    </span><span class="s">&quot;time&quot;</span>
+<a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a>
+<a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a><span class="w">    </span><span class="s">&quot;github.com/gorilla/mux&quot;</span>
+<a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a><span class="p">)</span>
+<a id="__codelineno-19-10" name="__codelineno-19-10" href="#__codelineno-19-10"></a>
+<a id="__codelineno-19-11" name="__codelineno-19-11" href="#__codelineno-19-11"></a><span class="c1">// V1 models</span>
+<a id="__codelineno-19-12" name="__codelineno-19-12" href="#__codelineno-19-12"></a><span class="kd">type</span><span class="w"> </span><span class="nx">UserV1</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-19-13" name="__codelineno-19-13" href="#__codelineno-19-13"></a><span class="w">    </span><span class="nx">ID</span><span class="w">       </span><span class="kt">int</span><span class="w">    </span><span class="s">`json:&quot;id&quot;`</span>
+<a id="__codelineno-19-14" name="__codelineno-19-14" href="#__codelineno-19-14"></a><span class="w">    </span><span class="nx">Name</span><span class="w">     </span><span class="kt">string</span><span class="w"> </span><span class="s">`json:&quot;name&quot;`</span>
+<a id="__codelineno-19-15" name="__codelineno-19-15" href="#__codelineno-19-15"></a><span class="w">    </span><span class="nx">Email</span><span class="w">    </span><span class="kt">string</span><span class="w"> </span><span class="s">`json:&quot;email&quot;`</span>
+<a id="__codelineno-19-16" name="__codelineno-19-16" href="#__codelineno-19-16"></a><span class="p">}</span>
+<a id="__codelineno-19-17" name="__codelineno-19-17" href="#__codelineno-19-17"></a>
+<a id="__codelineno-19-18" name="__codelineno-19-18" href="#__codelineno-19-18"></a><span class="c1">// V2 models - with breaking changes</span>
+<a id="__codelineno-19-19" name="__codelineno-19-19" href="#__codelineno-19-19"></a><span class="kd">type</span><span class="w"> </span><span class="nx">UserV2</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-19-20" name="__codelineno-19-20" href="#__codelineno-19-20"></a><span class="w">    </span><span class="nx">ID</span><span class="w">        </span><span class="kt">int</span><span class="w">       </span><span class="s">`json:&quot;id&quot;`</span>
+<a id="__codelineno-19-21" name="__codelineno-19-21" href="#__codelineno-19-21"></a><span class="w">    </span><span class="nx">FirstName</span><span class="w"> </span><span class="kt">string</span><span class="w">    </span><span class="s">`json:&quot;first_name&quot;`</span><span class="w">  </span><span class="c1">// Split name</span>
+<a id="__codelineno-19-22" name="__codelineno-19-22" href="#__codelineno-19-22"></a><span class="w">    </span><span class="nx">LastName</span><span class="w">  </span><span class="kt">string</span><span class="w">    </span><span class="s">`json:&quot;last_name&quot;`</span>
+<a id="__codelineno-19-23" name="__codelineno-19-23" href="#__codelineno-19-23"></a><span class="w">    </span><span class="nx">Email</span><span class="w">     </span><span class="kt">string</span><span class="w">    </span><span class="s">`json:&quot;email&quot;`</span>
+<a id="__codelineno-19-24" name="__codelineno-19-24" href="#__codelineno-19-24"></a><span class="w">    </span><span class="nx">CreatedAt</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Time</span><span class="w"> </span><span class="s">`json:&quot;created_at&quot;`</span><span class="w">  </span><span class="c1">// New field</span>
+<a id="__codelineno-19-25" name="__codelineno-19-25" href="#__codelineno-19-25"></a><span class="p">}</span>
+<a id="__codelineno-19-26" name="__codelineno-19-26" href="#__codelineno-19-26"></a>
+<a id="__codelineno-19-27" name="__codelineno-19-27" href="#__codelineno-19-27"></a><span class="c1">// V1 handlers</span>
+<a id="__codelineno-19-28" name="__codelineno-19-28" href="#__codelineno-19-28"></a><span class="kd">func</span><span class="w"> </span><span class="nx">getUsersV1</span><span class="p">(</span><span class="nx">w</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-19-29" name="__codelineno-19-29" href="#__codelineno-19-29"></a><span class="w">    </span><span class="nx">users</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">[]</span><span class="nx">UserV1</span><span class="p">{</span>
+<a id="__codelineno-19-30" name="__codelineno-19-30" href="#__codelineno-19-30"></a><span class="w">        </span><span class="p">{</span><span class="nx">ID</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nx">Name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;John Doe&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">Email</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;john@example.com&quot;</span><span class="p">},</span>
+<a id="__codelineno-19-31" name="__codelineno-19-31" href="#__codelineno-19-31"></a><span class="w">        </span><span class="p">{</span><span class="nx">ID</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="nx">Name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Jane Smith&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">Email</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;jane@example.com&quot;</span><span class="p">},</span>
+<a id="__codelineno-19-32" name="__codelineno-19-32" href="#__codelineno-19-32"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-19-33" name="__codelineno-19-33" href="#__codelineno-19-33"></a>
+<a id="__codelineno-19-34" name="__codelineno-19-34" href="#__codelineno-19-34"></a><span class="w">    </span><span class="nx">w</span><span class="p">.</span><span class="nx">Header</span><span class="p">().</span><span class="nx">Set</span><span class="p">(</span><span class="s">&quot;Content-Type&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;application/json&quot;</span><span class="p">)</span>
+<a id="__codelineno-19-35" name="__codelineno-19-35" href="#__codelineno-19-35"></a><span class="w">    </span><span class="nx">json</span><span class="p">.</span><span class="nx">NewEncoder</span><span class="p">(</span><span class="nx">w</span><span class="p">).</span><span class="nx">Encode</span><span class="p">(</span><span class="nx">users</span><span class="p">)</span>
+<a id="__codelineno-19-36" name="__codelineno-19-36" href="#__codelineno-19-36"></a><span class="p">}</span>
+<a id="__codelineno-19-37" name="__codelineno-19-37" href="#__codelineno-19-37"></a>
+<a id="__codelineno-19-38" name="__codelineno-19-38" href="#__codelineno-19-38"></a><span class="kd">func</span><span class="w"> </span><span class="nx">getUserV1</span><span class="p">(</span><span class="nx">w</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-19-39" name="__codelineno-19-39" href="#__codelineno-19-39"></a><span class="w">    </span><span class="nx">vars</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">mux</span><span class="p">.</span><span class="nx">Vars</span><span class="p">(</span><span class="nx">r</span><span class="p">)</span>
+<a id="__codelineno-19-40" name="__codelineno-19-40" href="#__codelineno-19-40"></a><span class="w">    </span><span class="nx">id</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">vars</span><span class="p">[</span><span class="s">&quot;id&quot;</span><span class="p">]</span>
+<a id="__codelineno-19-41" name="__codelineno-19-41" href="#__codelineno-19-41"></a>
+<a id="__codelineno-19-42" name="__codelineno-19-42" href="#__codelineno-19-42"></a><span class="w">    </span><span class="nx">user</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">UserV1</span><span class="p">{</span>
+<a id="__codelineno-19-43" name="__codelineno-19-43" href="#__codelineno-19-43"></a><span class="w">        </span><span class="nx">ID</span><span class="p">:</span><span class="w">    </span><span class="mi">1</span><span class="p">,</span>
+<a id="__codelineno-19-44" name="__codelineno-19-44" href="#__codelineno-19-44"></a><span class="w">        </span><span class="nx">Name</span><span class="p">:</span><span class="w">  </span><span class="s">&quot;John Doe&quot;</span><span class="p">,</span>
+<a id="__codelineno-19-45" name="__codelineno-19-45" href="#__codelineno-19-45"></a><span class="w">        </span><span class="nx">Email</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;john@example.com&quot;</span><span class="p">,</span>
+<a id="__codelineno-19-46" name="__codelineno-19-46" href="#__codelineno-19-46"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-19-47" name="__codelineno-19-47" href="#__codelineno-19-47"></a>
+<a id="__codelineno-19-48" name="__codelineno-19-48" href="#__codelineno-19-48"></a><span class="w">    </span><span class="nx">w</span><span class="p">.</span><span class="nx">Header</span><span class="p">().</span><span class="nx">Set</span><span class="p">(</span><span class="s">&quot;Content-Type&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;application/json&quot;</span><span class="p">)</span>
+<a id="__codelineno-19-49" name="__codelineno-19-49" href="#__codelineno-19-49"></a><span class="w">    </span><span class="nx">json</span><span class="p">.</span><span class="nx">NewEncoder</span><span class="p">(</span><span class="nx">w</span><span class="p">).</span><span class="nx">Encode</span><span class="p">(</span><span class="nx">user</span><span class="p">)</span>
+<a id="__codelineno-19-50" name="__codelineno-19-50" href="#__codelineno-19-50"></a><span class="p">}</span>
+<a id="__codelineno-19-51" name="__codelineno-19-51" href="#__codelineno-19-51"></a>
+<a id="__codelineno-19-52" name="__codelineno-19-52" href="#__codelineno-19-52"></a><span class="c1">// V2 handlers</span>
+<a id="__codelineno-19-53" name="__codelineno-19-53" href="#__codelineno-19-53"></a><span class="kd">func</span><span class="w"> </span><span class="nx">getUsersV2</span><span class="p">(</span><span class="nx">w</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-19-54" name="__codelineno-19-54" href="#__codelineno-19-54"></a><span class="w">    </span><span class="nx">users</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">[]</span><span class="nx">UserV2</span><span class="p">{</span>
+<a id="__codelineno-19-55" name="__codelineno-19-55" href="#__codelineno-19-55"></a><span class="w">        </span><span class="p">{</span>
+<a id="__codelineno-19-56" name="__codelineno-19-56" href="#__codelineno-19-56"></a><span class="w">            </span><span class="nx">ID</span><span class="p">:</span><span class="w">        </span><span class="mi">1</span><span class="p">,</span>
+<a id="__codelineno-19-57" name="__codelineno-19-57" href="#__codelineno-19-57"></a><span class="w">            </span><span class="nx">FirstName</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;John&quot;</span><span class="p">,</span>
+<a id="__codelineno-19-58" name="__codelineno-19-58" href="#__codelineno-19-58"></a><span class="w">            </span><span class="nx">LastName</span><span class="p">:</span><span class="w">  </span><span class="s">&quot;Doe&quot;</span><span class="p">,</span>
+<a id="__codelineno-19-59" name="__codelineno-19-59" href="#__codelineno-19-59"></a><span class="w">            </span><span class="nx">Email</span><span class="p">:</span><span class="w">     </span><span class="s">&quot;john@example.com&quot;</span><span class="p">,</span>
+<a id="__codelineno-19-60" name="__codelineno-19-60" href="#__codelineno-19-60"></a><span class="w">            </span><span class="nx">CreatedAt</span><span class="p">:</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">(),</span>
+<a id="__codelineno-19-61" name="__codelineno-19-61" href="#__codelineno-19-61"></a><span class="w">        </span><span class="p">},</span>
+<a id="__codelineno-19-62" name="__codelineno-19-62" href="#__codelineno-19-62"></a><span class="w">        </span><span class="p">{</span>
+<a id="__codelineno-19-63" name="__codelineno-19-63" href="#__codelineno-19-63"></a><span class="w">            </span><span class="nx">ID</span><span class="p">:</span><span class="w">        </span><span class="mi">2</span><span class="p">,</span>
+<a id="__codelineno-19-64" name="__codelineno-19-64" href="#__codelineno-19-64"></a><span class="w">            </span><span class="nx">FirstName</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Jane&quot;</span><span class="p">,</span>
+<a id="__codelineno-19-65" name="__codelineno-19-65" href="#__codelineno-19-65"></a><span class="w">            </span><span class="nx">LastName</span><span class="p">:</span><span class="w">  </span><span class="s">&quot;Smith&quot;</span><span class="p">,</span>
+<a id="__codelineno-19-66" name="__codelineno-19-66" href="#__codelineno-19-66"></a><span class="w">            </span><span class="nx">Email</span><span class="p">:</span><span class="w">     </span><span class="s">&quot;jane@example.com&quot;</span><span class="p">,</span>
+<a id="__codelineno-19-67" name="__codelineno-19-67" href="#__codelineno-19-67"></a><span class="w">            </span><span class="nx">CreatedAt</span><span class="p">:</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">(),</span>
+<a id="__codelineno-19-68" name="__codelineno-19-68" href="#__codelineno-19-68"></a><span class="w">        </span><span class="p">},</span>
+<a id="__codelineno-19-69" name="__codelineno-19-69" href="#__codelineno-19-69"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-19-70" name="__codelineno-19-70" href="#__codelineno-19-70"></a>
+<a id="__codelineno-19-71" name="__codelineno-19-71" href="#__codelineno-19-71"></a><span class="w">    </span><span class="nx">w</span><span class="p">.</span><span class="nx">Header</span><span class="p">().</span><span class="nx">Set</span><span class="p">(</span><span class="s">&quot;Content-Type&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;application/json&quot;</span><span class="p">)</span>
+<a id="__codelineno-19-72" name="__codelineno-19-72" href="#__codelineno-19-72"></a><span class="w">    </span><span class="nx">json</span><span class="p">.</span><span class="nx">NewEncoder</span><span class="p">(</span><span class="nx">w</span><span class="p">).</span><span class="nx">Encode</span><span class="p">(</span><span class="nx">users</span><span class="p">)</span>
+<a id="__codelineno-19-73" name="__codelineno-19-73" href="#__codelineno-19-73"></a><span class="p">}</span>
+<a id="__codelineno-19-74" name="__codelineno-19-74" href="#__codelineno-19-74"></a>
+<a id="__codelineno-19-75" name="__codelineno-19-75" href="#__codelineno-19-75"></a><span class="kd">func</span><span class="w"> </span><span class="nx">getUserV2</span><span class="p">(</span><span class="nx">w</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-19-76" name="__codelineno-19-76" href="#__codelineno-19-76"></a><span class="w">    </span><span class="nx">vars</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">mux</span><span class="p">.</span><span class="nx">Vars</span><span class="p">(</span><span class="nx">r</span><span class="p">)</span>
+<a id="__codelineno-19-77" name="__codelineno-19-77" href="#__codelineno-19-77"></a><span class="w">    </span><span class="nx">id</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">vars</span><span class="p">[</span><span class="s">&quot;id&quot;</span><span class="p">]</span>
+<a id="__codelineno-19-78" name="__codelineno-19-78" href="#__codelineno-19-78"></a>
+<a id="__codelineno-19-79" name="__codelineno-19-79" href="#__codelineno-19-79"></a><span class="w">    </span><span class="nx">user</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">UserV2</span><span class="p">{</span>
+<a id="__codelineno-19-80" name="__codelineno-19-80" href="#__codelineno-19-80"></a><span class="w">        </span><span class="nx">ID</span><span class="p">:</span><span class="w">        </span><span class="mi">1</span><span class="p">,</span>
+<a id="__codelineno-19-81" name="__codelineno-19-81" href="#__codelineno-19-81"></a><span class="w">        </span><span class="nx">FirstName</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;John&quot;</span><span class="p">,</span>
+<a id="__codelineno-19-82" name="__codelineno-19-82" href="#__codelineno-19-82"></a><span class="w">        </span><span class="nx">LastName</span><span class="p">:</span><span class="w">  </span><span class="s">&quot;Doe&quot;</span><span class="p">,</span>
+<a id="__codelineno-19-83" name="__codelineno-19-83" href="#__codelineno-19-83"></a><span class="w">        </span><span class="nx">Email</span><span class="p">:</span><span class="w">     </span><span class="s">&quot;john@example.com&quot;</span><span class="p">,</span>
+<a id="__codelineno-19-84" name="__codelineno-19-84" href="#__codelineno-19-84"></a><span class="w">        </span><span class="nx">CreatedAt</span><span class="p">:</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">(),</span>
+<a id="__codelineno-19-85" name="__codelineno-19-85" href="#__codelineno-19-85"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-19-86" name="__codelineno-19-86" href="#__codelineno-19-86"></a>
+<a id="__codelineno-19-87" name="__codelineno-19-87" href="#__codelineno-19-87"></a><span class="w">    </span><span class="nx">w</span><span class="p">.</span><span class="nx">Header</span><span class="p">().</span><span class="nx">Set</span><span class="p">(</span><span class="s">&quot;Content-Type&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;application/json&quot;</span><span class="p">)</span>
+<a id="__codelineno-19-88" name="__codelineno-19-88" href="#__codelineno-19-88"></a><span class="w">    </span><span class="nx">json</span><span class="p">.</span><span class="nx">NewEncoder</span><span class="p">(</span><span class="nx">w</span><span class="p">).</span><span class="nx">Encode</span><span class="p">(</span><span class="nx">user</span><span class="p">)</span>
+<a id="__codelineno-19-89" name="__codelineno-19-89" href="#__codelineno-19-89"></a><span class="p">}</span>
+<a id="__codelineno-19-90" name="__codelineno-19-90" href="#__codelineno-19-90"></a>
+<a id="__codelineno-19-91" name="__codelineno-19-91" href="#__codelineno-19-91"></a><span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-19-92" name="__codelineno-19-92" href="#__codelineno-19-92"></a><span class="w">    </span><span class="nx">r</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">mux</span><span class="p">.</span><span class="nx">NewRouter</span><span class="p">()</span>
+<a id="__codelineno-19-93" name="__codelineno-19-93" href="#__codelineno-19-93"></a>
+<a id="__codelineno-19-94" name="__codelineno-19-94" href="#__codelineno-19-94"></a><span class="w">    </span><span class="c1">// API V1</span>
+<a id="__codelineno-19-95" name="__codelineno-19-95" href="#__codelineno-19-95"></a><span class="w">    </span><span class="nx">v1</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">PathPrefix</span><span class="p">(</span><span class="s">&quot;/api/v1&quot;</span><span class="p">).</span><span class="nx">Subrouter</span><span class="p">()</span>
+<a id="__codelineno-19-96" name="__codelineno-19-96" href="#__codelineno-19-96"></a><span class="w">    </span><span class="nx">v1</span><span class="p">.</span><span class="nx">HandleFunc</span><span class="p">(</span><span class="s">&quot;/users&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">getUsersV1</span><span class="p">).</span><span class="nx">Methods</span><span class="p">(</span><span class="s">&quot;GET&quot;</span><span class="p">)</span>
+<a id="__codelineno-19-97" name="__codelineno-19-97" href="#__codelineno-19-97"></a><span class="w">    </span><span class="nx">v1</span><span class="p">.</span><span class="nx">HandleFunc</span><span class="p">(</span><span class="s">&quot;/users/{id}&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">getUserV1</span><span class="p">).</span><span class="nx">Methods</span><span class="p">(</span><span class="s">&quot;GET&quot;</span><span class="p">)</span>
+<a id="__codelineno-19-98" name="__codelineno-19-98" href="#__codelineno-19-98"></a>
+<a id="__codelineno-19-99" name="__codelineno-19-99" href="#__codelineno-19-99"></a><span class="w">    </span><span class="c1">// API V2</span>
+<a id="__codelineno-19-100" name="__codelineno-19-100" href="#__codelineno-19-100"></a><span class="w">    </span><span class="nx">v2</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">PathPrefix</span><span class="p">(</span><span class="s">&quot;/api/v2&quot;</span><span class="p">).</span><span class="nx">Subrouter</span><span class="p">()</span>
+<a id="__codelineno-19-101" name="__codelineno-19-101" href="#__codelineno-19-101"></a><span class="w">    </span><span class="nx">v2</span><span class="p">.</span><span class="nx">HandleFunc</span><span class="p">(</span><span class="s">&quot;/users&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">getUsersV2</span><span class="p">).</span><span class="nx">Methods</span><span class="p">(</span><span class="s">&quot;GET&quot;</span><span class="p">)</span>
+<a id="__codelineno-19-102" name="__codelineno-19-102" href="#__codelineno-19-102"></a><span class="w">    </span><span class="nx">v2</span><span class="p">.</span><span class="nx">HandleFunc</span><span class="p">(</span><span class="s">&quot;/users/{id}&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">getUserV2</span><span class="p">).</span><span class="nx">Methods</span><span class="p">(</span><span class="s">&quot;GET&quot;</span><span class="p">)</span>
+<a id="__codelineno-19-103" name="__codelineno-19-103" href="#__codelineno-19-103"></a>
+<a id="__codelineno-19-104" name="__codelineno-19-104" href="#__codelineno-19-104"></a><span class="w">    </span><span class="nx">http</span><span class="p">.</span><span class="nx">ListenAndServe</span><span class="p">(</span><span class="s">&quot;:8080&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="p">)</span>
+<a id="__codelineno-19-105" name="__codelineno-19-105" href="#__codelineno-19-105"></a><span class="p">}</span>
+</code></pre></div>
+<p><strong>Test it</strong>:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="c1"># V1 response</span>
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>curl<span class="w"> </span>http://localhost:8080/api/v1/users
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="c1"># [{&quot;id&quot;:1,&quot;name&quot;:&quot;John Doe&quot;,&quot;email&quot;:&quot;john@example.com&quot;}]</span>
+<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a>
+<a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a><span class="c1"># V2 response</span>
+<a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a>curl<span class="w"> </span>http://localhost:8080/api/v2/users
+<a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a><span class="c1"># [{&quot;id&quot;:1,&quot;first_name&quot;:&quot;John&quot;,&quot;last_name&quot;:&quot;Doe&quot;,&quot;email&quot;:&quot;john@example.com&quot;,&quot;created_at&quot;:&quot;...&quot;}]</span>
+</code></pre></div></p>
+<hr />
+<h2 id="45-code-organization-for-multiple-versions">4.5 Code Organization for Multiple Versions<a class="headerlink" href="#45-code-organization-for-multiple-versions" title="Permanent link">&para;</a></h2>
+<h3 id="recommended-structure">Recommended Structure<a class="headerlink" href="#recommended-structure" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>myapi/
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>├── main.go
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>├── handlers/
+<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a>│   ├── v1/
+<a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a>│   │   ├── user.go
+<a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a>│   │   └── post.go
+<a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a>│   └── v2/
+<a id="__codelineno-21-8" name="__codelineno-21-8" href="#__codelineno-21-8"></a>│       ├── user.go
+<a id="__codelineno-21-9" name="__codelineno-21-9" href="#__codelineno-21-9"></a>│       └── post.go
+<a id="__codelineno-21-10" name="__codelineno-21-10" href="#__codelineno-21-10"></a>├── models/
+<a id="__codelineno-21-11" name="__codelineno-21-11" href="#__codelineno-21-11"></a>│   ├── v1/
+<a id="__codelineno-21-12" name="__codelineno-21-12" href="#__codelineno-21-12"></a>│   │   └── user.go
+<a id="__codelineno-21-13" name="__codelineno-21-13" href="#__codelineno-21-13"></a>│   └── v2/
+<a id="__codelineno-21-14" name="__codelineno-21-14" href="#__codelineno-21-14"></a>│       └── user.go
+<a id="__codelineno-21-15" name="__codelineno-21-15" href="#__codelineno-21-15"></a>└── shared/
+<a id="__codelineno-21-16" name="__codelineno-21-16" href="#__codelineno-21-16"></a>    ├── middleware/
+<a id="__codelineno-21-17" name="__codelineno-21-17" href="#__codelineno-21-17"></a>    └── database/
+</code></pre></div>
+<h3 id="example-handlersv1usergo">Example: handlers/v1/user.go<a class="headerlink" href="#example-handlersv1usergo" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="kn">package</span><span class="w"> </span><span class="nx">v1</span>
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>
+<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a><span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a><span class="w">    </span><span class="s">&quot;encoding/json&quot;</span>
+<a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a><span class="w">    </span><span class="s">&quot;net/http&quot;</span>
+<a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a>
+<a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a><span class="w">    </span><span class="nx">modelsv1</span><span class="w"> </span><span class="s">&quot;myapi/models/v1&quot;</span>
+<a id="__codelineno-22-8" name="__codelineno-22-8" href="#__codelineno-22-8"></a><span class="p">)</span>
+<a id="__codelineno-22-9" name="__codelineno-22-9" href="#__codelineno-22-9"></a>
+<a id="__codelineno-22-10" name="__codelineno-22-10" href="#__codelineno-22-10"></a><span class="kd">type</span><span class="w"> </span><span class="nx">UserHandler</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-22-11" name="__codelineno-22-11" href="#__codelineno-22-11"></a><span class="w">    </span><span class="c1">// dependencies</span>
+<a id="__codelineno-22-12" name="__codelineno-22-12" href="#__codelineno-22-12"></a><span class="p">}</span>
+<a id="__codelineno-22-13" name="__codelineno-22-13" href="#__codelineno-22-13"></a>
+<a id="__codelineno-22-14" name="__codelineno-22-14" href="#__codelineno-22-14"></a><span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">h</span><span class="w"> </span><span class="o">*</span><span class="nx">UserHandler</span><span class="p">)</span><span class="w"> </span><span class="nx">GetUsers</span><span class="p">(</span><span class="nx">w</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-22-15" name="__codelineno-22-15" href="#__codelineno-22-15"></a><span class="w">    </span><span class="nx">users</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">[]</span><span class="nx">modelsv1</span><span class="p">.</span><span class="nx">User</span><span class="p">{</span>
+<a id="__codelineno-22-16" name="__codelineno-22-16" href="#__codelineno-22-16"></a><span class="w">        </span><span class="p">{</span><span class="nx">ID</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nx">Name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;John Doe&quot;</span><span class="p">},</span>
+<a id="__codelineno-22-17" name="__codelineno-22-17" href="#__codelineno-22-17"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-22-18" name="__codelineno-22-18" href="#__codelineno-22-18"></a>
+<a id="__codelineno-22-19" name="__codelineno-22-19" href="#__codelineno-22-19"></a><span class="w">    </span><span class="nx">json</span><span class="p">.</span><span class="nx">NewEncoder</span><span class="p">(</span><span class="nx">w</span><span class="p">).</span><span class="nx">Encode</span><span class="p">(</span><span class="nx">users</span><span class="p">)</span>
+<a id="__codelineno-22-20" name="__codelineno-22-20" href="#__codelineno-22-20"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="example-handlersv2usergo">Example: handlers/v2/user.go<a class="headerlink" href="#example-handlersv2usergo" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="kn">package</span><span class="w"> </span><span class="nx">v2</span>
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>
+<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a><span class="w">    </span><span class="s">&quot;encoding/json&quot;</span>
+<a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a><span class="w">    </span><span class="s">&quot;net/http&quot;</span>
+<a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a>
+<a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a><span class="w">    </span><span class="nx">modelsv2</span><span class="w"> </span><span class="s">&quot;myapi/models/v2&quot;</span>
+<a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a><span class="p">)</span>
+<a id="__codelineno-23-9" name="__codelineno-23-9" href="#__codelineno-23-9"></a>
+<a id="__codelineno-23-10" name="__codelineno-23-10" href="#__codelineno-23-10"></a><span class="kd">type</span><span class="w"> </span><span class="nx">UserHandler</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-23-11" name="__codelineno-23-11" href="#__codelineno-23-11"></a><span class="w">    </span><span class="c1">// dependencies</span>
+<a id="__codelineno-23-12" name="__codelineno-23-12" href="#__codelineno-23-12"></a><span class="p">}</span>
+<a id="__codelineno-23-13" name="__codelineno-23-13" href="#__codelineno-23-13"></a>
+<a id="__codelineno-23-14" name="__codelineno-23-14" href="#__codelineno-23-14"></a><span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">h</span><span class="w"> </span><span class="o">*</span><span class="nx">UserHandler</span><span class="p">)</span><span class="w"> </span><span class="nx">GetUsers</span><span class="p">(</span><span class="nx">w</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-23-15" name="__codelineno-23-15" href="#__codelineno-23-15"></a><span class="w">    </span><span class="nx">users</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">[]</span><span class="nx">modelsv2</span><span class="p">.</span><span class="nx">User</span><span class="p">{</span>
+<a id="__codelineno-23-16" name="__codelineno-23-16" href="#__codelineno-23-16"></a><span class="w">        </span><span class="p">{</span><span class="nx">ID</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nx">FirstName</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;John&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">LastName</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Doe&quot;</span><span class="p">},</span>
+<a id="__codelineno-23-17" name="__codelineno-23-17" href="#__codelineno-23-17"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-23-18" name="__codelineno-23-18" href="#__codelineno-23-18"></a>
+<a id="__codelineno-23-19" name="__codelineno-23-19" href="#__codelineno-23-19"></a><span class="w">    </span><span class="nx">json</span><span class="p">.</span><span class="nx">NewEncoder</span><span class="p">(</span><span class="nx">w</span><span class="p">).</span><span class="nx">Encode</span><span class="p">(</span><span class="nx">users</span><span class="p">)</span>
+<a id="__codelineno-23-20" name="__codelineno-23-20" href="#__codelineno-23-20"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="example-maingo">Example: main.go<a class="headerlink" href="#example-maingo" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
+<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>
+<a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a><span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a><span class="w">    </span><span class="s">&quot;net/http&quot;</span>
+<a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a>
+<a id="__codelineno-24-6" name="__codelineno-24-6" href="#__codelineno-24-6"></a><span class="w">    </span><span class="nx">v1handlers</span><span class="w"> </span><span class="s">&quot;myapi/handlers/v1&quot;</span>
+<a id="__codelineno-24-7" name="__codelineno-24-7" href="#__codelineno-24-7"></a><span class="w">    </span><span class="nx">v2handlers</span><span class="w"> </span><span class="s">&quot;myapi/handlers/v2&quot;</span>
+<a id="__codelineno-24-8" name="__codelineno-24-8" href="#__codelineno-24-8"></a>
+<a id="__codelineno-24-9" name="__codelineno-24-9" href="#__codelineno-24-9"></a><span class="w">    </span><span class="s">&quot;github.com/gorilla/mux&quot;</span>
+<a id="__codelineno-24-10" name="__codelineno-24-10" href="#__codelineno-24-10"></a><span class="p">)</span>
+<a id="__codelineno-24-11" name="__codelineno-24-11" href="#__codelineno-24-11"></a>
+<a id="__codelineno-24-12" name="__codelineno-24-12" href="#__codelineno-24-12"></a><span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-24-13" name="__codelineno-24-13" href="#__codelineno-24-13"></a><span class="w">    </span><span class="nx">r</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">mux</span><span class="p">.</span><span class="nx">NewRouter</span><span class="p">()</span>
+<a id="__codelineno-24-14" name="__codelineno-24-14" href="#__codelineno-24-14"></a>
+<a id="__codelineno-24-15" name="__codelineno-24-15" href="#__codelineno-24-15"></a><span class="w">    </span><span class="c1">// V1</span>
+<a id="__codelineno-24-16" name="__codelineno-24-16" href="#__codelineno-24-16"></a><span class="w">    </span><span class="nx">v1UserHandler</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">v1handlers</span><span class="p">.</span><span class="nx">UserHandler</span><span class="p">{}</span>
+<a id="__codelineno-24-17" name="__codelineno-24-17" href="#__codelineno-24-17"></a><span class="w">    </span><span class="nx">v1</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">PathPrefix</span><span class="p">(</span><span class="s">&quot;/api/v1&quot;</span><span class="p">).</span><span class="nx">Subrouter</span><span class="p">()</span>
+<a id="__codelineno-24-18" name="__codelineno-24-18" href="#__codelineno-24-18"></a><span class="w">    </span><span class="nx">v1</span><span class="p">.</span><span class="nx">HandleFunc</span><span class="p">(</span><span class="s">&quot;/users&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">v1UserHandler</span><span class="p">.</span><span class="nx">GetUsers</span><span class="p">).</span><span class="nx">Methods</span><span class="p">(</span><span class="s">&quot;GET&quot;</span><span class="p">)</span>
+<a id="__codelineno-24-19" name="__codelineno-24-19" href="#__codelineno-24-19"></a>
+<a id="__codelineno-24-20" name="__codelineno-24-20" href="#__codelineno-24-20"></a><span class="w">    </span><span class="c1">// V2</span>
+<a id="__codelineno-24-21" name="__codelineno-24-21" href="#__codelineno-24-21"></a><span class="w">    </span><span class="nx">v2UserHandler</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">v2handlers</span><span class="p">.</span><span class="nx">UserHandler</span><span class="p">{}</span>
+<a id="__codelineno-24-22" name="__codelineno-24-22" href="#__codelineno-24-22"></a><span class="w">    </span><span class="nx">v2</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">PathPrefix</span><span class="p">(</span><span class="s">&quot;/api/v2&quot;</span><span class="p">).</span><span class="nx">Subrouter</span><span class="p">()</span>
+<a id="__codelineno-24-23" name="__codelineno-24-23" href="#__codelineno-24-23"></a><span class="w">    </span><span class="nx">v2</span><span class="p">.</span><span class="nx">HandleFunc</span><span class="p">(</span><span class="s">&quot;/users&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">v2UserHandler</span><span class="p">.</span><span class="nx">GetUsers</span><span class="p">).</span><span class="nx">Methods</span><span class="p">(</span><span class="s">&quot;GET&quot;</span><span class="p">)</span>
+<a id="__codelineno-24-24" name="__codelineno-24-24" href="#__codelineno-24-24"></a>
+<a id="__codelineno-24-25" name="__codelineno-24-25" href="#__codelineno-24-25"></a><span class="w">    </span><span class="nx">http</span><span class="p">.</span><span class="nx">ListenAndServe</span><span class="p">(</span><span class="s">&quot;:8080&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="p">)</span>
+<a id="__codelineno-24-26" name="__codelineno-24-26" href="#__codelineno-24-26"></a><span class="p">}</span>
+</code></pre></div>
+<hr />
+<h2 id="46-sharing-code-between-versions">4.6 Sharing Code Between Versions<a class="headerlink" href="#46-sharing-code-between-versions" title="Permanent link">&para;</a></h2>
+<p>Not everything needs to be duplicated!</p>
+<h3 id="share-common-logic">Share Common Logic<a class="headerlink" href="#share-common-logic" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="c1">// shared/database/user.go</span>
+<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a><span class="kn">package</span><span class="w"> </span><span class="nx">database</span>
+<a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a>
+<a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a><span class="kd">type</span><span class="w"> </span><span class="nx">UserRecord</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a><span class="w">    </span><span class="nx">ID</span><span class="w">        </span><span class="kt">int</span>
+<a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a><span class="w">    </span><span class="nx">FirstName</span><span class="w"> </span><span class="kt">string</span>
+<a id="__codelineno-25-7" name="__codelineno-25-7" href="#__codelineno-25-7"></a><span class="w">    </span><span class="nx">LastName</span><span class="w">  </span><span class="kt">string</span>
+<a id="__codelineno-25-8" name="__codelineno-25-8" href="#__codelineno-25-8"></a><span class="w">    </span><span class="nx">Email</span><span class="w">     </span><span class="kt">string</span>
+<a id="__codelineno-25-9" name="__codelineno-25-9" href="#__codelineno-25-9"></a><span class="w">    </span><span class="nx">CreatedAt</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Time</span>
+<a id="__codelineno-25-10" name="__codelineno-25-10" href="#__codelineno-25-10"></a><span class="p">}</span>
+<a id="__codelineno-25-11" name="__codelineno-25-11" href="#__codelineno-25-11"></a>
+<a id="__codelineno-25-12" name="__codelineno-25-12" href="#__codelineno-25-12"></a><span class="kd">func</span><span class="w"> </span><span class="nx">GetUserByID</span><span class="p">(</span><span class="nx">id</span><span class="w"> </span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">UserRecord</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-25-13" name="__codelineno-25-13" href="#__codelineno-25-13"></a><span class="w">    </span><span class="c1">// Database query - shared by all versions</span>
+<a id="__codelineno-25-14" name="__codelineno-25-14" href="#__codelineno-25-14"></a><span class="p">}</span>
+<a id="__codelineno-25-15" name="__codelineno-25-15" href="#__codelineno-25-15"></a>
+<a id="__codelineno-25-16" name="__codelineno-25-16" href="#__codelineno-25-16"></a><span class="kd">func</span><span class="w"> </span><span class="nx">GetAllUsers</span><span class="p">()</span><span class="w"> </span><span class="p">([]</span><span class="nx">UserRecord</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-25-17" name="__codelineno-25-17" href="#__codelineno-25-17"></a><span class="w">    </span><span class="c1">// Database query - shared by all versions</span>
+<a id="__codelineno-25-18" name="__codelineno-25-18" href="#__codelineno-25-18"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="convert-to-version-specific-models">Convert to Version-Specific Models<a class="headerlink" href="#convert-to-version-specific-models" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="c1">// handlers/v1/user.go</span>
+<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a><span class="kn">package</span><span class="w"> </span><span class="nx">v1</span>
+<a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a>
+<a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a><span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a><span class="w">    </span><span class="s">&quot;myapi/shared/database&quot;</span>
+<a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a><span class="w">    </span><span class="nx">modelsv1</span><span class="w"> </span><span class="s">&quot;myapi/models/v1&quot;</span>
+<a id="__codelineno-26-7" name="__codelineno-26-7" href="#__codelineno-26-7"></a><span class="p">)</span>
+<a id="__codelineno-26-8" name="__codelineno-26-8" href="#__codelineno-26-8"></a>
+<a id="__codelineno-26-9" name="__codelineno-26-9" href="#__codelineno-26-9"></a><span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">h</span><span class="w"> </span><span class="o">*</span><span class="nx">UserHandler</span><span class="p">)</span><span class="w"> </span><span class="nx">GetUser</span><span class="p">(</span><span class="nx">w</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-26-10" name="__codelineno-26-10" href="#__codelineno-26-10"></a><span class="w">    </span><span class="c1">// Get from shared database</span>
+<a id="__codelineno-26-11" name="__codelineno-26-11" href="#__codelineno-26-11"></a><span class="w">    </span><span class="nx">record</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">database</span><span class="p">.</span><span class="nx">GetUserByID</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span>
+<a id="__codelineno-26-12" name="__codelineno-26-12" href="#__codelineno-26-12"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-26-13" name="__codelineno-26-13" href="#__codelineno-26-13"></a><span class="w">        </span><span class="c1">// Handle error</span>
+<a id="__codelineno-26-14" name="__codelineno-26-14" href="#__codelineno-26-14"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-26-15" name="__codelineno-26-15" href="#__codelineno-26-15"></a>
+<a id="__codelineno-26-16" name="__codelineno-26-16" href="#__codelineno-26-16"></a><span class="w">    </span><span class="c1">// Convert to V1 model</span>
+<a id="__codelineno-26-17" name="__codelineno-26-17" href="#__codelineno-26-17"></a><span class="w">    </span><span class="nx">user</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">modelsv1</span><span class="p">.</span><span class="nx">User</span><span class="p">{</span>
+<a id="__codelineno-26-18" name="__codelineno-26-18" href="#__codelineno-26-18"></a><span class="w">        </span><span class="nx">ID</span><span class="p">:</span><span class="w">    </span><span class="nx">record</span><span class="p">.</span><span class="nx">ID</span><span class="p">,</span>
+<a id="__codelineno-26-19" name="__codelineno-26-19" href="#__codelineno-26-19"></a><span class="w">        </span><span class="nx">Name</span><span class="p">:</span><span class="w">  </span><span class="nx">record</span><span class="p">.</span><span class="nx">FirstName</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">record</span><span class="p">.</span><span class="nx">LastName</span><span class="p">,</span><span class="w">  </span><span class="c1">// Combine</span>
+<a id="__codelineno-26-20" name="__codelineno-26-20" href="#__codelineno-26-20"></a><span class="w">        </span><span class="nx">Email</span><span class="p">:</span><span class="w"> </span><span class="nx">record</span><span class="p">.</span><span class="nx">Email</span><span class="p">,</span>
+<a id="__codelineno-26-21" name="__codelineno-26-21" href="#__codelineno-26-21"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-26-22" name="__codelineno-26-22" href="#__codelineno-26-22"></a>
+<a id="__codelineno-26-23" name="__codelineno-26-23" href="#__codelineno-26-23"></a><span class="w">    </span><span class="nx">json</span><span class="p">.</span><span class="nx">NewEncoder</span><span class="p">(</span><span class="nx">w</span><span class="p">).</span><span class="nx">Encode</span><span class="p">(</span><span class="nx">user</span><span class="p">)</span>
+<a id="__codelineno-26-24" name="__codelineno-26-24" href="#__codelineno-26-24"></a><span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="c1">// handlers/v2/user.go</span>
+<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a><span class="kn">package</span><span class="w"> </span><span class="nx">v2</span>
+<a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a>
+<a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a><span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<a id="__codelineno-27-5" name="__codelineno-27-5" href="#__codelineno-27-5"></a><span class="w">    </span><span class="s">&quot;myapi/shared/database&quot;</span>
+<a id="__codelineno-27-6" name="__codelineno-27-6" href="#__codelineno-27-6"></a><span class="w">    </span><span class="nx">modelsv2</span><span class="w"> </span><span class="s">&quot;myapi/models/v2&quot;</span>
+<a id="__codelineno-27-7" name="__codelineno-27-7" href="#__codelineno-27-7"></a><span class="p">)</span>
+<a id="__codelineno-27-8" name="__codelineno-27-8" href="#__codelineno-27-8"></a>
+<a id="__codelineno-27-9" name="__codelineno-27-9" href="#__codelineno-27-9"></a><span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">h</span><span class="w"> </span><span class="o">*</span><span class="nx">UserHandler</span><span class="p">)</span><span class="w"> </span><span class="nx">GetUser</span><span class="p">(</span><span class="nx">w</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-27-10" name="__codelineno-27-10" href="#__codelineno-27-10"></a><span class="w">    </span><span class="c1">// Get from shared database</span>
+<a id="__codelineno-27-11" name="__codelineno-27-11" href="#__codelineno-27-11"></a><span class="w">    </span><span class="nx">record</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">database</span><span class="p">.</span><span class="nx">GetUserByID</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span>
+<a id="__codelineno-27-12" name="__codelineno-27-12" href="#__codelineno-27-12"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-27-13" name="__codelineno-27-13" href="#__codelineno-27-13"></a><span class="w">        </span><span class="c1">// Handle error</span>
+<a id="__codelineno-27-14" name="__codelineno-27-14" href="#__codelineno-27-14"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-27-15" name="__codelineno-27-15" href="#__codelineno-27-15"></a>
+<a id="__codelineno-27-16" name="__codelineno-27-16" href="#__codelineno-27-16"></a><span class="w">    </span><span class="c1">// Convert to V2 model</span>
+<a id="__codelineno-27-17" name="__codelineno-27-17" href="#__codelineno-27-17"></a><span class="w">    </span><span class="nx">user</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">modelsv2</span><span class="p">.</span><span class="nx">User</span><span class="p">{</span>
+<a id="__codelineno-27-18" name="__codelineno-27-18" href="#__codelineno-27-18"></a><span class="w">        </span><span class="nx">ID</span><span class="p">:</span><span class="w">        </span><span class="nx">record</span><span class="p">.</span><span class="nx">ID</span><span class="p">,</span>
+<a id="__codelineno-27-19" name="__codelineno-27-19" href="#__codelineno-27-19"></a><span class="w">        </span><span class="nx">FirstName</span><span class="p">:</span><span class="w"> </span><span class="nx">record</span><span class="p">.</span><span class="nx">FirstName</span><span class="p">,</span><span class="w">  </span><span class="c1">// Separate</span>
+<a id="__codelineno-27-20" name="__codelineno-27-20" href="#__codelineno-27-20"></a><span class="w">        </span><span class="nx">LastName</span><span class="p">:</span><span class="w">  </span><span class="nx">record</span><span class="p">.</span><span class="nx">LastName</span><span class="p">,</span>
+<a id="__codelineno-27-21" name="__codelineno-27-21" href="#__codelineno-27-21"></a><span class="w">        </span><span class="nx">Email</span><span class="p">:</span><span class="w">     </span><span class="nx">record</span><span class="p">.</span><span class="nx">Email</span><span class="p">,</span>
+<a id="__codelineno-27-22" name="__codelineno-27-22" href="#__codelineno-27-22"></a><span class="w">        </span><span class="nx">CreatedAt</span><span class="p">:</span><span class="w"> </span><span class="nx">record</span><span class="p">.</span><span class="nx">CreatedAt</span><span class="p">,</span>
+<a id="__codelineno-27-23" name="__codelineno-27-23" href="#__codelineno-27-23"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-27-24" name="__codelineno-27-24" href="#__codelineno-27-24"></a>
+<a id="__codelineno-27-25" name="__codelineno-27-25" href="#__codelineno-27-25"></a><span class="w">    </span><span class="nx">json</span><span class="p">.</span><span class="nx">NewEncoder</span><span class="p">(</span><span class="nx">w</span><span class="p">).</span><span class="nx">Encode</span><span class="p">(</span><span class="nx">user</span><span class="p">)</span>
+<a id="__codelineno-27-26" name="__codelineno-27-26" href="#__codelineno-27-26"></a><span class="p">}</span>
+</code></pre></div>
+<hr />
+<h2 id="47-deprecation-strategy">4.7 Deprecation Strategy<a class="headerlink" href="#47-deprecation-strategy" title="Permanent link">&para;</a></h2>
+<h3 id="announce-deprecation">Announce Deprecation<a class="headerlink" href="#announce-deprecation" title="Permanent link">&para;</a></h3>
+<p>Add headers to deprecated versions:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="kd">func</span><span class="w"> </span><span class="nx">deprecationMiddleware</span><span class="p">(</span><span class="nx">next</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">Handler</span><span class="p">)</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">Handler</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">HandlerFunc</span><span class="p">(</span><span class="kd">func</span><span class="p">(</span><span class="nx">w</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a><span class="w">        </span><span class="c1">// Add deprecation headers</span>
+<a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a><span class="w">        </span><span class="nx">w</span><span class="p">.</span><span class="nx">Header</span><span class="p">().</span><span class="nx">Set</span><span class="p">(</span><span class="s">&quot;Deprecation&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;true&quot;</span><span class="p">)</span>
+<a id="__codelineno-28-5" name="__codelineno-28-5" href="#__codelineno-28-5"></a><span class="w">        </span><span class="nx">w</span><span class="p">.</span><span class="nx">Header</span><span class="p">().</span><span class="nx">Set</span><span class="p">(</span><span class="s">&quot;Sunset&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;2024-12-31&quot;</span><span class="p">)</span><span class="w">  </span><span class="c1">// When it will be removed</span>
+<a id="__codelineno-28-6" name="__codelineno-28-6" href="#__codelineno-28-6"></a><span class="w">        </span><span class="nx">w</span><span class="p">.</span><span class="nx">Header</span><span class="p">().</span><span class="nx">Set</span><span class="p">(</span><span class="s">&quot;Link&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&lt;/api/v2/users&gt;; rel=\&quot;successor-version\&quot;&quot;</span><span class="p">)</span>
+<a id="__codelineno-28-7" name="__codelineno-28-7" href="#__codelineno-28-7"></a>
+<a id="__codelineno-28-8" name="__codelineno-28-8" href="#__codelineno-28-8"></a><span class="w">        </span><span class="nx">next</span><span class="p">.</span><span class="nx">ServeHTTP</span><span class="p">(</span><span class="nx">w</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="p">)</span>
+<a id="__codelineno-28-9" name="__codelineno-28-9" href="#__codelineno-28-9"></a><span class="w">    </span><span class="p">})</span>
+<a id="__codelineno-28-10" name="__codelineno-28-10" href="#__codelineno-28-10"></a><span class="p">}</span>
+<a id="__codelineno-28-11" name="__codelineno-28-11" href="#__codelineno-28-11"></a>
+<a id="__codelineno-28-12" name="__codelineno-28-12" href="#__codelineno-28-12"></a><span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-28-13" name="__codelineno-28-13" href="#__codelineno-28-13"></a><span class="w">    </span><span class="nx">r</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">mux</span><span class="p">.</span><span class="nx">NewRouter</span><span class="p">()</span>
+<a id="__codelineno-28-14" name="__codelineno-28-14" href="#__codelineno-28-14"></a>
+<a id="__codelineno-28-15" name="__codelineno-28-15" href="#__codelineno-28-15"></a><span class="w">    </span><span class="c1">// V1 - deprecated</span>
+<a id="__codelineno-28-16" name="__codelineno-28-16" href="#__codelineno-28-16"></a><span class="w">    </span><span class="nx">v1</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">PathPrefix</span><span class="p">(</span><span class="s">&quot;/api/v1&quot;</span><span class="p">).</span><span class="nx">Subrouter</span><span class="p">()</span>
+<a id="__codelineno-28-17" name="__codelineno-28-17" href="#__codelineno-28-17"></a><span class="w">    </span><span class="nx">v1</span><span class="p">.</span><span class="nx">Use</span><span class="p">(</span><span class="nx">deprecationMiddleware</span><span class="p">)</span><span class="w">  </span><span class="c1">// Add deprecation headers</span>
+<a id="__codelineno-28-18" name="__codelineno-28-18" href="#__codelineno-28-18"></a><span class="w">    </span><span class="nx">v1</span><span class="p">.</span><span class="nx">HandleFunc</span><span class="p">(</span><span class="s">&quot;/users&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">getUsersV1</span><span class="p">).</span><span class="nx">Methods</span><span class="p">(</span><span class="s">&quot;GET&quot;</span><span class="p">)</span>
+<a id="__codelineno-28-19" name="__codelineno-28-19" href="#__codelineno-28-19"></a>
+<a id="__codelineno-28-20" name="__codelineno-28-20" href="#__codelineno-28-20"></a><span class="w">    </span><span class="c1">// V2 - current</span>
+<a id="__codelineno-28-21" name="__codelineno-28-21" href="#__codelineno-28-21"></a><span class="w">    </span><span class="nx">v2</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">PathPrefix</span><span class="p">(</span><span class="s">&quot;/api/v2&quot;</span><span class="p">).</span><span class="nx">Subrouter</span><span class="p">()</span>
+<a id="__codelineno-28-22" name="__codelineno-28-22" href="#__codelineno-28-22"></a><span class="w">    </span><span class="nx">v2</span><span class="p">.</span><span class="nx">HandleFunc</span><span class="p">(</span><span class="s">&quot;/users&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">getUsersV2</span><span class="p">).</span><span class="nx">Methods</span><span class="p">(</span><span class="s">&quot;GET&quot;</span><span class="p">)</span>
+<a id="__codelineno-28-23" name="__codelineno-28-23" href="#__codelineno-28-23"></a>
+<a id="__codelineno-28-24" name="__codelineno-28-24" href="#__codelineno-28-24"></a><span class="w">    </span><span class="nx">http</span><span class="p">.</span><span class="nx">ListenAndServe</span><span class="p">(</span><span class="s">&quot;:8080&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="p">)</span>
+<a id="__codelineno-28-25" name="__codelineno-28-25" href="#__codelineno-28-25"></a><span class="p">}</span>
+</code></pre></div>
+<p><strong>Response Headers</strong>:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>Deprecation: true
+<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a>Sunset: 2024-12-31
+<a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a>Link: &lt;/api/v2/users&gt;; rel=&quot;successor-version&quot;
+</code></pre></div></p>
+<h3 id="deprecation-timeline">Deprecation Timeline<a class="headerlink" href="#deprecation-timeline" title="Permanent link">&para;</a></h3>
+<p><strong>Best Practice</strong>:</p>
+<ol>
+<li><strong>Announcement</strong> (T-6 months): Announce deprecation, add headers</li>
+<li><strong>Warning</strong> (T-3 months): Log warnings, send emails to active users</li>
+<li><strong>Sunset</strong> (T-0): Remove old version</li>
+</ol>
+<p><strong>Example Timeline</strong>:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>Jan 1: Launch v2, announce v1 deprecation
+<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a>Apr 1: Send migration guides to v1 users
+<a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a>Jul 1: Remove v1 endpoints
+</code></pre></div></p>
+<hr />
+<h2 id="48-version-detection-and-analytics">4.8 Version Detection and Analytics<a class="headerlink" href="#48-version-detection-and-analytics" title="Permanent link">&para;</a></h2>
+<p>Track which versions are being used:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="kd">func</span><span class="w"> </span><span class="nx">versionAnalyticsMiddleware</span><span class="p">(</span><span class="nx">next</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">Handler</span><span class="p">)</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">Handler</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">HandlerFunc</span><span class="p">(</span><span class="kd">func</span><span class="p">(</span><span class="nx">w</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a><span class="w">        </span><span class="c1">// Extract version from path</span>
+<a id="__codelineno-31-4" name="__codelineno-31-4" href="#__codelineno-31-4"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">strings</span><span class="p">.</span><span class="nx">HasPrefix</span><span class="p">(</span><span class="nx">r</span><span class="p">.</span><span class="nx">URL</span><span class="p">.</span><span class="nx">Path</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;/api/v1&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-31-5" name="__codelineno-31-5" href="#__codelineno-31-5"></a><span class="w">            </span><span class="c1">// Log v1 usage</span>
+<a id="__codelineno-31-6" name="__codelineno-31-6" href="#__codelineno-31-6"></a><span class="w">            </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;V1 usage: %s %s from %s&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">Method</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">URL</span><span class="p">.</span><span class="nx">Path</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">RemoteAddr</span><span class="p">)</span>
+<a id="__codelineno-31-7" name="__codelineno-31-7" href="#__codelineno-31-7"></a><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="nx">strings</span><span class="p">.</span><span class="nx">HasPrefix</span><span class="p">(</span><span class="nx">r</span><span class="p">.</span><span class="nx">URL</span><span class="p">.</span><span class="nx">Path</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;/api/v2&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-31-8" name="__codelineno-31-8" href="#__codelineno-31-8"></a><span class="w">            </span><span class="c1">// Log v2 usage</span>
+<a id="__codelineno-31-9" name="__codelineno-31-9" href="#__codelineno-31-9"></a><span class="w">            </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;V2 usage: %s %s from %s&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">Method</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">URL</span><span class="p">.</span><span class="nx">Path</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">RemoteAddr</span><span class="p">)</span>
+<a id="__codelineno-31-10" name="__codelineno-31-10" href="#__codelineno-31-10"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-31-11" name="__codelineno-31-11" href="#__codelineno-31-11"></a>
+<a id="__codelineno-31-12" name="__codelineno-31-12" href="#__codelineno-31-12"></a><span class="w">        </span><span class="nx">next</span><span class="p">.</span><span class="nx">ServeHTTP</span><span class="p">(</span><span class="nx">w</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="p">)</span>
+<a id="__codelineno-31-13" name="__codelineno-31-13" href="#__codelineno-31-13"></a><span class="w">    </span><span class="p">})</span>
+<a id="__codelineno-31-14" name="__codelineno-31-14" href="#__codelineno-31-14"></a><span class="p">}</span>
+</code></pre></div>
+<p><strong>Use metrics to</strong>:
+- Understand adoption rates
+- Identify slow-to-migrate clients
+- Make informed decisions about deprecation</p>
+<hr />
+<h2 id="49-migration-strategies">4.9 Migration Strategies<a class="headerlink" href="#49-migration-strategies" title="Permanent link">&para;</a></h2>
+<h3 id="strategy-1-gradual-migration">Strategy 1: Gradual Migration<a class="headerlink" href="#strategy-1-gradual-migration" title="Permanent link">&para;</a></h3>
+<p>Provide both versions, encourage migration:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="c1">// V1 - returns old format + migration hint</span>
+<a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a><span class="kd">func</span><span class="w"> </span><span class="nx">getUsersV1</span><span class="p">(</span><span class="nx">w</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a><span class="w">    </span><span class="nx">users</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">[]</span><span class="nx">UserV1</span><span class="p">{</span>
+<a id="__codelineno-32-4" name="__codelineno-32-4" href="#__codelineno-32-4"></a><span class="w">        </span><span class="p">{</span><span class="nx">ID</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nx">Name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;John Doe&quot;</span><span class="p">},</span>
+<a id="__codelineno-32-5" name="__codelineno-32-5" href="#__codelineno-32-5"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-32-6" name="__codelineno-32-6" href="#__codelineno-32-6"></a>
+<a id="__codelineno-32-7" name="__codelineno-32-7" href="#__codelineno-32-7"></a><span class="w">    </span><span class="c1">// Add migration hint header</span>
+<a id="__codelineno-32-8" name="__codelineno-32-8" href="#__codelineno-32-8"></a><span class="w">    </span><span class="nx">w</span><span class="p">.</span><span class="nx">Header</span><span class="p">().</span><span class="nx">Set</span><span class="p">(</span><span class="s">&quot;X-API-Upgrade-Available&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;v2&quot;</span><span class="p">)</span>
+<a id="__codelineno-32-9" name="__codelineno-32-9" href="#__codelineno-32-9"></a><span class="w">    </span><span class="nx">w</span><span class="p">.</span><span class="nx">Header</span><span class="p">().</span><span class="nx">Set</span><span class="p">(</span><span class="s">&quot;X-API-Upgrade-Guide&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;https://docs.api.com/migration-v1-to-v2&quot;</span><span class="p">)</span>
+<a id="__codelineno-32-10" name="__codelineno-32-10" href="#__codelineno-32-10"></a>
+<a id="__codelineno-32-11" name="__codelineno-32-11" href="#__codelineno-32-11"></a><span class="w">    </span><span class="nx">json</span><span class="p">.</span><span class="nx">NewEncoder</span><span class="p">(</span><span class="nx">w</span><span class="p">).</span><span class="nx">Encode</span><span class="p">(</span><span class="nx">users</span><span class="p">)</span>
+<a id="__codelineno-32-12" name="__codelineno-32-12" href="#__codelineno-32-12"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="strategy-2-dual-write">Strategy 2: Dual Write<a class="headerlink" href="#strategy-2-dual-write" title="Permanent link">&para;</a></h3>
+<p>Write to both old and new data structures during transition:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="kd">func</span><span class="w"> </span><span class="nx">updateUser</span><span class="p">(</span><span class="nx">userID</span><span class="w"> </span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="nx">UpdateData</span><span class="p">)</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a><span class="w">    </span><span class="c1">// Write to new format</span>
+<a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a><span class="w">    </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">writeToNewFormat</span><span class="p">(</span><span class="nx">userID</span><span class="p">,</span><span class="w"> </span><span class="nx">data</span><span class="p">)</span>
+<a id="__codelineno-33-4" name="__codelineno-33-4" href="#__codelineno-33-4"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-33-5" name="__codelineno-33-5" href="#__codelineno-33-5"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">err</span>
+<a id="__codelineno-33-6" name="__codelineno-33-6" href="#__codelineno-33-6"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-33-7" name="__codelineno-33-7" href="#__codelineno-33-7"></a>
+<a id="__codelineno-33-8" name="__codelineno-33-8" href="#__codelineno-33-8"></a><span class="w">    </span><span class="c1">// Also write to old format (for compatibility)</span>
+<a id="__codelineno-33-9" name="__codelineno-33-9" href="#__codelineno-33-9"></a><span class="w">    </span><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">writeToOldFormat</span><span class="p">(</span><span class="nx">userID</span><span class="p">,</span><span class="w"> </span><span class="nx">data</span><span class="p">)</span>
+<a id="__codelineno-33-10" name="__codelineno-33-10" href="#__codelineno-33-10"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-33-11" name="__codelineno-33-11" href="#__codelineno-33-11"></a><span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;Warning: old format write failed: %v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
+<a id="__codelineno-33-12" name="__codelineno-33-12" href="#__codelineno-33-12"></a><span class="w">        </span><span class="c1">// Don&#39;t fail - new format is source of truth</span>
+<a id="__codelineno-33-13" name="__codelineno-33-13" href="#__codelineno-33-13"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-33-14" name="__codelineno-33-14" href="#__codelineno-33-14"></a>
+<a id="__codelineno-33-15" name="__codelineno-33-15" href="#__codelineno-33-15"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span>
+<a id="__codelineno-33-16" name="__codelineno-33-16" href="#__codelineno-33-16"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="strategy-3-adapter-pattern">Strategy 3: Adapter Pattern<a class="headerlink" href="#strategy-3-adapter-pattern" title="Permanent link">&para;</a></h3>
+<p>Make V1 call V2 internally:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="c1">// V1 handler wraps V2</span>
+<a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a><span class="kd">func</span><span class="w"> </span><span class="nx">getUsersV1</span><span class="p">(</span><span class="nx">w</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a><span class="w">    </span><span class="c1">// Get V2 data</span>
+<a id="__codelineno-34-4" name="__codelineno-34-4" href="#__codelineno-34-4"></a><span class="w">    </span><span class="nx">v2Users</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">getUsersV2Data</span><span class="p">()</span>
+<a id="__codelineno-34-5" name="__codelineno-34-5" href="#__codelineno-34-5"></a>
+<a id="__codelineno-34-6" name="__codelineno-34-6" href="#__codelineno-34-6"></a><span class="w">    </span><span class="c1">// Convert to V1 format</span>
+<a id="__codelineno-34-7" name="__codelineno-34-7" href="#__codelineno-34-7"></a><span class="w">    </span><span class="nx">v1Users</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">make</span><span class="p">([]</span><span class="nx">UserV1</span><span class="p">,</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">v2Users</span><span class="p">))</span>
+<a id="__codelineno-34-8" name="__codelineno-34-8" href="#__codelineno-34-8"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nx">i</span><span class="p">,</span><span class="w"> </span><span class="nx">v2User</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">range</span><span class="w"> </span><span class="nx">v2Users</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-34-9" name="__codelineno-34-9" href="#__codelineno-34-9"></a><span class="w">        </span><span class="nx">v1Users</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">UserV1</span><span class="p">{</span>
+<a id="__codelineno-34-10" name="__codelineno-34-10" href="#__codelineno-34-10"></a><span class="w">            </span><span class="nx">ID</span><span class="p">:</span><span class="w">    </span><span class="nx">v2User</span><span class="p">.</span><span class="nx">ID</span><span class="p">,</span>
+<a id="__codelineno-34-11" name="__codelineno-34-11" href="#__codelineno-34-11"></a><span class="w">            </span><span class="nx">Name</span><span class="p">:</span><span class="w">  </span><span class="nx">v2User</span><span class="p">.</span><span class="nx">FirstName</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">v2User</span><span class="p">.</span><span class="nx">LastName</span><span class="p">,</span>
+<a id="__codelineno-34-12" name="__codelineno-34-12" href="#__codelineno-34-12"></a><span class="w">            </span><span class="nx">Email</span><span class="p">:</span><span class="w"> </span><span class="nx">v2User</span><span class="p">.</span><span class="nx">Email</span><span class="p">,</span>
+<a id="__codelineno-34-13" name="__codelineno-34-13" href="#__codelineno-34-13"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-34-14" name="__codelineno-34-14" href="#__codelineno-34-14"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-34-15" name="__codelineno-34-15" href="#__codelineno-34-15"></a>
+<a id="__codelineno-34-16" name="__codelineno-34-16" href="#__codelineno-34-16"></a><span class="w">    </span><span class="nx">json</span><span class="p">.</span><span class="nx">NewEncoder</span><span class="p">(</span><span class="nx">w</span><span class="p">).</span><span class="nx">Encode</span><span class="p">(</span><span class="nx">v1Users</span><span class="p">)</span>
+<a id="__codelineno-34-17" name="__codelineno-34-17" href="#__codelineno-34-17"></a><span class="p">}</span>
+</code></pre></div>
+<hr />
+<h2 id="410-best-practices">4.10 Best Practices<a class="headerlink" href="#410-best-practices" title="Permanent link">&para;</a></h2>
+<h3 id="do">✅ DO<a class="headerlink" href="#do" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Use URL path versioning</strong> (<code>/api/v1/</code>) for most APIs</li>
+<li><strong>Version from day one</strong> - Don't wait until you need to change something</li>
+<li><strong>Make v1 the default</strong> if no version specified (for backward compatibility)</li>
+<li><strong>Document breaking changes</strong> clearly</li>
+<li><strong>Give advance notice</strong> before deprecating versions</li>
+<li><strong>Keep old versions running</strong> for at least 6 months</li>
+<li><strong>Share common code</strong> between versions where possible</li>
+<li><strong>Use semantic versioning</strong> concepts (major.minor.patch)</li>
+<li><strong>Provide migration guides</strong> when releasing new versions</li>
+</ol>
+<h3 id="dont">❌ DON'T<a class="headerlink" href="#dont" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Don't version unnecessarily</strong> - Only when you have breaking changes</li>
+<li><strong>Don't break APIs without versioning</strong> - This crashes client apps</li>
+<li><strong>Don't use version numbers &gt; 5</strong> - If you're at v6, something's wrong</li>
+<li><strong>Don't deprecate too quickly</strong> - Give clients time to migrate</li>
+<li><strong>Don't forget to update documentation</strong> for new versions</li>
+<li><strong>Don't duplicate all code</strong> - Share business logic</li>
+<li><strong>Don't version every endpoint differently</strong> - Version the entire API</li>
+</ol>
+<hr />
+<h2 id="411-complete-example-two-versions">4.11 Complete Example: Two Versions<a class="headerlink" href="#411-complete-example-two-versions" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
+<a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a>
+<a id="__codelineno-35-3" name="__codelineno-35-3" href="#__codelineno-35-3"></a><span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<a id="__codelineno-35-4" name="__codelineno-35-4" href="#__codelineno-35-4"></a><span class="w">    </span><span class="s">&quot;encoding/json&quot;</span>
+<a id="__codelineno-35-5" name="__codelineno-35-5" href="#__codelineno-35-5"></a><span class="w">    </span><span class="s">&quot;net/http&quot;</span>
+<a id="__codelineno-35-6" name="__codelineno-35-6" href="#__codelineno-35-6"></a><span class="w">    </span><span class="s">&quot;time&quot;</span>
+<a id="__codelineno-35-7" name="__codelineno-35-7" href="#__codelineno-35-7"></a>
+<a id="__codelineno-35-8" name="__codelineno-35-8" href="#__codelineno-35-8"></a><span class="w">    </span><span class="s">&quot;github.com/gorilla/mux&quot;</span>
+<a id="__codelineno-35-9" name="__codelineno-35-9" href="#__codelineno-35-9"></a><span class="p">)</span>
+<a id="__codelineno-35-10" name="__codelineno-35-10" href="#__codelineno-35-10"></a>
+<a id="__codelineno-35-11" name="__codelineno-35-11" href="#__codelineno-35-11"></a><span class="c1">// V1 Models</span>
+<a id="__codelineno-35-12" name="__codelineno-35-12" href="#__codelineno-35-12"></a><span class="kd">type</span><span class="w"> </span><span class="nx">UserV1</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-35-13" name="__codelineno-35-13" href="#__codelineno-35-13"></a><span class="w">    </span><span class="nx">ID</span><span class="w">    </span><span class="kt">int</span><span class="w">    </span><span class="s">`json:&quot;id&quot;`</span>
+<a id="__codelineno-35-14" name="__codelineno-35-14" href="#__codelineno-35-14"></a><span class="w">    </span><span class="nx">Name</span><span class="w">  </span><span class="kt">string</span><span class="w"> </span><span class="s">`json:&quot;name&quot;`</span>
+<a id="__codelineno-35-15" name="__codelineno-35-15" href="#__codelineno-35-15"></a><span class="w">    </span><span class="nx">Email</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="s">`json:&quot;email&quot;`</span>
+<a id="__codelineno-35-16" name="__codelineno-35-16" href="#__codelineno-35-16"></a><span class="p">}</span>
+<a id="__codelineno-35-17" name="__codelineno-35-17" href="#__codelineno-35-17"></a>
+<a id="__codelineno-35-18" name="__codelineno-35-18" href="#__codelineno-35-18"></a><span class="c1">// V2 Models</span>
+<a id="__codelineno-35-19" name="__codelineno-35-19" href="#__codelineno-35-19"></a><span class="kd">type</span><span class="w"> </span><span class="nx">UserV2</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-35-20" name="__codelineno-35-20" href="#__codelineno-35-20"></a><span class="w">    </span><span class="nx">ID</span><span class="w">        </span><span class="kt">int</span><span class="w">       </span><span class="s">`json:&quot;id&quot;`</span>
+<a id="__codelineno-35-21" name="__codelineno-35-21" href="#__codelineno-35-21"></a><span class="w">    </span><span class="nx">FirstName</span><span class="w"> </span><span class="kt">string</span><span class="w">    </span><span class="s">`json:&quot;first_name&quot;`</span>
+<a id="__codelineno-35-22" name="__codelineno-35-22" href="#__codelineno-35-22"></a><span class="w">    </span><span class="nx">LastName</span><span class="w">  </span><span class="kt">string</span><span class="w">    </span><span class="s">`json:&quot;last_name&quot;`</span>
+<a id="__codelineno-35-23" name="__codelineno-35-23" href="#__codelineno-35-23"></a><span class="w">    </span><span class="nx">Email</span><span class="w">     </span><span class="kt">string</span><span class="w">    </span><span class="s">`json:&quot;email&quot;`</span>
+<a id="__codelineno-35-24" name="__codelineno-35-24" href="#__codelineno-35-24"></a><span class="w">    </span><span class="nx">CreatedAt</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Time</span><span class="w"> </span><span class="s">`json:&quot;created_at&quot;`</span>
+<a id="__codelineno-35-25" name="__codelineno-35-25" href="#__codelineno-35-25"></a><span class="p">}</span>
+<a id="__codelineno-35-26" name="__codelineno-35-26" href="#__codelineno-35-26"></a>
+<a id="__codelineno-35-27" name="__codelineno-35-27" href="#__codelineno-35-27"></a><span class="c1">// Shared database representation</span>
+<a id="__codelineno-35-28" name="__codelineno-35-28" href="#__codelineno-35-28"></a><span class="kd">type</span><span class="w"> </span><span class="nx">UserRecord</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-35-29" name="__codelineno-35-29" href="#__codelineno-35-29"></a><span class="w">    </span><span class="nx">ID</span><span class="w">        </span><span class="kt">int</span>
+<a id="__codelineno-35-30" name="__codelineno-35-30" href="#__codelineno-35-30"></a><span class="w">    </span><span class="nx">FirstName</span><span class="w"> </span><span class="kt">string</span>
+<a id="__codelineno-35-31" name="__codelineno-35-31" href="#__codelineno-35-31"></a><span class="w">    </span><span class="nx">LastName</span><span class="w">  </span><span class="kt">string</span>
+<a id="__codelineno-35-32" name="__codelineno-35-32" href="#__codelineno-35-32"></a><span class="w">    </span><span class="nx">Email</span><span class="w">     </span><span class="kt">string</span>
+<a id="__codelineno-35-33" name="__codelineno-35-33" href="#__codelineno-35-33"></a><span class="w">    </span><span class="nx">CreatedAt</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Time</span>
+<a id="__codelineno-35-34" name="__codelineno-35-34" href="#__codelineno-35-34"></a><span class="p">}</span>
+<a id="__codelineno-35-35" name="__codelineno-35-35" href="#__codelineno-35-35"></a>
+<a id="__codelineno-35-36" name="__codelineno-35-36" href="#__codelineno-35-36"></a><span class="c1">// Simulated database</span>
+<a id="__codelineno-35-37" name="__codelineno-35-37" href="#__codelineno-35-37"></a><span class="kd">var</span><span class="w"> </span><span class="nx">users</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[]</span><span class="nx">UserRecord</span><span class="p">{</span>
+<a id="__codelineno-35-38" name="__codelineno-35-38" href="#__codelineno-35-38"></a><span class="w">    </span><span class="p">{</span><span class="nx">ID</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nx">FirstName</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;John&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">LastName</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Doe&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">Email</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;john@example.com&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">CreatedAt</span><span class="p">:</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">()},</span>
+<a id="__codelineno-35-39" name="__codelineno-35-39" href="#__codelineno-35-39"></a><span class="w">    </span><span class="p">{</span><span class="nx">ID</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="nx">FirstName</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Jane&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">LastName</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Smith&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">Email</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;jane@example.com&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">CreatedAt</span><span class="p">:</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">()},</span>
+<a id="__codelineno-35-40" name="__codelineno-35-40" href="#__codelineno-35-40"></a><span class="p">}</span>
+<a id="__codelineno-35-41" name="__codelineno-35-41" href="#__codelineno-35-41"></a>
+<a id="__codelineno-35-42" name="__codelineno-35-42" href="#__codelineno-35-42"></a><span class="c1">// V1 Handlers</span>
+<a id="__codelineno-35-43" name="__codelineno-35-43" href="#__codelineno-35-43"></a><span class="kd">func</span><span class="w"> </span><span class="nx">getUsersV1</span><span class="p">(</span><span class="nx">w</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-35-44" name="__codelineno-35-44" href="#__codelineno-35-44"></a><span class="w">    </span><span class="nx">v1Users</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">make</span><span class="p">([]</span><span class="nx">UserV1</span><span class="p">,</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">users</span><span class="p">))</span>
+<a id="__codelineno-35-45" name="__codelineno-35-45" href="#__codelineno-35-45"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nx">i</span><span class="p">,</span><span class="w"> </span><span class="nx">u</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">range</span><span class="w"> </span><span class="nx">users</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-35-46" name="__codelineno-35-46" href="#__codelineno-35-46"></a><span class="w">        </span><span class="nx">v1Users</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">UserV1</span><span class="p">{</span>
+<a id="__codelineno-35-47" name="__codelineno-35-47" href="#__codelineno-35-47"></a><span class="w">            </span><span class="nx">ID</span><span class="p">:</span><span class="w">    </span><span class="nx">u</span><span class="p">.</span><span class="nx">ID</span><span class="p">,</span>
+<a id="__codelineno-35-48" name="__codelineno-35-48" href="#__codelineno-35-48"></a><span class="w">            </span><span class="nx">Name</span><span class="p">:</span><span class="w">  </span><span class="nx">u</span><span class="p">.</span><span class="nx">FirstName</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">u</span><span class="p">.</span><span class="nx">LastName</span><span class="p">,</span>
+<a id="__codelineno-35-49" name="__codelineno-35-49" href="#__codelineno-35-49"></a><span class="w">            </span><span class="nx">Email</span><span class="p">:</span><span class="w"> </span><span class="nx">u</span><span class="p">.</span><span class="nx">Email</span><span class="p">,</span>
+<a id="__codelineno-35-50" name="__codelineno-35-50" href="#__codelineno-35-50"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-35-51" name="__codelineno-35-51" href="#__codelineno-35-51"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-35-52" name="__codelineno-35-52" href="#__codelineno-35-52"></a>
+<a id="__codelineno-35-53" name="__codelineno-35-53" href="#__codelineno-35-53"></a><span class="w">    </span><span class="nx">w</span><span class="p">.</span><span class="nx">Header</span><span class="p">().</span><span class="nx">Set</span><span class="p">(</span><span class="s">&quot;Content-Type&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;application/json&quot;</span><span class="p">)</span>
+<a id="__codelineno-35-54" name="__codelineno-35-54" href="#__codelineno-35-54"></a><span class="w">    </span><span class="nx">json</span><span class="p">.</span><span class="nx">NewEncoder</span><span class="p">(</span><span class="nx">w</span><span class="p">).</span><span class="nx">Encode</span><span class="p">(</span><span class="nx">v1Users</span><span class="p">)</span>
+<a id="__codelineno-35-55" name="__codelineno-35-55" href="#__codelineno-35-55"></a><span class="p">}</span>
+<a id="__codelineno-35-56" name="__codelineno-35-56" href="#__codelineno-35-56"></a>
+<a id="__codelineno-35-57" name="__codelineno-35-57" href="#__codelineno-35-57"></a><span class="c1">// V2 Handlers</span>
+<a id="__codelineno-35-58" name="__codelineno-35-58" href="#__codelineno-35-58"></a><span class="kd">func</span><span class="w"> </span><span class="nx">getUsersV2</span><span class="p">(</span><span class="nx">w</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-35-59" name="__codelineno-35-59" href="#__codelineno-35-59"></a><span class="w">    </span><span class="nx">v2Users</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">make</span><span class="p">([]</span><span class="nx">UserV2</span><span class="p">,</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">users</span><span class="p">))</span>
+<a id="__codelineno-35-60" name="__codelineno-35-60" href="#__codelineno-35-60"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nx">i</span><span class="p">,</span><span class="w"> </span><span class="nx">u</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">range</span><span class="w"> </span><span class="nx">users</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-35-61" name="__codelineno-35-61" href="#__codelineno-35-61"></a><span class="w">        </span><span class="nx">v2Users</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">UserV2</span><span class="p">{</span>
+<a id="__codelineno-35-62" name="__codelineno-35-62" href="#__codelineno-35-62"></a><span class="w">            </span><span class="nx">ID</span><span class="p">:</span><span class="w">        </span><span class="nx">u</span><span class="p">.</span><span class="nx">ID</span><span class="p">,</span>
+<a id="__codelineno-35-63" name="__codelineno-35-63" href="#__codelineno-35-63"></a><span class="w">            </span><span class="nx">FirstName</span><span class="p">:</span><span class="w"> </span><span class="nx">u</span><span class="p">.</span><span class="nx">FirstName</span><span class="p">,</span>
+<a id="__codelineno-35-64" name="__codelineno-35-64" href="#__codelineno-35-64"></a><span class="w">            </span><span class="nx">LastName</span><span class="p">:</span><span class="w">  </span><span class="nx">u</span><span class="p">.</span><span class="nx">LastName</span><span class="p">,</span>
+<a id="__codelineno-35-65" name="__codelineno-35-65" href="#__codelineno-35-65"></a><span class="w">            </span><span class="nx">Email</span><span class="p">:</span><span class="w">     </span><span class="nx">u</span><span class="p">.</span><span class="nx">Email</span><span class="p">,</span>
+<a id="__codelineno-35-66" name="__codelineno-35-66" href="#__codelineno-35-66"></a><span class="w">            </span><span class="nx">CreatedAt</span><span class="p">:</span><span class="w"> </span><span class="nx">u</span><span class="p">.</span><span class="nx">CreatedAt</span><span class="p">,</span>
+<a id="__codelineno-35-67" name="__codelineno-35-67" href="#__codelineno-35-67"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-35-68" name="__codelineno-35-68" href="#__codelineno-35-68"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-35-69" name="__codelineno-35-69" href="#__codelineno-35-69"></a>
+<a id="__codelineno-35-70" name="__codelineno-35-70" href="#__codelineno-35-70"></a><span class="w">    </span><span class="nx">w</span><span class="p">.</span><span class="nx">Header</span><span class="p">().</span><span class="nx">Set</span><span class="p">(</span><span class="s">&quot;Content-Type&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;application/json&quot;</span><span class="p">)</span>
+<a id="__codelineno-35-71" name="__codelineno-35-71" href="#__codelineno-35-71"></a><span class="w">    </span><span class="nx">json</span><span class="p">.</span><span class="nx">NewEncoder</span><span class="p">(</span><span class="nx">w</span><span class="p">).</span><span class="nx">Encode</span><span class="p">(</span><span class="nx">v2Users</span><span class="p">)</span>
+<a id="__codelineno-35-72" name="__codelineno-35-72" href="#__codelineno-35-72"></a><span class="p">}</span>
+<a id="__codelineno-35-73" name="__codelineno-35-73" href="#__codelineno-35-73"></a>
+<a id="__codelineno-35-74" name="__codelineno-35-74" href="#__codelineno-35-74"></a><span class="c1">// Deprecation middleware</span>
+<a id="__codelineno-35-75" name="__codelineno-35-75" href="#__codelineno-35-75"></a><span class="kd">func</span><span class="w"> </span><span class="nx">deprecationMiddleware</span><span class="p">(</span><span class="nx">next</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">Handler</span><span class="p">)</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">Handler</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-35-76" name="__codelineno-35-76" href="#__codelineno-35-76"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">HandlerFunc</span><span class="p">(</span><span class="kd">func</span><span class="p">(</span><span class="nx">w</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-35-77" name="__codelineno-35-77" href="#__codelineno-35-77"></a><span class="w">        </span><span class="nx">w</span><span class="p">.</span><span class="nx">Header</span><span class="p">().</span><span class="nx">Set</span><span class="p">(</span><span class="s">&quot;Deprecation&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;true&quot;</span><span class="p">)</span>
+<a id="__codelineno-35-78" name="__codelineno-35-78" href="#__codelineno-35-78"></a><span class="w">        </span><span class="nx">w</span><span class="p">.</span><span class="nx">Header</span><span class="p">().</span><span class="nx">Set</span><span class="p">(</span><span class="s">&quot;Sunset&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;2024-12-31&quot;</span><span class="p">)</span>
+<a id="__codelineno-35-79" name="__codelineno-35-79" href="#__codelineno-35-79"></a><span class="w">        </span><span class="nx">w</span><span class="p">.</span><span class="nx">Header</span><span class="p">().</span><span class="nx">Set</span><span class="p">(</span><span class="s">&quot;Link&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&lt;/api/v2/users&gt;; rel=\&quot;successor-version\&quot;&quot;</span><span class="p">)</span>
+<a id="__codelineno-35-80" name="__codelineno-35-80" href="#__codelineno-35-80"></a><span class="w">        </span><span class="nx">next</span><span class="p">.</span><span class="nx">ServeHTTP</span><span class="p">(</span><span class="nx">w</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="p">)</span>
+<a id="__codelineno-35-81" name="__codelineno-35-81" href="#__codelineno-35-81"></a><span class="w">    </span><span class="p">})</span>
+<a id="__codelineno-35-82" name="__codelineno-35-82" href="#__codelineno-35-82"></a><span class="p">}</span>
+<a id="__codelineno-35-83" name="__codelineno-35-83" href="#__codelineno-35-83"></a>
+<a id="__codelineno-35-84" name="__codelineno-35-84" href="#__codelineno-35-84"></a><span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-35-85" name="__codelineno-35-85" href="#__codelineno-35-85"></a><span class="w">    </span><span class="nx">r</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">mux</span><span class="p">.</span><span class="nx">NewRouter</span><span class="p">()</span>
+<a id="__codelineno-35-86" name="__codelineno-35-86" href="#__codelineno-35-86"></a>
+<a id="__codelineno-35-87" name="__codelineno-35-87" href="#__codelineno-35-87"></a><span class="w">    </span><span class="c1">// V1 - Deprecated</span>
+<a id="__codelineno-35-88" name="__codelineno-35-88" href="#__codelineno-35-88"></a><span class="w">    </span><span class="nx">v1</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">PathPrefix</span><span class="p">(</span><span class="s">&quot;/api/v1&quot;</span><span class="p">).</span><span class="nx">Subrouter</span><span class="p">()</span>
+<a id="__codelineno-35-89" name="__codelineno-35-89" href="#__codelineno-35-89"></a><span class="w">    </span><span class="nx">v1</span><span class="p">.</span><span class="nx">Use</span><span class="p">(</span><span class="nx">deprecationMiddleware</span><span class="p">)</span>
+<a id="__codelineno-35-90" name="__codelineno-35-90" href="#__codelineno-35-90"></a><span class="w">    </span><span class="nx">v1</span><span class="p">.</span><span class="nx">HandleFunc</span><span class="p">(</span><span class="s">&quot;/users&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">getUsersV1</span><span class="p">).</span><span class="nx">Methods</span><span class="p">(</span><span class="s">&quot;GET&quot;</span><span class="p">)</span>
+<a id="__codelineno-35-91" name="__codelineno-35-91" href="#__codelineno-35-91"></a>
+<a id="__codelineno-35-92" name="__codelineno-35-92" href="#__codelineno-35-92"></a><span class="w">    </span><span class="c1">// V2 - Current</span>
+<a id="__codelineno-35-93" name="__codelineno-35-93" href="#__codelineno-35-93"></a><span class="w">    </span><span class="nx">v2</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">PathPrefix</span><span class="p">(</span><span class="s">&quot;/api/v2&quot;</span><span class="p">).</span><span class="nx">Subrouter</span><span class="p">()</span>
+<a id="__codelineno-35-94" name="__codelineno-35-94" href="#__codelineno-35-94"></a><span class="w">    </span><span class="nx">v2</span><span class="p">.</span><span class="nx">HandleFunc</span><span class="p">(</span><span class="s">&quot;/users&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">getUsersV2</span><span class="p">).</span><span class="nx">Methods</span><span class="p">(</span><span class="s">&quot;GET&quot;</span><span class="p">)</span>
+<a id="__codelineno-35-95" name="__codelineno-35-95" href="#__codelineno-35-95"></a>
+<a id="__codelineno-35-96" name="__codelineno-35-96" href="#__codelineno-35-96"></a><span class="w">    </span><span class="nx">http</span><span class="p">.</span><span class="nx">ListenAndServe</span><span class="p">(</span><span class="s">&quot;:8080&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="p">)</span>
+<a id="__codelineno-35-97" name="__codelineno-35-97" href="#__codelineno-35-97"></a><span class="p">}</span>
+</code></pre></div>
+<hr />
+<h2 id="key-takeaways">Key Takeaways<a class="headerlink" href="#key-takeaways" title="Permanent link">&para;</a></h2>
+<p>✅ <strong>URL path versioning</strong> is the most practical approach<br />
+✅ <strong>Version from day one</strong> - Don't wait for breaking changes<br />
+✅ <strong>Breaking changes</strong> require a new version<br />
+✅ <strong>Non-breaking changes</strong> can be added to existing versions<br />
+✅ <strong>Share code</strong> between versions where possible<br />
+✅ <strong>Deprecate gracefully</strong> with advance notice and headers<br />
+✅ <strong>Organize code</strong> by version for clarity<br />
+✅ <strong>Provide migration guides</strong> to help clients upgrade  </p>
+<hr />
+<h2 id="whats-next">What's Next?<a class="headerlink" href="#whats-next" title="Permanent link">&para;</a></h2>
+<p>Unit 5 will cover API Documentation with Swagger/OpenAPI - automatically generating interactive documentation for all your API versions! 📚</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

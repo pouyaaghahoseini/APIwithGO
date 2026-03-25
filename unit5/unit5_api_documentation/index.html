@@ -1,0 +1,2352 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Unit 5: API Documentation with Swagger/OpenAPI - APIwithGO</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#unit-5-api-documentation-with-swaggeropenapi" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="APIwithGO" class="md-header__button md-logo" aria-label="APIwithGO" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            APIwithGO
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Unit 5: API Documentation with Swagger/OpenAPI
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="APIwithGO" class="md-nav__button md-logo" aria-label="APIwithGO" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    APIwithGO
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Unit 1 - Go Crash Course
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Unit 1 - Go Crash Course
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unit1/unit1_go_crash_course/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lesson
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unit1/unit1_exercise1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercise 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unit1/unit1_exercise1_solution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercise 1 Solution
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unit1/unit1_exercise2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercise 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unit1/unit1_exercise2_solution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercise 2 Solution
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Unit 2 - Basic HTTP Server
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Unit 2 - Basic HTTP Server
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unit2/unit2_basic_http_server.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lesson
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unit2/unit2_exercise1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercise 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unit2/unit2_exercise1_solution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercise 1 Solution
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unit2/unit2_exercise2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercise 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unit2/unit2_exercise2_solution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercise 2 Solution
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Unit 3 - API Structure & Routing
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Unit 3 - API Structure & Routing
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unit3/unit3_api_structure_and_routing.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lesson
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unit3/unit3_exercise1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercise 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unit3/unit3_exercise1_solution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercise 1 Solution
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unit3/unit3_exercise2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercise 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unit3/unit3_exercise2_solution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercise 2 Solution
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Unit 4 - Authentication & Authorization
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Unit 4 - Authentication & Authorization
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unit4/unit4_authentication_and_authorization.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lesson
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unit4/unit4_exercise1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercise 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unit4/unit4_exercise1_solution.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercise 1 Solution
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unit4/unit4_exercise2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercise 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unit4/unit4_exercise2_solution.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercise 2 Solution
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#51-why-api-documentation-matters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Why API Documentation Matters
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#52-what-is-swaggeropenapi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 What is Swagger/OpenAPI?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#53-openapi-specification-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 OpenAPI Specification Structure
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.3 OpenAPI Specification Structure">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Basic Structure
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-sections" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Sections
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#54-documenting-apis-in-go" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4 Documenting APIs in Go
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.4 Documenting APIs in Go">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#popular-libraries" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Popular Libraries
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#55-installing-swag" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.5 Installing Swag
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#56-basic-api-documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.6 Basic API Documentation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.6 Basic API Documentation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-add-general-api-info" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1: Add General API Info
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-document-handlers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2: Document Handlers
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-document-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3: Document Models
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-generate-documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 4: Generate Documentation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-5-access-swagger-ui" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 5: Access Swagger UI
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#57-common-annotations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.7 Common Annotations
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.7 Common Annotations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#handler-annotations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Handler Annotations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameter-locations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parameter Locations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Examples
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#58-advanced-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.8 Advanced Features
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.8 Advanced Features">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#array-responses" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Array Responses
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nested-objects" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nested Objects
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enumerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Enumerations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optional-vs-required" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Optional vs Required
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#59-authentication-in-swagger" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.9 Authentication in Swagger
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.9 Authentication in Swagger">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bearer-token-jwt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bearer Token (JWT)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api-key" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        API Key
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#basic-auth" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Basic Auth
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-in-swagger-ui" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Using in Swagger UI
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#510-multiple-versions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.10 Multiple Versions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#511-complete-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.11 Complete Example
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#512-best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.12 Best Practices
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.12 Best Practices">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#do" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ DO
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dont" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❌ DON'T
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#513-swagger-ui-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.13 Swagger UI Features
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.13 Swagger UI Features">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#interactive-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Interactive Testing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#filtering" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Filtering
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#export" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Export
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#514-alternative-documentation-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.14 Alternative Documentation Tools
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.14 Alternative Documentation Tools">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#postman" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Postman
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#redoc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ReDoc
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stoplight" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stoplight
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#515-continuous-documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.15 Continuous Documentation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.15 Continuous Documentation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#in-cicd-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        In CI/CD Pipeline
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#documentation-versioning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Documentation Versioning
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Takeaways
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whats-next" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What's Next?
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="unit-5-api-documentation-with-swaggeropenapi">Unit 5: API Documentation with Swagger/OpenAPI<a class="headerlink" href="#unit-5-api-documentation-with-swaggeropenapi" title="Permanent link">&para;</a></h1>
+<p><strong>Duration</strong>: 60-75 minutes<br />
+<strong>Prerequisites</strong>: Units 1-4 (Go fundamentals, HTTP servers, Authentication, Versioning)<br />
+<strong>Goal</strong>: Generate interactive API documentation automatically from code</p>
+<hr />
+<h2 id="51-why-api-documentation-matters">5.1 Why API Documentation Matters<a class="headerlink" href="#51-why-api-documentation-matters" title="Permanent link">&para;</a></h2>
+<p><strong>Without documentation</strong>:
+- Developers waste time guessing endpoint behavior
+- Support tickets increase
+- Integration takes longer
+- API adoption suffers</p>
+<p><strong>With good documentation</strong>:
+- Self-service integration
+- Reduced support burden
+- Faster onboarding
+- Higher API adoption
+- Better developer experience</p>
+<hr />
+<h2 id="52-what-is-swaggeropenapi">5.2 What is Swagger/OpenAPI?<a class="headerlink" href="#52-what-is-swaggeropenapi" title="Permanent link">&para;</a></h2>
+<p><strong>OpenAPI Specification (OAS)</strong>: A standard format for describing REST APIs in JSON or YAML.</p>
+<p><strong>Swagger</strong>: A set of tools built around OpenAPI:
+- <strong>Swagger UI</strong>: Interactive documentation interface
+- <strong>Swagger Codegen</strong>: Generate client SDKs
+- <strong>Swagger Editor</strong>: Design APIs visually</p>
+<p><strong>Current Version</strong>: OpenAPI 3.0 (we'll use this)</p>
+<hr />
+<h2 id="53-openapi-specification-structure">5.3 OpenAPI Specification Structure<a class="headerlink" href="#53-openapi-specification-structure" title="Permanent link">&para;</a></h2>
+<h3 id="basic-structure">Basic Structure<a class="headerlink" href="#basic-structure" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nt">openapi</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.0.0</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nt">info</span><span class="p">:</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">  </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">My API</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">  </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0.0</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">API description</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="nt">servers</span><span class="p">:</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://localhost:8080</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Development server</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="nt">paths</span><span class="p">:</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">  </span><span class="nt">/users</span><span class="p">:</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">    </span><span class="nt">get</span><span class="p">:</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">      </span><span class="nt">summary</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">List all users</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">      </span><span class="nt">responses</span><span class="p">:</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">        </span><span class="s">&#39;200&#39;</span><span class="p p-Indicator">:</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Successful response</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">          </span><span class="nt">content</span><span class="p">:</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">            </span><span class="nt">application/json</span><span class="p">:</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">              </span><span class="nt">schema</span><span class="p">:</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="w">                </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">array</span>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="w">                </span><span class="nt">items</span><span class="p">:</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="w">                  </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;#/components/schemas/User&#39;</span>
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="nt">components</span><span class="p">:</span>
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="w">  </span><span class="nt">schemas</span><span class="p">:</span>
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="w">    </span><span class="nt">User</span><span class="p">:</span>
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">object</span>
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="w">      </span><span class="nt">properties</span><span class="p">:</span>
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="w">        </span><span class="nt">id</span><span class="p">:</span>
+<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">integer</span>
+<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a><span class="w">        </span><span class="nt">name</span><span class="p">:</span>
+<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a><span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a><span class="w">        </span><span class="nt">email</span><span class="p">:</span>
+<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a><span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+</code></pre></div>
+<h3 id="key-sections">Key Sections<a class="headerlink" href="#key-sections" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>info</strong>: API metadata (title, version, description)</li>
+<li><strong>servers</strong>: Base URLs for different environments</li>
+<li><strong>paths</strong>: API endpoints and operations</li>
+<li><strong>components</strong>: Reusable schemas, parameters, responses</li>
+<li><strong>security</strong>: Authentication/authorization schemes</li>
+</ol>
+<hr />
+<h2 id="54-documenting-apis-in-go">5.4 Documenting APIs in Go<a class="headerlink" href="#54-documenting-apis-in-go" title="Permanent link">&para;</a></h2>
+<h3 id="popular-libraries">Popular Libraries<a class="headerlink" href="#popular-libraries" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>swaggo/swag</strong> (Most popular)</li>
+<li>Annotations in code</li>
+<li>Automatic generation</li>
+<li>
+<p>Swagger UI integration</p>
+</li>
+<li>
+<p><strong>go-swagger</strong></p>
+</li>
+<li>More powerful</li>
+<li>Steeper learning curve</li>
+</ol>
+<p>We'll use <strong>swaggo/swag</strong> for this course.</p>
+<hr />
+<h2 id="55-installing-swag">5.5 Installing Swag<a class="headerlink" href="#55-installing-swag" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Install swag CLI</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>go<span class="w"> </span>install<span class="w"> </span>github.com/swaggo/swag/cmd/swag@latest
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="c1"># Install required packages</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>go<span class="w"> </span>get<span class="w"> </span>-u<span class="w"> </span>github.com/swaggo/http-swagger
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>go<span class="w"> </span>get<span class="w"> </span>-u<span class="w"> </span>github.com/swaggo/files
+</code></pre></div>
+<hr />
+<h2 id="56-basic-api-documentation">5.6 Basic API Documentation<a class="headerlink" href="#56-basic-api-documentation" title="Permanent link">&para;</a></h2>
+<h3 id="step-1-add-general-api-info">Step 1: Add General API Info<a class="headerlink" href="#step-1-add-general-api-info" title="Permanent link">&para;</a></h3>
+<p>Add comments to your <code>main.go</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="s">&quot;net/http&quot;</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span><span class="nx">httpSwagger</span><span class="w"> </span><span class="s">&quot;github.com/swaggo/http-swagger&quot;</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">    </span><span class="nx">_</span><span class="w"> </span><span class="s">&quot;myapi/docs&quot;</span><span class="w">  </span><span class="c1">// Import generated docs</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="p">)</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="c1">// @title           User Management API</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="c1">// @version         1.0</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="c1">// @description     A simple user management API with CRUD operations</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="c1">// @termsOfService  http://swagger.io/terms/</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="c1">// @contact.name   API Support</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="c1">// @contact.url    http://www.swagger.io/support</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="c1">// @contact.email  support@swagger.io</span>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a>
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="c1">// @license.name  Apache 2.0</span>
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="c1">// @license.url   http://www.apache.org/licenses/LICENSE-2.0.html</span>
+<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a>
+<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a><span class="c1">// @host      localhost:8080</span>
+<a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a><span class="c1">// @BasePath  /api/v1</span>
+<a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a>
+<a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a><span class="c1">// @securityDefinitions.apikey BearerAuth</span>
+<a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a><span class="c1">// @in header</span>
+<a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a><span class="c1">// @name Authorization</span>
+<a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a><span class="c1">// @description Type &quot;Bearer&quot; followed by a space and JWT token.</span>
+<a id="__codelineno-2-29" name="__codelineno-2-29" href="#__codelineno-2-29"></a>
+<a id="__codelineno-2-30" name="__codelineno-2-30" href="#__codelineno-2-30"></a><span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-31" name="__codelineno-2-31" href="#__codelineno-2-31"></a><span class="w">    </span><span class="nx">r</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">mux</span><span class="p">.</span><span class="nx">NewRouter</span><span class="p">()</span>
+<a id="__codelineno-2-32" name="__codelineno-2-32" href="#__codelineno-2-32"></a>
+<a id="__codelineno-2-33" name="__codelineno-2-33" href="#__codelineno-2-33"></a><span class="w">    </span><span class="c1">// Swagger UI endpoint</span>
+<a id="__codelineno-2-34" name="__codelineno-2-34" href="#__codelineno-2-34"></a><span class="w">    </span><span class="nx">r</span><span class="p">.</span><span class="nx">PathPrefix</span><span class="p">(</span><span class="s">&quot;/swagger/&quot;</span><span class="p">).</span><span class="nx">Handler</span><span class="p">(</span><span class="nx">httpSwagger</span><span class="p">.</span><span class="nx">WrapHandler</span><span class="p">)</span>
+<a id="__codelineno-2-35" name="__codelineno-2-35" href="#__codelineno-2-35"></a>
+<a id="__codelineno-2-36" name="__codelineno-2-36" href="#__codelineno-2-36"></a><span class="w">    </span><span class="c1">// Your API routes</span>
+<a id="__codelineno-2-37" name="__codelineno-2-37" href="#__codelineno-2-37"></a><span class="w">    </span><span class="nx">r</span><span class="p">.</span><span class="nx">HandleFunc</span><span class="p">(</span><span class="s">&quot;/api/v1/users&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">getUsers</span><span class="p">).</span><span class="nx">Methods</span><span class="p">(</span><span class="s">&quot;GET&quot;</span><span class="p">)</span>
+<a id="__codelineno-2-38" name="__codelineno-2-38" href="#__codelineno-2-38"></a>
+<a id="__codelineno-2-39" name="__codelineno-2-39" href="#__codelineno-2-39"></a><span class="w">    </span><span class="nx">http</span><span class="p">.</span><span class="nx">ListenAndServe</span><span class="p">(</span><span class="s">&quot;:8080&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="p">)</span>
+<a id="__codelineno-2-40" name="__codelineno-2-40" href="#__codelineno-2-40"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="step-2-document-handlers">Step 2: Document Handlers<a class="headerlink" href="#step-2-document-handlers" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1">// @Summary      Get all users</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="c1">// @Description  Retrieve a list of all users</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="c1">// @Tags         users</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="c1">// @Accept       json</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="c1">// @Produce      json</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="c1">// @Success      200  {array}   User</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="c1">// @Failure      500  {object}  ErrorResponse</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="c1">// @Router       /users [get]</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="kd">func</span><span class="w"> </span><span class="nx">getUsers</span><span class="p">(</span><span class="nx">w</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">    </span><span class="c1">// Implementation</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="p">}</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="c1">// @Summary      Get user by ID</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="c1">// @Description  Get a single user by their ID</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="c1">// @Tags         users</span>
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="c1">// @Accept       json</span>
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="c1">// @Produce      json</span>
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="c1">// @Param        id   path      int  true  &quot;User ID&quot;</span>
+<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="c1">// @Success      200  {object}  User</span>
+<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="c1">// @Failure      404  {object}  ErrorResponse</span>
+<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="c1">// @Router       /users/{id} [get]</span>
+<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="kd">func</span><span class="w"> </span><span class="nx">getUser</span><span class="p">(</span><span class="nx">w</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a><span class="w">    </span><span class="c1">// Implementation</span>
+<a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a><span class="p">}</span>
+<a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a>
+<a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a><span class="c1">// @Summary      Create user</span>
+<a id="__codelineno-3-27" name="__codelineno-3-27" href="#__codelineno-3-27"></a><span class="c1">// @Description  Create a new user</span>
+<a id="__codelineno-3-28" name="__codelineno-3-28" href="#__codelineno-3-28"></a><span class="c1">// @Tags         users</span>
+<a id="__codelineno-3-29" name="__codelineno-3-29" href="#__codelineno-3-29"></a><span class="c1">// @Accept       json</span>
+<a id="__codelineno-3-30" name="__codelineno-3-30" href="#__codelineno-3-30"></a><span class="c1">// @Produce      json</span>
+<a id="__codelineno-3-31" name="__codelineno-3-31" href="#__codelineno-3-31"></a><span class="c1">// @Param        user  body      CreateUserRequest  true  &quot;User data&quot;</span>
+<a id="__codelineno-3-32" name="__codelineno-3-32" href="#__codelineno-3-32"></a><span class="c1">// @Success      201   {object}  User</span>
+<a id="__codelineno-3-33" name="__codelineno-3-33" href="#__codelineno-3-33"></a><span class="c1">// @Failure      400   {object}  ErrorResponse</span>
+<a id="__codelineno-3-34" name="__codelineno-3-34" href="#__codelineno-3-34"></a><span class="c1">// @Security     BearerAuth</span>
+<a id="__codelineno-3-35" name="__codelineno-3-35" href="#__codelineno-3-35"></a><span class="c1">// @Router       /users [post]</span>
+<a id="__codelineno-3-36" name="__codelineno-3-36" href="#__codelineno-3-36"></a><span class="kd">func</span><span class="w"> </span><span class="nx">createUser</span><span class="p">(</span><span class="nx">w</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-37" name="__codelineno-3-37" href="#__codelineno-3-37"></a><span class="w">    </span><span class="c1">// Implementation</span>
+<a id="__codelineno-3-38" name="__codelineno-3-38" href="#__codelineno-3-38"></a><span class="p">}</span>
+<a id="__codelineno-3-39" name="__codelineno-3-39" href="#__codelineno-3-39"></a>
+<a id="__codelineno-3-40" name="__codelineno-3-40" href="#__codelineno-3-40"></a><span class="c1">// @Summary      Delete user</span>
+<a id="__codelineno-3-41" name="__codelineno-3-41" href="#__codelineno-3-41"></a><span class="c1">// @Description  Delete a user by ID</span>
+<a id="__codelineno-3-42" name="__codelineno-3-42" href="#__codelineno-3-42"></a><span class="c1">// @Tags         users</span>
+<a id="__codelineno-3-43" name="__codelineno-3-43" href="#__codelineno-3-43"></a><span class="c1">// @Accept       json</span>
+<a id="__codelineno-3-44" name="__codelineno-3-44" href="#__codelineno-3-44"></a><span class="c1">// @Produce      json</span>
+<a id="__codelineno-3-45" name="__codelineno-3-45" href="#__codelineno-3-45"></a><span class="c1">// @Param        id   path      int  true  &quot;User ID&quot;</span>
+<a id="__codelineno-3-46" name="__codelineno-3-46" href="#__codelineno-3-46"></a><span class="c1">// @Success      204</span>
+<a id="__codelineno-3-47" name="__codelineno-3-47" href="#__codelineno-3-47"></a><span class="c1">// @Failure      404  {object}  ErrorResponse</span>
+<a id="__codelineno-3-48" name="__codelineno-3-48" href="#__codelineno-3-48"></a><span class="c1">// @Security     BearerAuth</span>
+<a id="__codelineno-3-49" name="__codelineno-3-49" href="#__codelineno-3-49"></a><span class="c1">// @Router       /users/{id} [delete]</span>
+<a id="__codelineno-3-50" name="__codelineno-3-50" href="#__codelineno-3-50"></a><span class="kd">func</span><span class="w"> </span><span class="nx">deleteUser</span><span class="p">(</span><span class="nx">w</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-51" name="__codelineno-3-51" href="#__codelineno-3-51"></a><span class="w">    </span><span class="c1">// Implementation</span>
+<a id="__codelineno-3-52" name="__codelineno-3-52" href="#__codelineno-3-52"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="step-3-document-models">Step 3: Document Models<a class="headerlink" href="#step-3-document-models" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1">// User represents a user in the system</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="kd">type</span><span class="w"> </span><span class="nx">User</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="nx">ID</span><span class="w">        </span><span class="kt">int</span><span class="w">       </span><span class="s">`json:&quot;id&quot; example:&quot;1&quot;`</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">    </span><span class="nx">Username</span><span class="w">  </span><span class="kt">string</span><span class="w">    </span><span class="s">`json:&quot;username&quot; example:&quot;johndoe&quot;`</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">    </span><span class="nx">Email</span><span class="w">     </span><span class="kt">string</span><span class="w">    </span><span class="s">`json:&quot;email&quot; example:&quot;john@example.com&quot;`</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">    </span><span class="nx">FullName</span><span class="w">  </span><span class="kt">string</span><span class="w">    </span><span class="s">`json:&quot;full_name&quot; example:&quot;John Doe&quot;`</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">    </span><span class="nx">CreatedAt</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Time</span><span class="w"> </span><span class="s">`json:&quot;created_at&quot; example:&quot;2024-01-15T10:30:00Z&quot;`</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="p">}</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="c1">// CreateUserRequest is the request body for creating a user</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="kd">type</span><span class="w"> </span><span class="nx">CreateUserRequest</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="w">    </span><span class="nx">Username</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="s">`json:&quot;username&quot; example:&quot;johndoe&quot; binding:&quot;required&quot;`</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="w">    </span><span class="nx">Email</span><span class="w">    </span><span class="kt">string</span><span class="w"> </span><span class="s">`json:&quot;email&quot; example:&quot;john@example.com&quot; binding:&quot;required&quot;`</span>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="w">    </span><span class="nx">Password</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="s">`json:&quot;password&quot; example:&quot;SecurePass123&quot; binding:&quot;required&quot;`</span>
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="w">    </span><span class="nx">FullName</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="s">`json:&quot;full_name&quot; example:&quot;John Doe&quot;`</span>
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="p">}</span>
+<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a>
+<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="c1">// ErrorResponse represents an error response</span>
+<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="kd">type</span><span class="w"> </span><span class="nx">ErrorResponse</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a><span class="w">    </span><span class="nx">Error</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="s">`json:&quot;error&quot; example:&quot;Invalid request&quot;`</span>
+<a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="step-4-generate-documentation">Step 4: Generate Documentation<a class="headerlink" href="#step-4-generate-documentation" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># Generate docs</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>swag<span class="w"> </span>init
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="c1"># This creates:</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="c1"># - docs/docs.go</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="c1"># - docs/swagger.json</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="c1"># - docs/swagger.yaml</span>
+</code></pre></div>
+<h3 id="step-5-access-swagger-ui">Step 5: Access Swagger UI<a class="headerlink" href="#step-5-access-swagger-ui" title="Permanent link">&para;</a></h3>
+<p>Start your server and visit:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>http://localhost:8080/swagger/index.html
+</code></pre></div></p>
+<p>You'll see an interactive API documentation page!</p>
+<hr />
+<h2 id="57-common-annotations">5.7 Common Annotations<a class="headerlink" href="#57-common-annotations" title="Permanent link">&para;</a></h2>
+<h3 id="handler-annotations">Handler Annotations<a class="headerlink" href="#handler-annotations" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1">// @Summary      Short description (1 line)</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="c1">// @Description  Longer description (multiple lines)</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="c1">// @Tags         grouping-tag</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="c1">// @Accept       json|xml|plain|html|mpfd|x-www-form-urlencoded</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="c1">// @Produce      json|xml|plain|html</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="c1">// @Param        name  location  type  required  &quot;description&quot;</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="c1">// @Success      code  {type}    Model</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="c1">// @Failure      code  {type}    Model</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="c1">// @Router       /path [method]</span>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="c1">// @Security     SecurityScheme</span>
+</code></pre></div>
+<h3 id="parameter-locations">Parameter Locations<a class="headerlink" href="#parameter-locations" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>path</strong>: URL parameter (<code>/users/{id}</code>)</li>
+<li><strong>query</strong>: Query string (<code>/users?name=john</code>)</li>
+<li><strong>header</strong>: HTTP header</li>
+<li><strong>body</strong>: Request body</li>
+<li><strong>formData</strong>: Form data</li>
+</ul>
+<h3 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1">// Path parameter</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="c1">// @Param id path int true &quot;User ID&quot;</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="c1">// Query parameter</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="c1">// @Param name query string false &quot;User name&quot;</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="c1">// Header parameter</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="c1">// @Param Authorization header string true &quot;Bearer token&quot;</span>
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="c1">// Body parameter</span>
+<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="c1">// @Param user body CreateUserRequest true &quot;User data&quot;</span>
+<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a>
+<a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a><span class="c1">// Multiple query parameters</span>
+<a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a><span class="c1">// @Param page query int false &quot;Page number&quot; default(1)</span>
+<a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a><span class="c1">// @Param limit query int false &quot;Items per page&quot; default(10)</span>
+</code></pre></div>
+<hr />
+<h2 id="58-advanced-features">5.8 Advanced Features<a class="headerlink" href="#58-advanced-features" title="Permanent link">&para;</a></h2>
+<h3 id="array-responses">Array Responses<a class="headerlink" href="#array-responses" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1">// @Success 200 {array} User</span>
+</code></pre></div>
+<h3 id="nested-objects">Nested Objects<a class="headerlink" href="#nested-objects" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="kd">type</span><span class="w"> </span><span class="nx">Post</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">    </span><span class="nx">ID</span><span class="w">     </span><span class="kt">int</span><span class="w">    </span><span class="s">`json:&quot;id&quot;`</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w">    </span><span class="nx">Title</span><span class="w">  </span><span class="kt">string</span><span class="w"> </span><span class="s">`json:&quot;title&quot;`</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="w">    </span><span class="nx">Author</span><span class="w"> </span><span class="nx">User</span><span class="w">   </span><span class="s">`json:&quot;author&quot;`</span><span class="w">  </span><span class="c1">// Nested</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="p">}</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="c1">// @Success 200 {object} Post</span>
+</code></pre></div>
+<h3 id="enumerations">Enumerations<a class="headerlink" href="#enumerations" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="kd">type</span><span class="w"> </span><span class="nx">Status</span><span class="w"> </span><span class="kt">string</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="kd">const</span><span class="w"> </span><span class="p">(</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="w">    </span><span class="nx">StatusActive</span><span class="w">   </span><span class="nx">Status</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;active&quot;</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="w">    </span><span class="nx">StatusInactive</span><span class="w"> </span><span class="nx">Status</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;inactive&quot;</span>
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="p">)</span>
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="kd">type</span><span class="w"> </span><span class="nx">User</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="w">    </span><span class="nx">Status</span><span class="w"> </span><span class="nx">Status</span><span class="w"> </span><span class="s">`json:&quot;status&quot; enums:&quot;active,inactive&quot;`</span>
+<a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="optional-vs-required">Optional vs Required<a class="headerlink" href="#optional-vs-required" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="kd">type</span><span class="w"> </span><span class="nx">UpdateUserRequest</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="w">    </span><span class="nx">FullName</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="s">`json:&quot;full_name&quot; example:&quot;John Doe&quot;`</span><span class="w">           </span><span class="c1">// Optional</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="w">    </span><span class="nx">Email</span><span class="w">    </span><span class="kt">string</span><span class="w"> </span><span class="s">`json:&quot;email&quot; example:&quot;john@example.com&quot; binding:&quot;required&quot;`</span><span class="w">  </span><span class="c1">// Required</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="p">}</span>
+</code></pre></div>
+<hr />
+<h2 id="59-authentication-in-swagger">5.9 Authentication in Swagger<a class="headerlink" href="#59-authentication-in-swagger" title="Permanent link">&para;</a></h2>
+<h3 id="bearer-token-jwt">Bearer Token (JWT)<a class="headerlink" href="#bearer-token-jwt" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c1">// @securityDefinitions.apikey BearerAuth</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="c1">// @in header</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="c1">// @name Authorization</span>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="c1">// @description Type &quot;Bearer&quot; followed by a space and JWT token.</span>
+</code></pre></div>
+<p>Then on protected endpoints:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="c1">// @Security BearerAuth</span>
+</code></pre></div>
+<h3 id="api-key">API Key<a class="headerlink" href="#api-key" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="c1">// @securityDefinitions.apikey ApiKeyAuth</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="c1">// @in header</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="c1">// @name X-API-Key</span>
+</code></pre></div>
+<h3 id="basic-auth">Basic Auth<a class="headerlink" href="#basic-auth" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="c1">// @securityDefinitions.basic BasicAuth</span>
+</code></pre></div>
+<h3 id="using-in-swagger-ui">Using in Swagger UI<a class="headerlink" href="#using-in-swagger-ui" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Click "Authorize" button</li>
+<li>Enter your token/credentials</li>
+<li>All subsequent requests include auth</li>
+</ol>
+<hr />
+<h2 id="510-multiple-versions">5.10 Multiple Versions<a class="headerlink" href="#510-multiple-versions" title="Permanent link">&para;</a></h2>
+<p>Document multiple API versions:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="c1">// main.go for v1</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="c1">// @BasePath /api/v1</span>
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="c1">// main.go for v2</span>
+<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a><span class="c1">// @BasePath /api/v2</span>
+</code></pre></div>
+<p>Or create separate documentation:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>swag<span class="w"> </span>init<span class="w"> </span>--generalInfo<span class="w"> </span>v1/main.go<span class="w"> </span>--output<span class="w"> </span>docs/v1
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>swag<span class="w"> </span>init<span class="w"> </span>--generalInfo<span class="w"> </span>v2/main.go<span class="w"> </span>--output<span class="w"> </span>docs/v2
+</code></pre></div>
+<hr />
+<h2 id="511-complete-example">5.11 Complete Example<a class="headerlink" href="#511-complete-example" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="w">    </span><span class="s">&quot;encoding/json&quot;</span>
+<a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a><span class="w">    </span><span class="s">&quot;fmt&quot;</span>
+<a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a><span class="w">    </span><span class="s">&quot;net/http&quot;</span>
+<a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a><span class="w">    </span><span class="s">&quot;strconv&quot;</span>
+<a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a><span class="w">    </span><span class="s">&quot;sync&quot;</span>
+<a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a><span class="w">    </span><span class="s">&quot;time&quot;</span>
+<a id="__codelineno-19-10" name="__codelineno-19-10" href="#__codelineno-19-10"></a>
+<a id="__codelineno-19-11" name="__codelineno-19-11" href="#__codelineno-19-11"></a><span class="w">    </span><span class="s">&quot;github.com/gorilla/mux&quot;</span>
+<a id="__codelineno-19-12" name="__codelineno-19-12" href="#__codelineno-19-12"></a><span class="w">    </span><span class="nx">httpSwagger</span><span class="w"> </span><span class="s">&quot;github.com/swaggo/http-swagger&quot;</span>
+<a id="__codelineno-19-13" name="__codelineno-19-13" href="#__codelineno-19-13"></a>
+<a id="__codelineno-19-14" name="__codelineno-19-14" href="#__codelineno-19-14"></a><span class="w">    </span><span class="nx">_</span><span class="w"> </span><span class="s">&quot;myapi/docs&quot;</span>
+<a id="__codelineno-19-15" name="__codelineno-19-15" href="#__codelineno-19-15"></a><span class="p">)</span>
+<a id="__codelineno-19-16" name="__codelineno-19-16" href="#__codelineno-19-16"></a>
+<a id="__codelineno-19-17" name="__codelineno-19-17" href="#__codelineno-19-17"></a><span class="c1">// @title           User Management API</span>
+<a id="__codelineno-19-18" name="__codelineno-19-18" href="#__codelineno-19-18"></a><span class="c1">// @version         1.0</span>
+<a id="__codelineno-19-19" name="__codelineno-19-19" href="#__codelineno-19-19"></a><span class="c1">// @description     A user management API with CRUD operations</span>
+<a id="__codelineno-19-20" name="__codelineno-19-20" href="#__codelineno-19-20"></a><span class="c1">// @termsOfService  http://swagger.io/terms/</span>
+<a id="__codelineno-19-21" name="__codelineno-19-21" href="#__codelineno-19-21"></a>
+<a id="__codelineno-19-22" name="__codelineno-19-22" href="#__codelineno-19-22"></a><span class="c1">// @contact.name   API Support</span>
+<a id="__codelineno-19-23" name="__codelineno-19-23" href="#__codelineno-19-23"></a><span class="c1">// @contact.email  support@example.com</span>
+<a id="__codelineno-19-24" name="__codelineno-19-24" href="#__codelineno-19-24"></a>
+<a id="__codelineno-19-25" name="__codelineno-19-25" href="#__codelineno-19-25"></a><span class="c1">// @license.name  MIT</span>
+<a id="__codelineno-19-26" name="__codelineno-19-26" href="#__codelineno-19-26"></a><span class="c1">// @license.url   https://opensource.org/licenses/MIT</span>
+<a id="__codelineno-19-27" name="__codelineno-19-27" href="#__codelineno-19-27"></a>
+<a id="__codelineno-19-28" name="__codelineno-19-28" href="#__codelineno-19-28"></a><span class="c1">// @host      localhost:8080</span>
+<a id="__codelineno-19-29" name="__codelineno-19-29" href="#__codelineno-19-29"></a><span class="c1">// @BasePath  /api/v1</span>
+<a id="__codelineno-19-30" name="__codelineno-19-30" href="#__codelineno-19-30"></a>
+<a id="__codelineno-19-31" name="__codelineno-19-31" href="#__codelineno-19-31"></a><span class="c1">// @securityDefinitions.apikey BearerAuth</span>
+<a id="__codelineno-19-32" name="__codelineno-19-32" href="#__codelineno-19-32"></a><span class="c1">// @in header</span>
+<a id="__codelineno-19-33" name="__codelineno-19-33" href="#__codelineno-19-33"></a><span class="c1">// @name Authorization</span>
+<a id="__codelineno-19-34" name="__codelineno-19-34" href="#__codelineno-19-34"></a>
+<a id="__codelineno-19-35" name="__codelineno-19-35" href="#__codelineno-19-35"></a><span class="c1">// User represents a user in the system</span>
+<a id="__codelineno-19-36" name="__codelineno-19-36" href="#__codelineno-19-36"></a><span class="kd">type</span><span class="w"> </span><span class="nx">User</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-19-37" name="__codelineno-19-37" href="#__codelineno-19-37"></a><span class="w">    </span><span class="nx">ID</span><span class="w">        </span><span class="kt">int</span><span class="w">       </span><span class="s">`json:&quot;id&quot; example:&quot;1&quot;`</span>
+<a id="__codelineno-19-38" name="__codelineno-19-38" href="#__codelineno-19-38"></a><span class="w">    </span><span class="nx">Username</span><span class="w">  </span><span class="kt">string</span><span class="w">    </span><span class="s">`json:&quot;username&quot; example:&quot;johndoe&quot;`</span>
+<a id="__codelineno-19-39" name="__codelineno-19-39" href="#__codelineno-19-39"></a><span class="w">    </span><span class="nx">Email</span><span class="w">     </span><span class="kt">string</span><span class="w">    </span><span class="s">`json:&quot;email&quot; example:&quot;john@example.com&quot;`</span>
+<a id="__codelineno-19-40" name="__codelineno-19-40" href="#__codelineno-19-40"></a><span class="w">    </span><span class="nx">FullName</span><span class="w">  </span><span class="kt">string</span><span class="w">    </span><span class="s">`json:&quot;full_name&quot; example:&quot;John Doe&quot;`</span>
+<a id="__codelineno-19-41" name="__codelineno-19-41" href="#__codelineno-19-41"></a><span class="w">    </span><span class="nx">CreatedAt</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Time</span><span class="w"> </span><span class="s">`json:&quot;created_at&quot; example:&quot;2024-01-15T10:30:00Z&quot;`</span>
+<a id="__codelineno-19-42" name="__codelineno-19-42" href="#__codelineno-19-42"></a><span class="p">}</span>
+<a id="__codelineno-19-43" name="__codelineno-19-43" href="#__codelineno-19-43"></a>
+<a id="__codelineno-19-44" name="__codelineno-19-44" href="#__codelineno-19-44"></a><span class="c1">// CreateUserRequest is the request body for creating a user</span>
+<a id="__codelineno-19-45" name="__codelineno-19-45" href="#__codelineno-19-45"></a><span class="kd">type</span><span class="w"> </span><span class="nx">CreateUserRequest</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-19-46" name="__codelineno-19-46" href="#__codelineno-19-46"></a><span class="w">    </span><span class="nx">Username</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="s">`json:&quot;username&quot; example:&quot;johndoe&quot; binding:&quot;required&quot;`</span>
+<a id="__codelineno-19-47" name="__codelineno-19-47" href="#__codelineno-19-47"></a><span class="w">    </span><span class="nx">Email</span><span class="w">    </span><span class="kt">string</span><span class="w"> </span><span class="s">`json:&quot;email&quot; example:&quot;john@example.com&quot; binding:&quot;required&quot;`</span>
+<a id="__codelineno-19-48" name="__codelineno-19-48" href="#__codelineno-19-48"></a><span class="w">    </span><span class="nx">Password</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="s">`json:&quot;password&quot; example:&quot;SecurePass123&quot; binding:&quot;required&quot;`</span>
+<a id="__codelineno-19-49" name="__codelineno-19-49" href="#__codelineno-19-49"></a><span class="w">    </span><span class="nx">FullName</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="s">`json:&quot;full_name&quot; example:&quot;John Doe&quot;`</span>
+<a id="__codelineno-19-50" name="__codelineno-19-50" href="#__codelineno-19-50"></a><span class="p">}</span>
+<a id="__codelineno-19-51" name="__codelineno-19-51" href="#__codelineno-19-51"></a>
+<a id="__codelineno-19-52" name="__codelineno-19-52" href="#__codelineno-19-52"></a><span class="c1">// ErrorResponse represents an error</span>
+<a id="__codelineno-19-53" name="__codelineno-19-53" href="#__codelineno-19-53"></a><span class="kd">type</span><span class="w"> </span><span class="nx">ErrorResponse</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-19-54" name="__codelineno-19-54" href="#__codelineno-19-54"></a><span class="w">    </span><span class="nx">Error</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="s">`json:&quot;error&quot; example:&quot;Invalid request&quot;`</span>
+<a id="__codelineno-19-55" name="__codelineno-19-55" href="#__codelineno-19-55"></a><span class="p">}</span>
+<a id="__codelineno-19-56" name="__codelineno-19-56" href="#__codelineno-19-56"></a>
+<a id="__codelineno-19-57" name="__codelineno-19-57" href="#__codelineno-19-57"></a><span class="c1">// Storage</span>
+<a id="__codelineno-19-58" name="__codelineno-19-58" href="#__codelineno-19-58"></a><span class="kd">var</span><span class="w"> </span><span class="p">(</span>
+<a id="__codelineno-19-59" name="__codelineno-19-59" href="#__codelineno-19-59"></a><span class="w">    </span><span class="nx">users</span><span class="w">      </span><span class="p">=</span><span class="w"> </span><span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="nx">User</span><span class="p">)</span>
+<a id="__codelineno-19-60" name="__codelineno-19-60" href="#__codelineno-19-60"></a><span class="w">    </span><span class="nx">nextUserID</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span>
+<a id="__codelineno-19-61" name="__codelineno-19-61" href="#__codelineno-19-61"></a><span class="w">    </span><span class="nx">usersMu</span><span class="w">    </span><span class="nx">sync</span><span class="p">.</span><span class="nx">RWMutex</span>
+<a id="__codelineno-19-62" name="__codelineno-19-62" href="#__codelineno-19-62"></a><span class="p">)</span>
+<a id="__codelineno-19-63" name="__codelineno-19-63" href="#__codelineno-19-63"></a>
+<a id="__codelineno-19-64" name="__codelineno-19-64" href="#__codelineno-19-64"></a><span class="c1">// @Summary      List all users</span>
+<a id="__codelineno-19-65" name="__codelineno-19-65" href="#__codelineno-19-65"></a><span class="c1">// @Description  Get a list of all users</span>
+<a id="__codelineno-19-66" name="__codelineno-19-66" href="#__codelineno-19-66"></a><span class="c1">// @Tags         users</span>
+<a id="__codelineno-19-67" name="__codelineno-19-67" href="#__codelineno-19-67"></a><span class="c1">// @Accept       json</span>
+<a id="__codelineno-19-68" name="__codelineno-19-68" href="#__codelineno-19-68"></a><span class="c1">// @Produce      json</span>
+<a id="__codelineno-19-69" name="__codelineno-19-69" href="#__codelineno-19-69"></a><span class="c1">// @Success      200  {array}   User</span>
+<a id="__codelineno-19-70" name="__codelineno-19-70" href="#__codelineno-19-70"></a><span class="c1">// @Failure      500  {object}  ErrorResponse</span>
+<a id="__codelineno-19-71" name="__codelineno-19-71" href="#__codelineno-19-71"></a><span class="c1">// @Router       /users [get]</span>
+<a id="__codelineno-19-72" name="__codelineno-19-72" href="#__codelineno-19-72"></a><span class="kd">func</span><span class="w"> </span><span class="nx">getUsers</span><span class="p">(</span><span class="nx">w</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-19-73" name="__codelineno-19-73" href="#__codelineno-19-73"></a><span class="w">    </span><span class="nx">usersMu</span><span class="p">.</span><span class="nx">RLock</span><span class="p">()</span>
+<a id="__codelineno-19-74" name="__codelineno-19-74" href="#__codelineno-19-74"></a><span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">usersMu</span><span class="p">.</span><span class="nx">RUnlock</span><span class="p">()</span>
+<a id="__codelineno-19-75" name="__codelineno-19-75" href="#__codelineno-19-75"></a>
+<a id="__codelineno-19-76" name="__codelineno-19-76" href="#__codelineno-19-76"></a><span class="w">    </span><span class="nx">userList</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">make</span><span class="p">([]</span><span class="nx">User</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">users</span><span class="p">))</span>
+<a id="__codelineno-19-77" name="__codelineno-19-77" href="#__codelineno-19-77"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">user</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">range</span><span class="w"> </span><span class="nx">users</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-19-78" name="__codelineno-19-78" href="#__codelineno-19-78"></a><span class="w">        </span><span class="nx">userList</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span><span class="nx">userList</span><span class="p">,</span><span class="w"> </span><span class="nx">user</span><span class="p">)</span>
+<a id="__codelineno-19-79" name="__codelineno-19-79" href="#__codelineno-19-79"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-19-80" name="__codelineno-19-80" href="#__codelineno-19-80"></a>
+<a id="__codelineno-19-81" name="__codelineno-19-81" href="#__codelineno-19-81"></a><span class="w">    </span><span class="nx">w</span><span class="p">.</span><span class="nx">Header</span><span class="p">().</span><span class="nx">Set</span><span class="p">(</span><span class="s">&quot;Content-Type&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;application/json&quot;</span><span class="p">)</span>
+<a id="__codelineno-19-82" name="__codelineno-19-82" href="#__codelineno-19-82"></a><span class="w">    </span><span class="nx">json</span><span class="p">.</span><span class="nx">NewEncoder</span><span class="p">(</span><span class="nx">w</span><span class="p">).</span><span class="nx">Encode</span><span class="p">(</span><span class="nx">userList</span><span class="p">)</span>
+<a id="__codelineno-19-83" name="__codelineno-19-83" href="#__codelineno-19-83"></a><span class="p">}</span>
+<a id="__codelineno-19-84" name="__codelineno-19-84" href="#__codelineno-19-84"></a>
+<a id="__codelineno-19-85" name="__codelineno-19-85" href="#__codelineno-19-85"></a><span class="c1">// @Summary      Get user by ID</span>
+<a id="__codelineno-19-86" name="__codelineno-19-86" href="#__codelineno-19-86"></a><span class="c1">// @Description  Get a single user by their ID</span>
+<a id="__codelineno-19-87" name="__codelineno-19-87" href="#__codelineno-19-87"></a><span class="c1">// @Tags         users</span>
+<a id="__codelineno-19-88" name="__codelineno-19-88" href="#__codelineno-19-88"></a><span class="c1">// @Accept       json</span>
+<a id="__codelineno-19-89" name="__codelineno-19-89" href="#__codelineno-19-89"></a><span class="c1">// @Produce      json</span>
+<a id="__codelineno-19-90" name="__codelineno-19-90" href="#__codelineno-19-90"></a><span class="c1">// @Param        id   path      int  true  &quot;User ID&quot;</span>
+<a id="__codelineno-19-91" name="__codelineno-19-91" href="#__codelineno-19-91"></a><span class="c1">// @Success      200  {object}  User</span>
+<a id="__codelineno-19-92" name="__codelineno-19-92" href="#__codelineno-19-92"></a><span class="c1">// @Failure      404  {object}  ErrorResponse</span>
+<a id="__codelineno-19-93" name="__codelineno-19-93" href="#__codelineno-19-93"></a><span class="c1">// @Router       /users/{id} [get]</span>
+<a id="__codelineno-19-94" name="__codelineno-19-94" href="#__codelineno-19-94"></a><span class="kd">func</span><span class="w"> </span><span class="nx">getUser</span><span class="p">(</span><span class="nx">w</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-19-95" name="__codelineno-19-95" href="#__codelineno-19-95"></a><span class="w">    </span><span class="nx">vars</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">mux</span><span class="p">.</span><span class="nx">Vars</span><span class="p">(</span><span class="nx">r</span><span class="p">)</span>
+<a id="__codelineno-19-96" name="__codelineno-19-96" href="#__codelineno-19-96"></a><span class="w">    </span><span class="nx">id</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">strconv</span><span class="p">.</span><span class="nx">Atoi</span><span class="p">(</span><span class="nx">vars</span><span class="p">[</span><span class="s">&quot;id&quot;</span><span class="p">])</span>
+<a id="__codelineno-19-97" name="__codelineno-19-97" href="#__codelineno-19-97"></a>
+<a id="__codelineno-19-98" name="__codelineno-19-98" href="#__codelineno-19-98"></a><span class="w">    </span><span class="nx">usersMu</span><span class="p">.</span><span class="nx">RLock</span><span class="p">()</span>
+<a id="__codelineno-19-99" name="__codelineno-19-99" href="#__codelineno-19-99"></a><span class="w">    </span><span class="nx">user</span><span class="p">,</span><span class="w"> </span><span class="nx">exists</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">users</span><span class="p">[</span><span class="nx">id</span><span class="p">]</span>
+<a id="__codelineno-19-100" name="__codelineno-19-100" href="#__codelineno-19-100"></a><span class="w">    </span><span class="nx">usersMu</span><span class="p">.</span><span class="nx">RUnlock</span><span class="p">()</span>
+<a id="__codelineno-19-101" name="__codelineno-19-101" href="#__codelineno-19-101"></a>
+<a id="__codelineno-19-102" name="__codelineno-19-102" href="#__codelineno-19-102"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">!</span><span class="nx">exists</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-19-103" name="__codelineno-19-103" href="#__codelineno-19-103"></a><span class="w">        </span><span class="nx">w</span><span class="p">.</span><span class="nx">WriteHeader</span><span class="p">(</span><span class="nx">http</span><span class="p">.</span><span class="nx">StatusNotFound</span><span class="p">)</span>
+<a id="__codelineno-19-104" name="__codelineno-19-104" href="#__codelineno-19-104"></a><span class="w">        </span><span class="nx">json</span><span class="p">.</span><span class="nx">NewEncoder</span><span class="p">(</span><span class="nx">w</span><span class="p">).</span><span class="nx">Encode</span><span class="p">(</span><span class="nx">ErrorResponse</span><span class="p">{</span><span class="nx">Error</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;User not found&quot;</span><span class="p">})</span>
+<a id="__codelineno-19-105" name="__codelineno-19-105" href="#__codelineno-19-105"></a><span class="w">        </span><span class="k">return</span>
+<a id="__codelineno-19-106" name="__codelineno-19-106" href="#__codelineno-19-106"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-19-107" name="__codelineno-19-107" href="#__codelineno-19-107"></a>
+<a id="__codelineno-19-108" name="__codelineno-19-108" href="#__codelineno-19-108"></a><span class="w">    </span><span class="nx">w</span><span class="p">.</span><span class="nx">Header</span><span class="p">().</span><span class="nx">Set</span><span class="p">(</span><span class="s">&quot;Content-Type&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;application/json&quot;</span><span class="p">)</span>
+<a id="__codelineno-19-109" name="__codelineno-19-109" href="#__codelineno-19-109"></a><span class="w">    </span><span class="nx">json</span><span class="p">.</span><span class="nx">NewEncoder</span><span class="p">(</span><span class="nx">w</span><span class="p">).</span><span class="nx">Encode</span><span class="p">(</span><span class="nx">user</span><span class="p">)</span>
+<a id="__codelineno-19-110" name="__codelineno-19-110" href="#__codelineno-19-110"></a><span class="p">}</span>
+<a id="__codelineno-19-111" name="__codelineno-19-111" href="#__codelineno-19-111"></a>
+<a id="__codelineno-19-112" name="__codelineno-19-112" href="#__codelineno-19-112"></a><span class="c1">// @Summary      Create user</span>
+<a id="__codelineno-19-113" name="__codelineno-19-113" href="#__codelineno-19-113"></a><span class="c1">// @Description  Create a new user</span>
+<a id="__codelineno-19-114" name="__codelineno-19-114" href="#__codelineno-19-114"></a><span class="c1">// @Tags         users</span>
+<a id="__codelineno-19-115" name="__codelineno-19-115" href="#__codelineno-19-115"></a><span class="c1">// @Accept       json</span>
+<a id="__codelineno-19-116" name="__codelineno-19-116" href="#__codelineno-19-116"></a><span class="c1">// @Produce      json</span>
+<a id="__codelineno-19-117" name="__codelineno-19-117" href="#__codelineno-19-117"></a><span class="c1">// @Param        user  body      CreateUserRequest  true  &quot;User data&quot;</span>
+<a id="__codelineno-19-118" name="__codelineno-19-118" href="#__codelineno-19-118"></a><span class="c1">// @Success      201   {object}  User</span>
+<a id="__codelineno-19-119" name="__codelineno-19-119" href="#__codelineno-19-119"></a><span class="c1">// @Failure      400   {object}  ErrorResponse</span>
+<a id="__codelineno-19-120" name="__codelineno-19-120" href="#__codelineno-19-120"></a><span class="c1">// @Security     BearerAuth</span>
+<a id="__codelineno-19-121" name="__codelineno-19-121" href="#__codelineno-19-121"></a><span class="c1">// @Router       /users [post]</span>
+<a id="__codelineno-19-122" name="__codelineno-19-122" href="#__codelineno-19-122"></a><span class="kd">func</span><span class="w"> </span><span class="nx">createUser</span><span class="p">(</span><span class="nx">w</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-19-123" name="__codelineno-19-123" href="#__codelineno-19-123"></a><span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">req</span><span class="w"> </span><span class="nx">CreateUserRequest</span>
+<a id="__codelineno-19-124" name="__codelineno-19-124" href="#__codelineno-19-124"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">json</span><span class="p">.</span><span class="nx">NewDecoder</span><span class="p">(</span><span class="nx">r</span><span class="p">.</span><span class="nx">Body</span><span class="p">).</span><span class="nx">Decode</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">req</span><span class="p">);</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-19-125" name="__codelineno-19-125" href="#__codelineno-19-125"></a><span class="w">        </span><span class="nx">w</span><span class="p">.</span><span class="nx">WriteHeader</span><span class="p">(</span><span class="nx">http</span><span class="p">.</span><span class="nx">StatusBadRequest</span><span class="p">)</span>
+<a id="__codelineno-19-126" name="__codelineno-19-126" href="#__codelineno-19-126"></a><span class="w">        </span><span class="nx">json</span><span class="p">.</span><span class="nx">NewEncoder</span><span class="p">(</span><span class="nx">w</span><span class="p">).</span><span class="nx">Encode</span><span class="p">(</span><span class="nx">ErrorResponse</span><span class="p">{</span><span class="nx">Error</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Invalid JSON&quot;</span><span class="p">})</span>
+<a id="__codelineno-19-127" name="__codelineno-19-127" href="#__codelineno-19-127"></a><span class="w">        </span><span class="k">return</span>
+<a id="__codelineno-19-128" name="__codelineno-19-128" href="#__codelineno-19-128"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-19-129" name="__codelineno-19-129" href="#__codelineno-19-129"></a>
+<a id="__codelineno-19-130" name="__codelineno-19-130" href="#__codelineno-19-130"></a><span class="w">    </span><span class="nx">usersMu</span><span class="p">.</span><span class="nx">Lock</span><span class="p">()</span>
+<a id="__codelineno-19-131" name="__codelineno-19-131" href="#__codelineno-19-131"></a><span class="w">    </span><span class="nx">user</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">User</span><span class="p">{</span>
+<a id="__codelineno-19-132" name="__codelineno-19-132" href="#__codelineno-19-132"></a><span class="w">        </span><span class="nx">ID</span><span class="p">:</span><span class="w">        </span><span class="nx">nextUserID</span><span class="p">,</span>
+<a id="__codelineno-19-133" name="__codelineno-19-133" href="#__codelineno-19-133"></a><span class="w">        </span><span class="nx">Username</span><span class="p">:</span><span class="w">  </span><span class="nx">req</span><span class="p">.</span><span class="nx">Username</span><span class="p">,</span>
+<a id="__codelineno-19-134" name="__codelineno-19-134" href="#__codelineno-19-134"></a><span class="w">        </span><span class="nx">Email</span><span class="p">:</span><span class="w">     </span><span class="nx">req</span><span class="p">.</span><span class="nx">Email</span><span class="p">,</span>
+<a id="__codelineno-19-135" name="__codelineno-19-135" href="#__codelineno-19-135"></a><span class="w">        </span><span class="nx">FullName</span><span class="p">:</span><span class="w">  </span><span class="nx">req</span><span class="p">.</span><span class="nx">FullName</span><span class="p">,</span>
+<a id="__codelineno-19-136" name="__codelineno-19-136" href="#__codelineno-19-136"></a><span class="w">        </span><span class="nx">CreatedAt</span><span class="p">:</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">(),</span>
+<a id="__codelineno-19-137" name="__codelineno-19-137" href="#__codelineno-19-137"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-19-138" name="__codelineno-19-138" href="#__codelineno-19-138"></a><span class="w">    </span><span class="nx">users</span><span class="p">[</span><span class="nx">nextUserID</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">user</span>
+<a id="__codelineno-19-139" name="__codelineno-19-139" href="#__codelineno-19-139"></a><span class="w">    </span><span class="nx">nextUserID</span><span class="o">++</span>
+<a id="__codelineno-19-140" name="__codelineno-19-140" href="#__codelineno-19-140"></a><span class="w">    </span><span class="nx">usersMu</span><span class="p">.</span><span class="nx">Unlock</span><span class="p">()</span>
+<a id="__codelineno-19-141" name="__codelineno-19-141" href="#__codelineno-19-141"></a>
+<a id="__codelineno-19-142" name="__codelineno-19-142" href="#__codelineno-19-142"></a><span class="w">    </span><span class="nx">w</span><span class="p">.</span><span class="nx">Header</span><span class="p">().</span><span class="nx">Set</span><span class="p">(</span><span class="s">&quot;Content-Type&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;application/json&quot;</span><span class="p">)</span>
+<a id="__codelineno-19-143" name="__codelineno-19-143" href="#__codelineno-19-143"></a><span class="w">    </span><span class="nx">w</span><span class="p">.</span><span class="nx">WriteHeader</span><span class="p">(</span><span class="nx">http</span><span class="p">.</span><span class="nx">StatusCreated</span><span class="p">)</span>
+<a id="__codelineno-19-144" name="__codelineno-19-144" href="#__codelineno-19-144"></a><span class="w">    </span><span class="nx">json</span><span class="p">.</span><span class="nx">NewEncoder</span><span class="p">(</span><span class="nx">w</span><span class="p">).</span><span class="nx">Encode</span><span class="p">(</span><span class="nx">user</span><span class="p">)</span>
+<a id="__codelineno-19-145" name="__codelineno-19-145" href="#__codelineno-19-145"></a><span class="p">}</span>
+<a id="__codelineno-19-146" name="__codelineno-19-146" href="#__codelineno-19-146"></a>
+<a id="__codelineno-19-147" name="__codelineno-19-147" href="#__codelineno-19-147"></a><span class="c1">// @Summary      Delete user</span>
+<a id="__codelineno-19-148" name="__codelineno-19-148" href="#__codelineno-19-148"></a><span class="c1">// @Description  Delete a user by ID</span>
+<a id="__codelineno-19-149" name="__codelineno-19-149" href="#__codelineno-19-149"></a><span class="c1">// @Tags         users</span>
+<a id="__codelineno-19-150" name="__codelineno-19-150" href="#__codelineno-19-150"></a><span class="c1">// @Accept       json</span>
+<a id="__codelineno-19-151" name="__codelineno-19-151" href="#__codelineno-19-151"></a><span class="c1">// @Produce      json</span>
+<a id="__codelineno-19-152" name="__codelineno-19-152" href="#__codelineno-19-152"></a><span class="c1">// @Param        id   path      int  true  &quot;User ID&quot;</span>
+<a id="__codelineno-19-153" name="__codelineno-19-153" href="#__codelineno-19-153"></a><span class="c1">// @Success      204</span>
+<a id="__codelineno-19-154" name="__codelineno-19-154" href="#__codelineno-19-154"></a><span class="c1">// @Failure      404  {object}  ErrorResponse</span>
+<a id="__codelineno-19-155" name="__codelineno-19-155" href="#__codelineno-19-155"></a><span class="c1">// @Security     BearerAuth</span>
+<a id="__codelineno-19-156" name="__codelineno-19-156" href="#__codelineno-19-156"></a><span class="c1">// @Router       /users/{id} [delete]</span>
+<a id="__codelineno-19-157" name="__codelineno-19-157" href="#__codelineno-19-157"></a><span class="kd">func</span><span class="w"> </span><span class="nx">deleteUser</span><span class="p">(</span><span class="nx">w</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-19-158" name="__codelineno-19-158" href="#__codelineno-19-158"></a><span class="w">    </span><span class="nx">vars</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">mux</span><span class="p">.</span><span class="nx">Vars</span><span class="p">(</span><span class="nx">r</span><span class="p">)</span>
+<a id="__codelineno-19-159" name="__codelineno-19-159" href="#__codelineno-19-159"></a><span class="w">    </span><span class="nx">id</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">strconv</span><span class="p">.</span><span class="nx">Atoi</span><span class="p">(</span><span class="nx">vars</span><span class="p">[</span><span class="s">&quot;id&quot;</span><span class="p">])</span>
+<a id="__codelineno-19-160" name="__codelineno-19-160" href="#__codelineno-19-160"></a>
+<a id="__codelineno-19-161" name="__codelineno-19-161" href="#__codelineno-19-161"></a><span class="w">    </span><span class="nx">usersMu</span><span class="p">.</span><span class="nx">Lock</span><span class="p">()</span>
+<a id="__codelineno-19-162" name="__codelineno-19-162" href="#__codelineno-19-162"></a><span class="w">    </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">exists</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">users</span><span class="p">[</span><span class="nx">id</span><span class="p">]</span>
+<a id="__codelineno-19-163" name="__codelineno-19-163" href="#__codelineno-19-163"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">exists</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-19-164" name="__codelineno-19-164" href="#__codelineno-19-164"></a><span class="w">        </span><span class="nb">delete</span><span class="p">(</span><span class="nx">users</span><span class="p">,</span><span class="w"> </span><span class="nx">id</span><span class="p">)</span>
+<a id="__codelineno-19-165" name="__codelineno-19-165" href="#__codelineno-19-165"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-19-166" name="__codelineno-19-166" href="#__codelineno-19-166"></a><span class="w">    </span><span class="nx">usersMu</span><span class="p">.</span><span class="nx">Unlock</span><span class="p">()</span>
+<a id="__codelineno-19-167" name="__codelineno-19-167" href="#__codelineno-19-167"></a>
+<a id="__codelineno-19-168" name="__codelineno-19-168" href="#__codelineno-19-168"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">!</span><span class="nx">exists</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-19-169" name="__codelineno-19-169" href="#__codelineno-19-169"></a><span class="w">        </span><span class="nx">w</span><span class="p">.</span><span class="nx">WriteHeader</span><span class="p">(</span><span class="nx">http</span><span class="p">.</span><span class="nx">StatusNotFound</span><span class="p">)</span>
+<a id="__codelineno-19-170" name="__codelineno-19-170" href="#__codelineno-19-170"></a><span class="w">        </span><span class="nx">json</span><span class="p">.</span><span class="nx">NewEncoder</span><span class="p">(</span><span class="nx">w</span><span class="p">).</span><span class="nx">Encode</span><span class="p">(</span><span class="nx">ErrorResponse</span><span class="p">{</span><span class="nx">Error</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;User not found&quot;</span><span class="p">})</span>
+<a id="__codelineno-19-171" name="__codelineno-19-171" href="#__codelineno-19-171"></a><span class="w">        </span><span class="k">return</span>
+<a id="__codelineno-19-172" name="__codelineno-19-172" href="#__codelineno-19-172"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-19-173" name="__codelineno-19-173" href="#__codelineno-19-173"></a>
+<a id="__codelineno-19-174" name="__codelineno-19-174" href="#__codelineno-19-174"></a><span class="w">    </span><span class="nx">w</span><span class="p">.</span><span class="nx">WriteHeader</span><span class="p">(</span><span class="nx">http</span><span class="p">.</span><span class="nx">StatusNoContent</span><span class="p">)</span>
+<a id="__codelineno-19-175" name="__codelineno-19-175" href="#__codelineno-19-175"></a><span class="p">}</span>
+<a id="__codelineno-19-176" name="__codelineno-19-176" href="#__codelineno-19-176"></a>
+<a id="__codelineno-19-177" name="__codelineno-19-177" href="#__codelineno-19-177"></a><span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-19-178" name="__codelineno-19-178" href="#__codelineno-19-178"></a><span class="w">    </span><span class="nx">r</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">mux</span><span class="p">.</span><span class="nx">NewRouter</span><span class="p">()</span>
+<a id="__codelineno-19-179" name="__codelineno-19-179" href="#__codelineno-19-179"></a>
+<a id="__codelineno-19-180" name="__codelineno-19-180" href="#__codelineno-19-180"></a><span class="w">    </span><span class="c1">// API routes</span>
+<a id="__codelineno-19-181" name="__codelineno-19-181" href="#__codelineno-19-181"></a><span class="w">    </span><span class="nx">api</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">PathPrefix</span><span class="p">(</span><span class="s">&quot;/api/v1&quot;</span><span class="p">).</span><span class="nx">Subrouter</span><span class="p">()</span>
+<a id="__codelineno-19-182" name="__codelineno-19-182" href="#__codelineno-19-182"></a><span class="w">    </span><span class="nx">api</span><span class="p">.</span><span class="nx">HandleFunc</span><span class="p">(</span><span class="s">&quot;/users&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">getUsers</span><span class="p">).</span><span class="nx">Methods</span><span class="p">(</span><span class="s">&quot;GET&quot;</span><span class="p">)</span>
+<a id="__codelineno-19-183" name="__codelineno-19-183" href="#__codelineno-19-183"></a><span class="w">    </span><span class="nx">api</span><span class="p">.</span><span class="nx">HandleFunc</span><span class="p">(</span><span class="s">&quot;/users/{id}&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">getUser</span><span class="p">).</span><span class="nx">Methods</span><span class="p">(</span><span class="s">&quot;GET&quot;</span><span class="p">)</span>
+<a id="__codelineno-19-184" name="__codelineno-19-184" href="#__codelineno-19-184"></a><span class="w">    </span><span class="nx">api</span><span class="p">.</span><span class="nx">HandleFunc</span><span class="p">(</span><span class="s">&quot;/users&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">createUser</span><span class="p">).</span><span class="nx">Methods</span><span class="p">(</span><span class="s">&quot;POST&quot;</span><span class="p">)</span>
+<a id="__codelineno-19-185" name="__codelineno-19-185" href="#__codelineno-19-185"></a><span class="w">    </span><span class="nx">api</span><span class="p">.</span><span class="nx">HandleFunc</span><span class="p">(</span><span class="s">&quot;/users/{id}&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">deleteUser</span><span class="p">).</span><span class="nx">Methods</span><span class="p">(</span><span class="s">&quot;DELETE&quot;</span><span class="p">)</span>
+<a id="__codelineno-19-186" name="__codelineno-19-186" href="#__codelineno-19-186"></a>
+<a id="__codelineno-19-187" name="__codelineno-19-187" href="#__codelineno-19-187"></a><span class="w">    </span><span class="c1">// Swagger UI</span>
+<a id="__codelineno-19-188" name="__codelineno-19-188" href="#__codelineno-19-188"></a><span class="w">    </span><span class="nx">r</span><span class="p">.</span><span class="nx">PathPrefix</span><span class="p">(</span><span class="s">&quot;/swagger/&quot;</span><span class="p">).</span><span class="nx">Handler</span><span class="p">(</span><span class="nx">httpSwagger</span><span class="p">.</span><span class="nx">WrapHandler</span><span class="p">)</span>
+<a id="__codelineno-19-189" name="__codelineno-19-189" href="#__codelineno-19-189"></a>
+<a id="__codelineno-19-190" name="__codelineno-19-190" href="#__codelineno-19-190"></a><span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;Server starting on :8080&quot;</span><span class="p">)</span>
+<a id="__codelineno-19-191" name="__codelineno-19-191" href="#__codelineno-19-191"></a><span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;Swagger UI: http://localhost:8080/swagger/index.html&quot;</span><span class="p">)</span>
+<a id="__codelineno-19-192" name="__codelineno-19-192" href="#__codelineno-19-192"></a><span class="w">    </span><span class="nx">http</span><span class="p">.</span><span class="nx">ListenAndServe</span><span class="p">(</span><span class="s">&quot;:8080&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="p">)</span>
+<a id="__codelineno-19-193" name="__codelineno-19-193" href="#__codelineno-19-193"></a><span class="p">}</span>
+</code></pre></div>
+<p><strong>Generate docs</strong>:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>swag<span class="w"> </span>init
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>go<span class="w"> </span>run<span class="w"> </span>main.go
+</code></pre></div></p>
+<p>Visit: <code>http://localhost:8080/swagger/index.html</code></p>
+<hr />
+<h2 id="512-best-practices">5.12 Best Practices<a class="headerlink" href="#512-best-practices" title="Permanent link">&para;</a></h2>
+<h3 id="do">✅ DO<a class="headerlink" href="#do" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Keep descriptions clear and concise</strong></li>
+<li><strong>Provide example values</strong> for all fields</li>
+<li><strong>Document all error responses</strong></li>
+<li><strong>Group related endpoints</strong> with tags</li>
+<li><strong>Include authentication requirements</strong></li>
+<li><strong>Update docs when API changes</strong></li>
+<li><strong>Use consistent naming</strong></li>
+<li><strong>Document query parameters</strong> with defaults</li>
+<li><strong>Provide sample requests</strong></li>
+</ol>
+<h3 id="dont">❌ DON'T<a class="headerlink" href="#dont" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Don't leave descriptions empty</strong></li>
+<li><strong>Don't forget to regenerate</strong> after code changes</li>
+<li><strong>Don't document internal endpoints</strong></li>
+<li><strong>Don't use unclear names</strong></li>
+<li><strong>Don't skip authentication docs</strong></li>
+<li><strong>Don't duplicate information</strong></li>
+</ol>
+<hr />
+<h2 id="513-swagger-ui-features">5.13 Swagger UI Features<a class="headerlink" href="#513-swagger-ui-features" title="Permanent link">&para;</a></h2>
+<h3 id="interactive-testing">Interactive Testing<a class="headerlink" href="#interactive-testing" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Try it out</strong>: Test endpoints directly</li>
+<li><strong>Authorization</strong>: Add tokens/credentials</li>
+<li><strong>Request/Response</strong>: See actual data</li>
+<li><strong>Code samples</strong>: Generated client code</li>
+</ol>
+<h3 id="filtering">Filtering<a class="headerlink" href="#filtering" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Filter by tags</li>
+<li>Search endpoints</li>
+<li>Collapse/expand sections</li>
+</ul>
+<h3 id="export">Export<a class="headerlink" href="#export" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Download OpenAPI spec (JSON/YAML)</li>
+<li>Import into Postman</li>
+<li>Generate client SDKs</li>
+</ul>
+<hr />
+<h2 id="514-alternative-documentation-tools">5.14 Alternative Documentation Tools<a class="headerlink" href="#514-alternative-documentation-tools" title="Permanent link">&para;</a></h2>
+<h3 id="postman">Postman<a class="headerlink" href="#postman" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Import OpenAPI spec</li>
+<li>Create collections</li>
+<li>Share with team</li>
+</ul>
+<h3 id="redoc">ReDoc<a class="headerlink" href="#redoc" title="Permanent link">&para;</a></h3>
+<ul>
+<li>More visually appealing</li>
+<li>Better for reading</li>
+<li>Less interactive</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="kn">import</span><span class="w"> </span><span class="s">&quot;github.com/go-openapi/runtime/middleware&quot;</span>
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="nx">r</span><span class="p">.</span><span class="nx">Handle</span><span class="p">(</span><span class="s">&quot;/docs&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">middleware</span><span class="p">.</span><span class="nx">Redoc</span><span class="p">(</span><span class="nx">middleware</span><span class="p">.</span><span class="nx">RedocOpts</span><span class="p">{</span>
+<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a><span class="w">    </span><span class="nx">SpecURL</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/swagger.json&quot;</span><span class="p">,</span>
+<a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a><span class="p">},</span><span class="w"> </span><span class="kc">nil</span><span class="p">))</span>
+</code></pre></div>
+<h3 id="stoplight">Stoplight<a class="headerlink" href="#stoplight" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Design-first approach</li>
+<li>Collaboration features</li>
+<li>Mock servers</li>
+</ul>
+<hr />
+<h2 id="515-continuous-documentation">5.15 Continuous Documentation<a class="headerlink" href="#515-continuous-documentation" title="Permanent link">&para;</a></h2>
+<h3 id="in-cicd-pipeline">In CI/CD Pipeline<a class="headerlink" href="#in-cicd-pipeline" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="c1"># .github/workflows/docs.yml</span>
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Generate API Docs</span>
+<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>
+<a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a><span class="nt">on</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">push</span><span class="p p-Indicator">]</span>
+<a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a>
+<a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a><span class="nt">jobs</span><span class="p">:</span>
+<a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a><span class="w">  </span><span class="nt">docs</span><span class="p">:</span>
+<a id="__codelineno-22-8" name="__codelineno-22-8" href="#__codelineno-22-8"></a><span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+<a id="__codelineno-22-9" name="__codelineno-22-9" href="#__codelineno-22-9"></a><span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
+<a id="__codelineno-22-10" name="__codelineno-22-10" href="#__codelineno-22-10"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v2</span>
+<a id="__codelineno-22-11" name="__codelineno-22-11" href="#__codelineno-22-11"></a>
+<a id="__codelineno-22-12" name="__codelineno-22-12" href="#__codelineno-22-12"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Set up Go</span>
+<a id="__codelineno-22-13" name="__codelineno-22-13" href="#__codelineno-22-13"></a><span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/setup-go@v2</span>
+<a id="__codelineno-22-14" name="__codelineno-22-14" href="#__codelineno-22-14"></a>
+<a id="__codelineno-22-15" name="__codelineno-22-15" href="#__codelineno-22-15"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Install swag</span>
+<a id="__codelineno-22-16" name="__codelineno-22-16" href="#__codelineno-22-16"></a><span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">go install github.com/swaggo/swag/cmd/swag@latest</span>
+<a id="__codelineno-22-17" name="__codelineno-22-17" href="#__codelineno-22-17"></a>
+<a id="__codelineno-22-18" name="__codelineno-22-18" href="#__codelineno-22-18"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Generate docs</span>
+<a id="__codelineno-22-19" name="__codelineno-22-19" href="#__codelineno-22-19"></a><span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">swag init</span>
+<a id="__codelineno-22-20" name="__codelineno-22-20" href="#__codelineno-22-20"></a>
+<a id="__codelineno-22-21" name="__codelineno-22-21" href="#__codelineno-22-21"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deploy docs</span>
+<a id="__codelineno-22-22" name="__codelineno-22-22" href="#__codelineno-22-22"></a><span class="w">        </span><span class="c1"># Deploy to S3, GitHub Pages, etc.</span>
+</code></pre></div>
+<h3 id="documentation-versioning">Documentation Versioning<a class="headerlink" href="#documentation-versioning" title="Permanent link">&para;</a></h3>
+<p>Keep docs in sync with API versions:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>docs/
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>  v1/
+<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>    swagger.json
+<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a>    swagger.yaml
+<a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a>  v2/
+<a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a>    swagger.json
+<a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a>    swagger.yaml
+</code></pre></div>
+<hr />
+<h2 id="key-takeaways">Key Takeaways<a class="headerlink" href="#key-takeaways" title="Permanent link">&para;</a></h2>
+<p>✅ <strong>Swagger/OpenAPI</strong> is the industry standard for API documentation<br />
+✅ <strong>swaggo/swag</strong> generates docs from code annotations<br />
+✅ <strong>Interactive UI</strong> lets developers test APIs<br />
+✅ <strong>Annotations</strong> describe endpoints, parameters, responses<br />
+✅ <strong>Models</strong> document request/response structures<br />
+✅ <strong>Authentication</strong> can be tested in Swagger UI<br />
+✅ <strong>Keep docs updated</strong> - regenerate after changes<br />
+✅ <strong>Best developer experience</strong> comes from good documentation  </p>
+<hr />
+<h2 id="whats-next">What's Next?<a class="headerlink" href="#whats-next" title="Permanent link">&para;</a></h2>
+<p>Unit 6 will cover Caching Strategies to improve API performance and reduce database load! 🚀</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
