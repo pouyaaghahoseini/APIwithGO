@@ -9,6 +9,10 @@
       
       
       
+        <link rel="prev" href="../../unit3/unit3_exercise2_solution/">
+      
+      
+        <link rel="next" href="../unit4_exercise1/">
       
       
         
@@ -19,7 +23,7 @@
     
     
       
-        <title>Unit 4: API Versioning - APIwithGO</title>
+        <title>Lesson - APIwithGO</title>
       
     
     
@@ -106,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Unit 4: API Versioning
+              Lesson
             
           </span>
         </div>
@@ -496,7 +500,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../unit2/unit2_basic_http_server.md" class="md-nav__link">
+      <a href="../../unit2/unit2_building_http_servers/" class="md-nav__link">
         
   
   
@@ -661,7 +665,7 @@
   <span class="md-ellipsis">
     
   
-    Unit 3 - API Structure & Routing
+    Unit 3 - Authentication & Authorization
   
 
     
@@ -677,7 +681,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Unit 3 - API Structure & Routing
+    Unit 3 - Authentication & Authorization
   
 
           </label>
@@ -690,7 +694,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../unit3/unit3_api_structure_and_routing.md" class="md-nav__link">
+      <a href="../../unit3/unit3_authentication_and_authorization/" class="md-nav__link">
         
   
   
@@ -834,18 +838,20 @@
       
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
         
           
           <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
@@ -855,7 +861,7 @@
   <span class="md-ellipsis">
     
   
-    Unit 4 - Authentication & Authorization
+    Unit 4 - API Versioning
   
 
     
@@ -866,12 +872,12 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             
   
-    Unit 4 - Authentication & Authorization
+    Unit 4 - API Versioning
   
 
           </label>
@@ -881,10 +887,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../unit4_authentication_and_authorization.md" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lesson
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -900,6 +933,437 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#41-why-api-versioning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Why API Versioning?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#42-what-constitutes-a-breaking-change" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 What Constitutes a Breaking Change?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.2 What Constitutes a Breaking Change?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#breaking-changes-require-new-version" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Breaking Changes (Require New Version)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#non-breaking-changes-safe-to-deploy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Non-Breaking Changes (Safe to Deploy)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#43-common-versioning-strategies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 Common Versioning Strategies
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.3 Common Versioning Strategies">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#strategy-1-url-path-versioning-most-common" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Strategy 1: URL Path Versioning (Most Common)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#strategy-2-request-header-versioning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Strategy 2: Request Header Versioning
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#strategy-3-query-parameter-versioning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Strategy 3: Query Parameter Versioning
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#strategy-4-content-negotiation-accept-header" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Strategy 4: Content Negotiation (Accept Header)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#44-implementing-url-path-versioning-recommended" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 Implementing URL Path Versioning (Recommended)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.4 Implementing URL Path Versioning (Recommended)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Basic Setup
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#45-code-organization-for-multiple-versions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.5 Code Organization for Multiple Versions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.5 Code Organization for Multiple Versions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#recommended-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recommended Structure
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-handlersv1usergo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example: handlers/v1/user.go
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-handlersv2usergo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example: handlers/v2/user.go
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-maingo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example: main.go
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#46-sharing-code-between-versions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.6 Sharing Code Between Versions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.6 Sharing Code Between Versions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#share-common-logic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Share Common Logic
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#convert-to-version-specific-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Convert to Version-Specific Models
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#47-deprecation-strategy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.7 Deprecation Strategy
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.7 Deprecation Strategy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#announce-deprecation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Announce Deprecation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deprecation-timeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deprecation Timeline
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#48-version-detection-and-analytics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.8 Version Detection and Analytics
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#49-migration-strategies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.9 Migration Strategies
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.9 Migration Strategies">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#strategy-1-gradual-migration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Strategy 1: Gradual Migration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#strategy-2-dual-write" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Strategy 2: Dual Write
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#strategy-3-adapter-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Strategy 3: Adapter Pattern
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#410-best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.10 Best Practices
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.10 Best Practices">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#do" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ DO
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dont" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❌ DON'T
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#411-complete-example-two-versions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.11 Complete Example: Two Versions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Takeaways
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whats-next" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What's Next?
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1049,7 +1513,7 @@
   <span class="md-ellipsis">
     
   
-    Unit 5 - API Versioning
+    Unit 5 - API Documentation
   
 
     
@@ -1065,7 +1529,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Unit 5 - API Versioning
+    Unit 5 - API Documentation
   
 
           </label>
@@ -1078,7 +1542,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../unit5/unit5_api_versioning.md" class="md-nav__link">
+      <a href="../../unit5/unit5_api_documentation/" class="md-nav__link">
         
   
   
@@ -1243,7 +1707,7 @@
   <span class="md-ellipsis">
     
   
-    Unit 6 - Swagger/OpenAPI Documentation
+    Unit 6 - Caching Strategies
   
 
     
@@ -1259,7 +1723,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Unit 6 - Swagger/OpenAPI Documentation
+    Unit 6 - Caching Strategies
   
 
           </label>
@@ -1272,7 +1736,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../unit6/unit6_swagger_openapi_documentation.md" class="md-nav__link">
+      <a href="../../unit6/unit6_caching_strategies/" class="md-nav__link">
         
   
   
@@ -1437,7 +1901,7 @@
   <span class="md-ellipsis">
     
   
-    Unit 7 - Caching
+    Unit 7 - Pagination and Filtering
   
 
     
@@ -1453,7 +1917,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Unit 7 - Caching
+    Unit 7 - Pagination and Filtering
   
 
           </label>
@@ -1466,7 +1930,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../unit7/unit7_caching.md" class="md-nav__link">
+      <a href="../../unit7/unit7_pagination_filtering/" class="md-nav__link">
         
   
   
@@ -1631,7 +2095,7 @@
   <span class="md-ellipsis">
     
   
-    Unit 8 - Pagination
+    Unit 8 - Rate Limiting
   
 
     
@@ -1647,7 +2111,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Unit 8 - Pagination
+    Unit 8 - Rate Limiting
   
 
           </label>
@@ -1660,7 +2124,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../unit8/unit8_pagination.md" class="md-nav__link">
+      <a href="../../unit8/unit8_rate_limiting/" class="md-nav__link">
         
   
   
@@ -1780,6 +2244,310 @@
     
   
     Exercise 2 Solution
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Unit 9 - Integration and Best Practices
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Unit 9 - Integration and Best Practices
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unit9/unit9_testing_integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lesson
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unit9/unit9_exercise1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercise 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unit9/unit9_exercise1_solution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercise 1 Solution
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unit9/unit9_exercise2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercise 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unit9/unit9_exercise2_solution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercise 2 Solution
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Unit 10 - Complete Integration Example
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Unit 10 - Complete Integration Example
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unit10/unit10_deployment_production/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lesson
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unit10/complete_integration_example/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Complete Integration Example
   
 
     

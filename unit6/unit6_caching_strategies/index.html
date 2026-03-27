@@ -9,6 +9,10 @@
       
       
       
+        <link rel="prev" href="../../unit5/unit5_exercise2_solution/">
+      
+      
+        <link rel="next" href="../unit6_exercise1/">
       
       
         
@@ -19,7 +23,7 @@
     
     
       
-        <title>Unit 6: Caching Strategies - APIwithGO</title>
+        <title>Lesson - APIwithGO</title>
       
     
     
@@ -106,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Unit 6: Caching Strategies
+              Lesson
             
           </span>
         </div>
@@ -496,7 +500,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../unit2/unit2_basic_http_server.md" class="md-nav__link">
+      <a href="../../unit2/unit2_building_http_servers/" class="md-nav__link">
         
   
   
@@ -661,7 +665,7 @@
   <span class="md-ellipsis">
     
   
-    Unit 3 - API Structure & Routing
+    Unit 3 - Authentication & Authorization
   
 
     
@@ -677,7 +681,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Unit 3 - API Structure & Routing
+    Unit 3 - Authentication & Authorization
   
 
           </label>
@@ -690,7 +694,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../unit3/unit3_api_structure_and_routing.md" class="md-nav__link">
+      <a href="../../unit3/unit3_authentication_and_authorization/" class="md-nav__link">
         
   
   
@@ -855,7 +859,7 @@
   <span class="md-ellipsis">
     
   
-    Unit 4 - Authentication & Authorization
+    Unit 4 - API Versioning
   
 
     
@@ -871,7 +875,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Unit 4 - Authentication & Authorization
+    Unit 4 - API Versioning
   
 
           </label>
@@ -884,7 +888,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../unit4/unit4_authentication_and_authorization.md" class="md-nav__link">
+      <a href="../../unit4/unit4_api_versioning/" class="md-nav__link">
         
   
   
@@ -1049,7 +1053,7 @@
   <span class="md-ellipsis">
     
   
-    Unit 5 - API Versioning
+    Unit 5 - API Documentation
   
 
     
@@ -1065,7 +1069,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Unit 5 - API Versioning
+    Unit 5 - API Documentation
   
 
           </label>
@@ -1078,7 +1082,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../unit5/unit5_api_versioning.md" class="md-nav__link">
+      <a href="../../unit5/unit5_api_documentation/" class="md-nav__link">
         
   
   
@@ -1222,18 +1226,20 @@
       
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
         
           
           <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
@@ -1243,7 +1249,7 @@
   <span class="md-ellipsis">
     
   
-    Unit 6 - Swagger/OpenAPI Documentation
+    Unit 6 - Caching Strategies
   
 
     
@@ -1254,12 +1260,12 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_7">
             <span class="md-nav__icon md-icon"></span>
             
   
-    Unit 6 - Swagger/OpenAPI Documentation
+    Unit 6 - Caching Strategies
   
 
           </label>
@@ -1269,10 +1275,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../unit6_swagger_openapi_documentation.md" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lesson
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1288,6 +1321,521 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#61-why-caching" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Why Caching?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.1 Why Caching?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-problem-expensive-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Problem: Expensive Operations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-solution-caching" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Solution: Caching
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#benefits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Benefits
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#62-when-to-cache" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 When to Cache?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.2 When to Cache?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#good-candidates-for-caching" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ Good Candidates for Caching
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#poor-candidates-for-caching" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❌ Poor Candidates for Caching
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#63-caching-strategies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 Caching Strategies
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.3 Caching Strategies">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#strategy-1-cache-aside-lazy-loading" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Strategy 1: Cache-Aside (Lazy Loading)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#strategy-2-write-through" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Strategy 2: Write-Through
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#strategy-3-write-behind-write-back" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Strategy 3: Write-Behind (Write-Back)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#strategy-4-read-through" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Strategy 4: Read-Through
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#64-in-memory-caching-go" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4 In-Memory Caching (Go)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.4 In-Memory Caching (Go)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-syncmap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Using sync.Map
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#65-redis-caching" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.5 Redis Caching
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.5 Redis Caching">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#setting-up-redis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setting Up Redis
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#basic-redis-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Basic Redis Usage
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#redis-cache-wrapper" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Redis Cache Wrapper
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#66-cache-invalidation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.6 Cache Invalidation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.6 Cache Invalidation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#time-based-expiration-ttl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Time-Based Expiration (TTL)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#manual-invalidation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Manual Invalidation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pattern-based-invalidation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pattern-Based Invalidation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#event-based-invalidation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Event-Based Invalidation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#67-cache-key-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.7 Cache Key Design
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.7 Cache Key Design">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Best Practices
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#68-cache-warming" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.8 Cache Warming
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.8 Cache Warming">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cold-start-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cold Start Problem
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#solution-pre-populate-cache" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Solution: Pre-populate Cache
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#69-complete-example-cached-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.9 Complete Example: Cached API
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#610-monitoring-cache-performance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.10 Monitoring Cache Performance
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.10 Monitoring Cache Performance">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Metrics
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#611-best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.11 Best Practices
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.11 Best Practices">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#do" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ DO
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dont" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❌ DON'T
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#612-caching-anti-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.12 Caching Anti-Patterns
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.12 Caching Anti-Patterns">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cache-stampede" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cache Stampede
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cache-penetration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cache Penetration
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Takeaways
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whats-next" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What's Next?
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1437,7 +1985,7 @@
   <span class="md-ellipsis">
     
   
-    Unit 7 - Caching
+    Unit 7 - Pagination and Filtering
   
 
     
@@ -1453,7 +2001,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Unit 7 - Caching
+    Unit 7 - Pagination and Filtering
   
 
           </label>
@@ -1466,7 +2014,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../unit7/unit7_caching.md" class="md-nav__link">
+      <a href="../../unit7/unit7_pagination_filtering/" class="md-nav__link">
         
   
   
@@ -1631,7 +2179,7 @@
   <span class="md-ellipsis">
     
   
-    Unit 8 - Pagination
+    Unit 8 - Rate Limiting
   
 
     
@@ -1647,7 +2195,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Unit 8 - Pagination
+    Unit 8 - Rate Limiting
   
 
           </label>
@@ -1660,7 +2208,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../unit8/unit8_pagination.md" class="md-nav__link">
+      <a href="../../unit8/unit8_rate_limiting/" class="md-nav__link">
         
   
   
@@ -1780,6 +2328,310 @@
     
   
     Exercise 2 Solution
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Unit 9 - Integration and Best Practices
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Unit 9 - Integration and Best Practices
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unit9/unit9_testing_integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lesson
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unit9/unit9_exercise1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercise 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unit9/unit9_exercise1_solution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercise 1 Solution
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unit9/unit9_exercise2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercise 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unit9/unit9_exercise2_solution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercise 2 Solution
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Unit 10 - Complete Integration Example
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Unit 10 - Complete Integration Example
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unit10/unit10_deployment_production/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lesson
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unit10/complete_integration_example/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Complete Integration Example
   
 
     
