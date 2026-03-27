@@ -38,46 +38,54 @@ nav:
       - Exercise 2: unit1/unit1_exercise2.md
       - Exercise 2 Solution: unit1/unit1_exercise2_solution.md
   - Unit 2 - Basic HTTP Server:
-      - Lesson: unit2/unit2_basic_http_server.md
+      - Lesson: unit2/unit2_building_http_servers.md
       - Exercise 1: unit2/unit2_exercise1.md
       - Exercise 1 Solution: unit2/unit2_exercise1_solution.md
       - Exercise 2: unit2/unit2_exercise2.md
       - Exercise 2 Solution: unit2/unit2_exercise2_solution.md
-  - Unit 3 - API Structure & Routing:
-      - Lesson: unit3/unit3_api_structure_and_routing.md
+  - Unit 3 - Authentication & Authorization:
+      - Lesson: unit3/unit3_authentication_and_authorization.md
       - Exercise 1: unit3/unit3_exercise1.md
       - Exercise 1 Solution: unit3/unit3_exercise1_solution.md
       - Exercise 2: unit3/unit3_exercise2.md
       - Exercise 2 Solution: unit3/unit3_exercise2_solution.md
-  - Unit 4 - Authentication & Authorization:
-      - Lesson: unit4/unit4_authentication_and_authorization.md
+  - Unit 4 - API Versioning:
+      - Lesson: unit4/unit4_api_versioning.md
       - Exercise 1: unit4/unit4_exercise1.md
       - Exercise 1 Solution: unit4/unit4_exercise1_solution.md
       - Exercise 2: unit4/unit4_exercise2.md
       - Exercise 2 Solution: unit4/unit4_exercise2_solution.md
-  - Unit 5 - API Versioning:
-      - Lesson: unit5/unit5_api_versioning.md
+  - Unit 5 - API Documentation:
+      - Lesson: unit5/unit5_api_documentation.md
       - Exercise 1: unit5/unit5_exercise1.md
       - Exercise 1 Solution: unit5/unit5_exercise1_solution.md
       - Exercise 2: unit5/unit5_exercise2.md
       - Exercise 2 Solution: unit5/unit5_exercise2_solution.md
-  - Unit 6 - Swagger/OpenAPI Documentation:
-      - Lesson: unit6/unit6_swagger_openapi_documentation.md
+  - Unit 6 - Caching Strategies:
+      - Lesson: unit6/unit6_caching_strategies.md
       - Exercise 1: unit6/unit6_exercise1.md
       - Exercise 1 Solution: unit6/unit6_exercise1_solution.md
       - Exercise 2: unit6/unit6_exercise2.md
       - Exercise 2 Solution: unit6/unit6_exercise2_solution.md
-  - Unit 7 - Caching:
-      - Lesson: unit7/unit7_caching.md
+  - Unit 7 - Pagination and Filtering:
+      - Lesson: unit7/unit7_pagination_filtering.md
       - Exercise 1: unit7/unit7_exercise1.md
       - Exercise 1 Solution: unit7/unit7_exercise1_solution.md
       - Exercise 2: unit7/unit7_exercise2.md
       - Exercise 2 Solution: unit7/unit7_exercise2_solution.md
-  - Unit 8 - Pagination:
-      - Lesson: unit8/unit8_pagination.md
+  - Unit 8 - Rate Limiting:
+      - Lesson: unit8/unit8_rate_limiting.md
       - Exercise 1: unit8/unit8_exercise1.md
       - Exercise 1 Solution: unit8/unit8_exercise1_solution.md
       - Exercise 2: unit8/unit8_exercise2.md
       - Exercise 2 Solution: unit8/unit8_exercise2_solution.md
-  # - Unit 9 - Rate Limiting:
-  # - Unit 10 - Complete Integration Example:
+  - Unit 9 - Integration and Best Practices:
+      - Lesson: unit9/unit9_testing_integration.md
+      - Exercise 1: unit9/unit9_exercise1.md
+      - Exercise 1 Solution: unit9/unit9_exercise1_solution.md
+      - Exercise 2: unit9/unit9_exercise2.md
+      - Exercise 2 Solution: unit9/unit9_exercise2_solution.md
+  - Unit 10 - Complete Integration Example:
+      - Lesson: unit10/unit10_deployment_production.md
+      - Complete Integration Example: unit10/unit10_complete_integration_example.md
+      - 
