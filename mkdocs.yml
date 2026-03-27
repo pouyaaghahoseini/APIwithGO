@@ -55,9 +55,29 @@ nav:
       - Exercise 1 Solution: unit4/unit4_exercise1_solution.md
       - Exercise 2: unit4/unit4_exercise2.md
       - Exercise 2 Solution: unit4/unit4_exercise2_solution.md
-  # - Unit 5 - API Versioning:
-  # - Unit 6 - Swagger/OpenAPI Documentation:
-  # - Unit 7 - Caching:
-  # - Unit 8 - Pagination:
+  - Unit 5 - API Versioning:
+      - Lesson: unit5/unit5_api_versioning.md
+      - Exercise 1: unit5/unit5_exercise1.md
+      - Exercise 1 Solution: unit5/unit5_exercise1_solution.md
+      - Exercise 2: unit5/unit5_exercise2.md
+      - Exercise 2 Solution: unit5/unit5_exercise2_solution.md
+  - Unit 6 - Swagger/OpenAPI Documentation:
+      - Lesson: unit6/unit6_swagger_openapi_documentation.md
+      - Exercise 1: unit6/unit6_exercise1.md
+      - Exercise 1 Solution: unit6/unit6_exercise1_solution.md
+      - Exercise 2: unit6/unit6_exercise2.md
+      - Exercise 2 Solution: unit6/unit6_exercise2_solution.md
+  - Unit 7 - Caching:
+      - Lesson: unit7/unit7_caching.md
+      - Exercise 1: unit7/unit7_exercise1.md
+      - Exercise 1 Solution: unit7/unit7_exercise1_solution.md
+      - Exercise 2: unit7/unit7_exercise2.md
+      - Exercise 2 Solution: unit7/unit7_exercise2_solution.md
+  - Unit 8 - Pagination:
+      - Lesson: unit8/unit8_pagination.md
+      - Exercise 1: unit8/unit8_exercise1.md
+      - Exercise 1 Solution: unit8/unit8_exercise1_solution.md
+      - Exercise 2: unit8/unit8_exercise2.md
+      - Exercise 2 Solution: unit8/unit8_exercise2_solution.md
   # - Unit 9 - Rate Limiting:
   # - Unit 10 - Complete Integration Example:
