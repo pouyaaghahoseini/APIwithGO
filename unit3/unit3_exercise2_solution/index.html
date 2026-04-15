@@ -9,10 +9,6 @@
       
       
       
-        <link rel="prev" href="../unit3_exercise2/">
-      
-      
-        <link rel="next" href="../../unit4/unit4_api_versioning/">
       
       
         
@@ -23,7 +19,7 @@
     
     
       
-        <title>Exercise 2 Solution - APIwithGO</title>
+        <title>Unit 3 - Exercise 2 Solution: Multi-Tenant Blog Platform with RBAC - APIwithGO</title>
       
     
     
@@ -110,7 +106,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Exercise 2 Solution
+              Unit 3 - Exercise 2 Solution: Multi-Tenant Blog Platform with RBAC
             
           </span>
         </div>
@@ -588,20 +584,18 @@
       
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
         
           
           <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
@@ -622,7 +616,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             
@@ -696,34 +690,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../unit3_exercise1_solution/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Exercise 1 Solution
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../unit3_exercise2/" class="md-nav__link">
         
   
@@ -740,197 +706,6 @@
   
 
       </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Exercise 2 Solution
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Exercise 2 Solution
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#full-solution-code" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Full Solution Code
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#key-rbac-concepts-explained" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Key RBAC Concepts Explained
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Key RBAC Concepts Explained">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-permission-helper-functions" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1. Permission Helper Functions
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-optional-vs-required-authentication" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2. Optional vs Required Authentication
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-resource-ownership-checks" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3. Resource Ownership Checks
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#4-filtering-by-permission" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4. Filtering by Permission
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#5-multi-role-middleware" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5. Multi-Role Middleware
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#permission-matrix-implementation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Permission Matrix Implementation
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#testing-complete-rbac-flow" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Testing Complete RBAC Flow
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#what-youve-learned" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        What You've Learned
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1053,34 +828,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../../unit4/unit4_exercise1_solution/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Exercise 1 Solution
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../unit4/unit4_exercise2/" class="md-nav__link">
         
   
@@ -1089,34 +836,6 @@
     
   
     Exercise 2
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../unit4/unit4_exercise2_solution/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Exercise 2 Solution
   
 
     
@@ -1247,34 +966,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../../unit5/unit5_exercise1_solution/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Exercise 1 Solution
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../unit5/unit5_exercise2/" class="md-nav__link">
         
   
@@ -1283,34 +974,6 @@
     
   
     Exercise 2
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../unit5/unit5_exercise2_solution/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Exercise 2 Solution
   
 
     
@@ -1441,34 +1104,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../../unit6/unit6_exercise1_solution/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Exercise 1 Solution
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../unit6/unit6_exercise2/" class="md-nav__link">
         
   
@@ -1477,34 +1112,6 @@
     
   
     Exercise 2
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../unit6/unit6_exercise2_solution/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Exercise 2 Solution
   
 
     
@@ -1635,34 +1242,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../../unit7/unit7_exercise1_solution/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Exercise 1 Solution
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../unit7/unit7_exercise2/" class="md-nav__link">
         
   
@@ -1671,34 +1250,6 @@
     
   
     Exercise 2
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../unit7/unit7_exercise2_solution/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Exercise 2 Solution
   
 
     
@@ -1829,34 +1380,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../../unit8/unit8_exercise1_solution/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Exercise 1 Solution
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../unit8/unit8_exercise2/" class="md-nav__link">
         
   
@@ -1865,34 +1388,6 @@
     
   
     Exercise 2
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../unit8/unit8_exercise2_solution/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Exercise 2 Solution
   
 
     
@@ -2023,34 +1518,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../../unit9/unit9_exercise1_solution/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Exercise 1 Solution
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../unit9/unit9_exercise2/" class="md-nav__link">
         
   
@@ -2059,34 +1526,6 @@
     
   
     Exercise 2
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../unit9/unit9_exercise2_solution/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Exercise 2 Solution
   
 
     
