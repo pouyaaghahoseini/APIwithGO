@@ -9,6 +9,10 @@
       
       
       
+        <link rel="prev" href="../unit2_exercise1/">
+      
+      
+        <link rel="next" href="../unit2_exercise2/">
       
       
         
@@ -19,7 +23,7 @@
     
     
       
-        <title>Unit 2 - Exercise 1 Solution: Task Management API - APIwithGO</title>
+        <title>Exercise 1 Solution - APIwithGO</title>
       
     
     
@@ -106,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Unit 2 - Exercise 1 Solution: Task Management API
+              Exercise 1 Solution
             
           </span>
         </div>
@@ -446,18 +450,20 @@
       
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
@@ -478,7 +484,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -549,6 +555,336 @@
                 
   
   
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercise 1 Solution
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercise 1 Solution
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#full-solution-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Full Solution Code
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-concepts-explained" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Concepts Explained
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Key Concepts Explained">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-middleware-order" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Middleware Order
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-capturing-status-code-in-middleware" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Capturing Status Code in Middleware
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-query-parameter-filtering" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Query Parameter Filtering
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-validation-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Validation Pattern
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-proper-http-status-codes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Proper HTTP Status Codes
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bonus-solutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bonus Solutions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Bonus Solutions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bonus-1-statistics-endpoint" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bonus 1: Statistics Endpoint
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bonus-2-partial-updates-patch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bonus 2: Partial Updates (PATCH)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bonus-3-bulk-delete" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bonus 3: Bulk Delete
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bonus-4-search" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bonus 4: Search
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bonus-5-sorting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bonus 5: Sorting
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing-the-solution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Testing the Solution
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Testing the Solution">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#test-script" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test Script
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-mistakes-and-solutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common Mistakes and Solutions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Common Mistakes and Solutions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mistake-1-not-closing-request-body" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mistake 1: Not Closing Request Body
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mistake-2-setting-headers-after-writing-body" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mistake 2: Setting Headers After Writing Body
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mistake-3-not-handling-invalid-json" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mistake 3: Not Handling Invalid JSON
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mistake-4-race-conditions-with-map" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mistake 4: Race Conditions with Map
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-youve-learned" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What You've Learned
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
   
   
     <li class="md-nav__item">
@@ -560,6 +896,34 @@
     
   
     Exercise 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../unit2_exercise2_solution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercise 2 Solution
   
 
     
