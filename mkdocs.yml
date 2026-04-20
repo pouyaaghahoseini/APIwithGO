@@ -46,7 +46,8 @@ nav:
   - Unit 3 - Authentication & Authorization:
       - Lesson: unit3/unit3_authentication_and_authorization.md
       - Exercise 1: unit3/unit3_exercise1.md
-    #   - Exercise 1 Solution: unit3/unit3_exercise1_solution.md
+      - Exercise 1 Solution: unit3/unit3_exercise1_solution.md
+      - Exercise 1 Solution Files: unit3/Exercise1Solution.md
       - Exercise 2: unit3/unit3_exercise2.md
     #   - Exercise 2 Solution: unit3/unit3_exercise2_solution.md
   - Unit 4 - API Versioning:

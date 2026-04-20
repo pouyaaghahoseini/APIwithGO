@@ -209,6 +209,28 @@ var (
 type contextKey string
 const UserContextKey contextKey = "user"
 
+
+// =============================================================================
+// CORS MIDDLEWARE
+// =============================================================================
+
+func corsMiddleware(next http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		// Allow requests from any origin (for development)
+		w.Header().Set("Access-Control-Allow-Origin", "*")
+		w.Header().Set("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS")
+		w.Header().Set("Access-Control-Allow-Headers", "Content-Type, Authorization")
+
+		// Handle preflight OPTIONS request
+		if r.Method == "OPTIONS" {
+			w.WriteHeader(http.StatusOK)
+			return
+		}
+
+		next.ServeHTTP(w, r)
+	})
+}
+
 // TODO: Implement registerHandler
 func registerHandler(w http.ResponseWriter, r *http.Request) {
     // Hints:
@@ -311,6 +333,9 @@ func respondError(w http.ResponseWriter, status int, message string) {
 func main() {
     r := mux.NewRouter()
     
+    // Apply CORS middleware to all routes
+	  r.Use(corsMiddleware)
+
     // TODO: Register routes
     // Public: /register, /login
     // Protected: /api/profile (GET, PUT), /api/password (PUT), /api/account (DELETE)

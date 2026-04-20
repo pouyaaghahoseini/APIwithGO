@@ -876,6 +876,334 @@ func generateRandomCode(length int) string {
 }
 ```
 
+### Bonus 4: Password Reset
+
+```go
+type PasswordResetToken struct {
+    UserID    int
+    Token     string
+    ExpiresAt time.Time
+}
+
+var (
+    resetTokens = make(map[string]PasswordResetToken)
+    resetMu     sync.RWMutex
+)
+
+// POST /forgot-password - Request password reset
+func forgotPasswordHandler(w http.ResponseWriter, r *http.Request) {
+    var req struct {
+        Email string `json:"email"`
+    }
+
+    if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
+        respondError(w, http.StatusBadRequest, "Invalid JSON")
+        return
+    }
+    defer r.Body.Close()
+
+    // Validate email format
+    if err := validateEmail(req.Email); err != nil {
+        respondError(w, http.StatusBadRequest, err.Error())
+        return
+    }
+
+    // Find user by email
+    usersMu.RLock()
+    userID, exists := emails[req.Email]
+    usersMu.RUnlock()
+
+    // Always return success to prevent email enumeration
+    // In production, only send email if user exists
+    if exists {
+        // Generate secure reset token
+        token := generateSecureToken()
+        
+        resetMu.Lock()
+        resetTokens[token] = PasswordResetToken{
+            UserID:    userID,
+            Token:     token,
+            ExpiresAt: time.Now().Add(1 * time.Hour), // Token valid for 1 hour
+        }
+        resetMu.Unlock()
+
+        // In production: send email with reset link
+        // Example: https://yourapp.com/reset-password?token=xxx
+        fmt.Printf("Password reset token for %s: %s\n", req.Email, token)
+    }
+
+    respondJSON(w, http.StatusOK, map[string]string{
+        "message": "If an account with that email exists, a password reset link has been sent",
+    })
+}
+
+// POST /reset-password - Use token to set new password
+func resetPasswordHandler(w http.ResponseWriter, r *http.Request) {
+    var req struct {
+        Token       string `json:"token"`
+        NewPassword string `json:"new_password"`
+    }
+
+    if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
+        respondError(w, http.StatusBadRequest, "Invalid JSON")
+        return
+    }
+    defer r.Body.Close()
+
+    // Validate token
+    if req.Token == "" {
+        respondError(w, http.StatusBadRequest, "Reset token is required")
+        return
+    }
+
+    // Validate new password
+    if err := validatePassword(req.NewPassword); err != nil {
+        respondError(w, http.StatusBadRequest, err.Error())
+        return
+    }
+
+    // Find and validate reset token
+    resetMu.RLock()
+    resetToken, exists := resetTokens[req.Token]
+    resetMu.RUnlock()
+
+    if !exists {
+        respondError(w, http.StatusBadRequest, "Invalid or expired reset token")
+        return
+    }
+
+    if time.Now().After(resetToken.ExpiresAt) {
+        // Clean up expired token
+        resetMu.Lock()
+        delete(resetTokens, req.Token)
+        resetMu.Unlock()
+        respondError(w, http.StatusBadRequest, "Reset token has expired")
+        return
+    }
+
+    // Hash new password
+    hashedPassword, err := bcrypt.GenerateFromPassword([]byte(req.NewPassword), bcrypt.DefaultCost)
+    if err != nil {
+        respondError(w, http.StatusInternalServerError, "Failed to process password")
+        return
+    }
+
+    // Update user password
+    usersMu.Lock()
+    user, userExists := users[resetToken.UserID]
+    if !userExists {
+        usersMu.Unlock()
+        respondError(w, http.StatusNotFound, "User not found")
+        return
+    }
+
+    user.PasswordHash = string(hashedPassword)
+    user.UpdatedAt = time.Now()
+    users[resetToken.UserID] = user
+    usersMu.Unlock()
+
+    // Delete used reset token (one-time use)
+    resetMu.Lock()
+    delete(resetTokens, req.Token)
+    resetMu.Unlock()
+
+    respondJSON(w, http.StatusOK, map[string]string{
+        "message": "Password has been reset successfully",
+    })
+}
+
+// Generate cryptographically secure token
+func generateSecureToken() string {
+    b := make([]byte, 32)
+    if _, err := rand.Read(b); err != nil {
+        // Fallback to UUID if crypto/rand fails
+        return uuid.New().String()
+    }
+    return base64.URLEncoding.EncodeToString(b)
+}
+
+// Add routes in main():
+// r.HandleFunc("/forgot-password", forgotPasswordHandler).Methods("POST")
+// r.HandleFunc("/reset-password", resetPasswordHandler).Methods("POST")
+```
+
+**Key Security Considerations:**
+- Token expires after 1 hour
+- One-time use (deleted after successful reset)
+- Same response whether email exists or not (prevents enumeration)
+- Cryptographically secure token generation
+
+### Bonus 5: User Search (Admin)
+
+```go
+// Admin middleware - requires admin role
+func adminMiddleware(next http.Handler) http.Handler {
+    return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+        claims, ok := getUserFromContext(r)
+        if !ok {
+            respondError(w, http.StatusUnauthorized, "Unauthorized")
+            return
+        }
+
+        if claims.Role != "admin" {
+            respondError(w, http.StatusForbidden, "Admin access required")
+            return
+        }
+
+        next.ServeHTTP(w, r)
+    })
+}
+
+// GET /api/admin/users?search=john - Search users (admin only)
+func adminSearchUsersHandler(w http.ResponseWriter, r *http.Request) {
+    // Get search query parameter
+    searchQuery := strings.ToLower(strings.TrimSpace(r.URL.Query().Get("search")))
+    
+    // Optional pagination parameters
+    page := 1
+    limit := 20
+    
+    if p := r.URL.Query().Get("page"); p != "" {
+        if parsed, err := strconv.Atoi(p); err == nil && parsed > 0 {
+            page = parsed
+        }
+    }
+    
+    if l := r.URL.Query().Get("limit"); l != "" {
+        if parsed, err := strconv.Atoi(l); err == nil && parsed > 0 && parsed <= 100 {
+            limit = parsed
+        }
+    }
+
+    // Search users
+    usersMu.RLock()
+    var results []User
+    
+    for _, user := range users {
+        // Search in username, email, and full name
+        if searchQuery == "" ||
+            strings.Contains(strings.ToLower(user.Username), searchQuery) ||
+            strings.Contains(strings.ToLower(user.Email), searchQuery) ||
+            strings.Contains(strings.ToLower(user.FullName), searchQuery) {
+            results = append(results, user)
+        }
+    }
+    usersMu.RUnlock()
+
+    // Sort by ID for consistent ordering
+    sort.Slice(results, func(i, j int) bool {
+        return results[i].ID < results[j].ID
+    })
+
+    // Apply pagination
+    total := len(results)
+    start := (page - 1) * limit
+    end := start + limit
+
+    if start > total {
+        start = total
+    }
+    if end > total {
+        end = total
+    }
+
+    paginatedResults := results[start:end]
+
+    // Return paginated response
+    respondJSON(w, http.StatusOK, map[string]interface{}{
+        "users": paginatedResults,
+        "pagination": map[string]interface{}{
+            "page":        page,
+            "limit":       limit,
+            "total":       total,
+            "total_pages": (total + limit - 1) / limit,
+        },
+    })
+}
+
+// Setup routes in main():
+func main() {
+    r := mux.NewRouter()
+
+    // Public routes
+    r.HandleFunc("/register", registerHandler).Methods("POST")
+    r.HandleFunc("/login", loginHandler).Methods("POST")
+    r.HandleFunc("/forgot-password", forgotPasswordHandler).Methods("POST")
+    r.HandleFunc("/reset-password", resetPasswordHandler).Methods("POST")
+
+    // Protected routes (authenticated users)
+    api := r.PathPrefix("/api").Subrouter()
+    api.Use(authMiddleware)
+
+    api.HandleFunc("/profile", getProfileHandler).Methods("GET")
+    api.HandleFunc("/profile", updateProfileHandler).Methods("PUT")
+    api.HandleFunc("/password", changePasswordHandler).Methods("PUT")
+    api.HandleFunc("/account", deleteAccountHandler).Methods("DELETE")
+
+    // Admin routes (requires admin role)
+    admin := api.PathPrefix("/admin").Subrouter()
+    admin.Use(adminMiddleware)
+    
+    admin.HandleFunc("/users", adminSearchUsersHandler).Methods("GET")
+
+    fmt.Println("Server starting on :8080")
+    http.ListenAndServe(":8080", r)
+}
+```
+
+**Testing Admin Search:**
+
+```bash
+# First, create an admin user (manually set role to "admin" in code or database)
+# Then login and use the token
+
+# Search for users with "john" in username, email, or full name
+curl -s "http://localhost:8080/api/admin/users?search=john" \
+  -H "Authorization: Bearer $ADMIN_TOKEN" | jq .
+
+# Get all users (no filter)
+curl -s "http://localhost:8080/api/admin/users" \
+  -H "Authorization: Bearer $ADMIN_TOKEN" | jq .
+
+# Paginated search
+curl -s "http://localhost:8080/api/admin/users?search=a&page=1&limit=10" \
+  -H "Authorization: Bearer $ADMIN_TOKEN" | jq .
+
+# Non-admin user gets 403 Forbidden
+curl -s "http://localhost:8080/api/admin/users" \
+  -H "Authorization: Bearer $USER_TOKEN" | jq .
+# Returns: {"error": "Admin access required"}
+```
+
+**Response Example:**
+```json
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "johndoe",
+      "email": "john@example.com",
+      "full_name": "John Doe",
+      "role": "user",
+      "created_at": "2024-01-15T10:30:00Z",
+      "updated_at": "2024-01-15T10:30:00Z"
+    }
+  ],
+  "pagination": {
+    "page": 1,
+    "limit": 20,
+    "total": 1,
+    "total_pages": 1
+  }
+}
+```
+
+**Key Features:**
+- Role-based access control (admin middleware)
+- Case-insensitive search across multiple fields
+- Pagination support with configurable limits
+- Returns 403 Forbidden for non-admin users
+
 ---
 
 ## Testing the Complete Solution
