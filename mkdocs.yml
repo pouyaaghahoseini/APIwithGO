@@ -47,9 +47,9 @@ nav:
       - Lesson: unit3/unit3_authentication_and_authorization.md
       - Exercise 1: unit3/unit3_exercise1.md
       - Exercise 1 Solution: unit3/unit3_exercise1_solution.md
-      - Exercise 1 Solution Files: unit3/Exercise1Solution.md
+      - Exercise 1 Solution Files: unit3/Exercise1Solution.zip
       - Exercise 2: unit3/unit3_exercise2.md
-    #   - Exercise 2 Solution: unit3/unit3_exercise2_solution.md
+      - Exercise 2 Solution: unit3/unit3_exercise2_solution.md
   - Unit 4 - API Versioning:
       - Lesson: unit4/unit4_api_versioning.md
       - Exercise 1: unit4/unit4_exercise1.md
@@ -89,3 +89,10 @@ nav:
   - Unit 10 - Complete Integration Example:
       - Lesson: unit10/unit10_deployment_production.md
       - Complete Integration Example: unit10/complete_integration_example.md
+  - Assignments:
+      - Assignment 1: assignments/assignment_library_units1-3.md
+      - Assignment 1 Template: assignments/assignment_library_template.go
+      - Assignment 1 Test Frontend: assignments/library-frontend.html
+    #   - Assignment 1 Solution: assignments/assignment_library_solution.md
+      # - Assignment 2: assignments/assignment2.md
+    #   - Assignment 2 Solution: assignments/assignment2_solution.md

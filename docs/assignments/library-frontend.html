@@ -1,0 +1,1519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LibraryHub - Library Management System</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap');
+
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #16213e;
+            --accent: #e94560;
+            --accent-light: #ff6b81;
+            --bg: #f8f9fa;
+            --surface: #ffffff;
+            --text: #1a1a2e;
+            --text-light: #6c757d;
+            --border: #dee2e6;
+            --success: #28a745;
+            --warning: #ffc107;
+            --info: #17a2b8;
+            --shadow: rgba(26, 26, 46, 0.1);
+            --shadow-lg: rgba(26, 26, 46, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf0 100%);
+            color: var(--text);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 2rem;
+            box-shadow: 0 4px 16px var(--shadow-lg);
+            margin-bottom: 2rem;
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .logo::before {
+            content: '📚';
+            font-size: 2rem;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .user-badge {
+            padding: 0.75rem 1.25rem;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .roles-container {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .role-badge {
+            padding: 0.25rem 0.75rem;
+            background: var(--accent);
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Auth Screen */
+        .auth-screen {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 2rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+        }
+
+        .auth-card {
+            background: var(--surface);
+            padding: 3rem;
+            border-radius: 24px;
+            box-shadow: 0 16px 48px var(--shadow-lg);
+            width: 100%;
+            max-width: 500px;
+            animation: slideUp 0.6s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .auth-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.75rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+            text-align: center;
+        }
+
+        .auth-subtitle {
+            color: var(--text-light);
+            margin-bottom: 2.5rem;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        input, select {
+            width: 100%;
+            padding: 1rem 1.25rem;
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: all 0.3s ease;
+            background: var(--surface);
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 4px rgba(233, 69, 96, 0.1);
+        }
+
+        .btn {
+            width: 100%;
+            padding: 1.125rem;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn:hover {
+            background: var(--accent-light);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(233, 69, 96, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text);
+            border: 2px solid var(--border);
+            margin-top: 0.75rem;
+        }
+
+        .btn-secondary:hover {
+            background: var(--bg);
+            border-color: var(--primary);
+            box-shadow: none;
+        }
+
+        .btn-small {
+            width: auto;
+            padding: 0.625rem 1.25rem;
+            font-size: 0.875rem;
+        }
+
+        .btn-logout {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-logout:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Main Layout */
+        .main-layout {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 2rem;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            background: var(--surface);
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 16px var(--shadow);
+            height: fit-content;
+            position: sticky;
+            top: 2rem;
+        }
+
+        .nav-section {
+            margin-bottom: 2rem;
+        }
+
+        .nav-section-title {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        .nav-item {
+            padding: 1rem 1.25rem;
+            margin-bottom: 0.5rem;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-weight: 500;
+        }
+
+        .nav-item:hover {
+            background: var(--bg);
+            transform: translateX(4px);
+        }
+
+        .nav-item.active {
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+            color: white;
+            box-shadow: 0 4px 12px rgba(233, 69, 96, 0.3);
+        }
+
+        .nav-icon {
+            font-size: 1.25rem;
+        }
+
+        /* Content */
+        .content {
+            background: var(--surface);
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 16px var(--shadow);
+            min-height: 700px;
+        }
+
+        .content-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 2px solid var(--border);
+        }
+
+        .content-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.25rem;
+            color: var(--primary);
+        }
+
+        .actions {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        /* Books Grid */
+        .books-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .book-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 2rem;
+            border-radius: 16px;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .book-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, var(--accent) 0%, var(--accent-light) 100%);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .book-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 16px 32px var(--shadow-lg);
+            border-color: var(--accent);
+        }
+
+        .book-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .book-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .book-title {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+        }
+
+        .book-author {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .book-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .badge {
+            padding: 0.375rem 0.875rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .badge-available {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .badge-borrowed {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .badge-archived {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        /* Requests */
+        .requests-list {
+            display: grid;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .request-card {
+            background: var(--bg);
+            padding: 2rem;
+            border-radius: 16px;
+            border-left: 6px solid var(--accent);
+            transition: all 0.3s ease;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .request-card:hover {
+            transform: translateX(8px);
+            box-shadow: 0 8px 24px var(--shadow);
+        }
+
+        .request-info {
+            flex: 1;
+        }
+
+        .request-book-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        .request-meta {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .request-actions {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .badge-pending {
+            background: #cce5ff;
+            color: #004085;
+        }
+
+        .badge-approved {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .badge-denied {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(8px);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background: var(--surface);
+            padding: 2.5rem;
+            border-radius: 24px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            animation: slideUp 0.3s ease;
+            box-shadow: 0 24px 64px var(--shadow-lg);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 2px solid var(--border);
+        }
+
+        .modal-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--primary);
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--text-light);
+            padding: 0;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.2s ease;
+        }
+
+        .close-btn:hover {
+            background: var(--bg);
+            color: var(--text);
+            transform: rotate(90deg);
+        }
+
+        /* Alert */
+        .alert {
+            padding: 1.25rem 1.75rem;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            animation: slideDown 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .alert-success {
+            background: #d4edda;
+            color: #155724;
+            border-left: 6px solid #28a745;
+        }
+
+        .alert-error {
+            background: #f8d7da;
+            color: #721c24;
+            border-left: 6px solid #dc3545;
+        }
+
+        /* Search */
+        .search-bar {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 1.125rem 3rem 1.125rem 1.5rem;
+            border: 2px solid var(--border);
+            border-radius: 16px;
+            font-size: 1.125rem;
+            transition: all 0.3s ease;
+        }
+
+        .search-input:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 4px rgba(233, 69, 96, 0.1);
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 1.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5rem;
+            color: var(--text-light);
+        }
+
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 5rem 2rem;
+            color: var(--text-light);
+        }
+
+        .empty-state-icon {
+            font-size: 5rem;
+            margin-bottom: 1.5rem;
+            opacity: 0.3;
+        }
+
+        .empty-state-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 0.75rem;
+            color: var(--text);
+        }
+
+        /* Loading */
+        .loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 4rem;
+        }
+
+        .spinner {
+            width: 56px;
+            height: 56px;
+            border: 5px solid var(--border);
+            border-top-color: var(--accent);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Test Accounts Info */
+        .test-accounts {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+            border-radius: 12px;
+            font-size: 0.9rem;
+        }
+
+        .test-accounts strong {
+            display: block;
+            margin-bottom: 0.75rem;
+            color: var(--primary);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .main-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                position: static;
+            }
+
+            .books-grid {
+                grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            }
+        }
+
+        @media (max-width: 640px) {
+            .logo {
+                font-size: 1.75rem;
+            }
+
+            .content {
+                padding: 1.5rem;
+            }
+
+            .auth-card {
+                padding: 2rem;
+            }
+
+            .books-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Auth Screen -->
+    <div id="authScreen" class="auth-screen">
+        <div class="auth-card">
+            <h1 class="auth-title">📚 LibraryHub</h1>
+            <p class="auth-subtitle">Your Digital Library Management System</p>
+
+            <div id="alertContainer"></div>
+
+            <div id="loginForm">
+                <form onsubmit="handleLogin(event)">
+                    <div class="form-group">
+                        <label for="loginEmail">Email</label>
+                        <input type="email" id="loginEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPassword">Password</label>
+                        <input type="password" id="loginPassword" required>
+                    </div>
+                    <button type="submit" class="btn">Sign In</button>
+                    <button type="button" class="btn btn-secondary" onclick="showRegisterForm()">Create Account</button>
+                </form>
+
+                <div class="test-accounts">
+                    <strong>🧪 Test Accounts:</strong>
+                    SuperAdmin: super@library.com / super123<br>
+                    Admin: admin@library.com / admin123<br>
+                    Librarian: librarian@library.com / lib123<br>
+                    Borrower: borrower@library.com / borrow123<br>
+                    Guest: guest@library.com / guest123
+                </div>
+            </div>
+
+            <div id="registerForm" class="hidden">
+                <form onsubmit="handleRegister(event)">
+                    <div class="form-group">
+                        <label for="registerName">Name</label>
+                        <input type="text" id="registerName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="registerEmail">Email</label>
+                        <input type="email" id="registerEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="registerPassword">Password</label>
+                        <input type="password" id="registerPassword" required minlength="8">
+                    </div>
+                    <button type="submit" class="btn">Create Account</button>
+                    <button type="button" class="btn btn-secondary" onclick="showLoginForm()">Back to Sign In</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main App -->
+    <div id="mainApp" class="hidden">
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">LibraryHub</div>
+                <div class="user-info">
+                    <div class="user-badge">
+                        <span id="userName"></span>
+                        <div class="roles-container" id="userRoles"></div>
+                    </div>
+                    <button class="btn btn-logout btn-small" onclick="handleLogout()">Logout</button>
+                </div>
+            </div>
+        </header>
+
+        <div class="container">
+            <div class="main-layout">
+                <aside class="sidebar">
+                    <div class="nav-section">
+                        <div class="nav-section-title">Browse</div>
+                        <div class="nav-item active" onclick="showView('books')">
+                            <span class="nav-icon">📖</span>
+                            <span>All Books</span>
+                        </div>
+                    </div>
+
+                    <div class="nav-section" id="borrowerNav" class="hidden">
+                        <div class="nav-section-title">My Library</div>
+                        <div class="nav-item" onclick="showView('myRequests')">
+                            <span class="nav-icon">📝</span>
+                            <span>My Requests</span>
+                        </div>
+                        <div class="nav-item" onclick="showView('myBooks')">
+                            <span class="nav-icon">📚</span>
+                            <span>Borrowed Books</span>
+                        </div>
+                        <div class="nav-item" onclick="showView('myHistory')">
+                            <span class="nav-icon">📜</span>
+                            <span>History</span>
+                        </div>
+                    </div>
+
+                    <div class="nav-section" id="librarianNav" class="hidden">
+                        <div class="nav-section-title">Librarian</div>
+                        <div class="nav-item" onclick="showView('requests')">
+                            <span class="nav-icon">✅</span>
+                            <span>Pending Requests</span>
+                        </div>
+                        <div class="nav-item" onclick="showView('addBook')">
+                            <span class="nav-icon">➕</span>
+                            <span>Add Book</span>
+                        </div>
+                    </div>
+
+                    <div class="nav-section" id="adminNav" class="hidden">
+                        <div class="nav-section-title">Admin</div>
+                        <div class="nav-item" onclick="showView('users')">
+                            <span class="nav-icon">👥</span>
+                            <span>Manage Users</span>
+                        </div>
+                    </div>
+                </aside>
+
+                <main class="content">
+                    <!-- Books View -->
+                    <div id="booksView">
+                        <div class="content-header">
+                            <h2 class="content-title">Library Catalog</h2>
+                        </div>
+
+                        <div class="search-bar">
+                            <input type="text" class="search-input" id="searchInput" placeholder="Search by title, author, or genre..." oninput="handleSearch()">
+                            <span class="search-icon">🔍</span>
+                        </div>
+
+                        <div id="booksContainer" class="books-grid"></div>
+                    </div>
+
+                    <!-- My Requests View -->
+                    <div id="myRequestsView" class="hidden">
+                        <div class="content-header">
+                            <h2 class="content-title">My Requests</h2>
+                        </div>
+                        <div id="myRequestsContainer" class="requests-list"></div>
+                    </div>
+
+                    <!-- My Books View -->
+                    <div id="myBooksView" class="hidden">
+                        <div class="content-header">
+                            <h2 class="content-title">Currently Borrowed</h2>
+                        </div>
+                        <div id="myBooksContainer" class="books-grid"></div>
+                    </div>
+
+                    <!-- My History View -->
+                    <div id="myHistoryView" class="hidden">
+                        <div class="content-header">
+                            <h2 class="content-title">Borrowing History</h2>
+                        </div>
+                        <div id="myHistoryContainer"></div>
+                    </div>
+
+                    <!-- Pending Requests View -->
+                    <div id="requestsView" class="hidden">
+                        <div class="content-header">
+                            <h2 class="content-title">Pending Requests</h2>
+                        </div>
+                        <div id="requestsContainer" class="requests-list"></div>
+                    </div>
+
+                    <!-- Add Book View -->
+                    <div id="addBookView" class="hidden">
+                        <div class="content-header">
+                            <h2 class="content-title">Add New Book</h2>
+                        </div>
+                        <form onsubmit="handleAddBook(event)" style="max-width: 600px;">
+                            <div class="form-group">
+                                <label for="bookTitle">Title</label>
+                                <input type="text" id="bookTitle" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="bookAuthor">Author</label>
+                                <input type="text" id="bookAuthor" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="bookGenre">Genre</label>
+                                <input type="text" id="bookGenre" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="bookISBN">ISBN</label>
+                                <input type="text" id="bookISBN" required>
+                            </div>
+                            <button type="submit" class="btn">Add Book</button>
+                        </form>
+                    </div>
+
+                    <!-- Users View -->
+                    <div id="usersView" class="hidden">
+                        <div class="content-header">
+                            <h2 class="content-title">Manage Users</h2>
+                        </div>
+                        <div id="usersContainer"></div>
+                    </div>
+                </main>
+            </div>
+        </div>
+    </div>
+
+    <!-- Book Details Modal -->
+    <div id="bookModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="bookModalTitle"></h3>
+                <button class="close-btn" onclick="closeBookModal()">×</button>
+            </div>
+            <div id="bookModalBody"></div>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE = 'http://localhost:8080';
+        let currentUser = null;
+        let authToken = null;
+        let allBooks = [];
+
+        // Auth Functions
+        async function handleLogin(e) {
+            e.preventDefault();
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+
+            try {
+                const response = await fetch(`${API_BASE}/login`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, password })
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    authToken = data.token;
+                    currentUser = data.user;
+                    showApp();
+                } else {
+                    showAlert(data.error || 'Login failed', 'error');
+                }
+            } catch (error) {
+                showAlert('Connection error. Make sure the API is running on port 8080.', 'error');
+            }
+        }
+
+        async function handleRegister(e) {
+            e.preventDefault();
+            const name = document.getElementById('registerName').value;
+            const email = document.getElementById('registerEmail').value;
+            const password = document.getElementById('registerPassword').value;
+
+            try {
+                const response = await fetch(`${API_BASE}/register`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name, email, password, roles: ['borrower'] })
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    showAlert('Account created! Please sign in.', 'success');
+                    showLoginForm();
+                } else {
+                    showAlert(data.error || 'Registration failed', 'error');
+                }
+            } catch (error) {
+                showAlert('Connection error. Make sure the API is running on port 8080.', 'error');
+            }
+        }
+
+        function handleLogout() {
+            authToken = null;
+            currentUser = null;
+            document.getElementById('mainApp').classList.add('hidden');
+            document.getElementById('authScreen').classList.remove('hidden');
+        }
+
+        function showApp() {
+            document.getElementById('authScreen').classList.add('hidden');
+            document.getElementById('mainApp').classList.remove('hidden');
+            document.getElementById('userName').textContent = currentUser.name;
+            
+            // Show roles
+            const rolesContainer = document.getElementById('userRoles');
+            rolesContainer.innerHTML = currentUser.roles.map(role => 
+                `<span class="role-badge">${role}</span>`
+            ).join('');
+
+            // Show appropriate navigation
+            if (hasAnyRole(['borrower', 'superadmin'])) {
+                document.getElementById('borrowerNav').classList.remove('hidden');
+            }
+            if (hasAnyRole(['librarian', 'superadmin'])) {
+                document.getElementById('librarianNav').classList.remove('hidden');
+            }
+            if (hasAnyRole(['admin', 'superadmin'])) {
+                document.getElementById('adminNav').classList.remove('hidden');
+            }
+
+            loadBooks();
+        }
+
+        function showLoginForm() {
+            document.getElementById('loginForm').classList.remove('hidden');
+            document.getElementById('registerForm').classList.add('hidden');
+        }
+
+        function showRegisterForm() {
+            document.getElementById('loginForm').classList.add('hidden');
+            document.getElementById('registerForm').classList.remove('hidden');
+        }
+
+        function hasAnyRole(roles) {
+            if (!currentUser || !currentUser.roles) return false;
+            return roles.some(role => currentUser.roles.includes(role));
+        }
+
+        // Books Functions
+        async function loadBooks() {
+            try {
+                const headers = authToken ? { 'Authorization': `Bearer ${authToken}` } : {};
+                const response = await fetch(`${API_BASE}/api/books`, { headers });
+                allBooks = await response.json();
+                renderBooks(allBooks);
+            } catch (error) {
+                console.error('Error loading books:', error);
+            }
+        }
+
+        function renderBooks(books) {
+            const container = document.getElementById('booksContainer');
+            
+            if (books.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-state-icon">📚</div>
+                        <h3 class="empty-state-title">No books found</h3>
+                        <p>The library is empty. Check back later!</p>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = books.map(book => `
+                <div class="book-card" onclick="showBookDetails(${book.id})">
+                    <div class="book-icon">📖</div>
+                    <h3 class="book-title">${book.title}</h3>
+                    <p class="book-author">by ${book.author}</p>
+                    <div class="book-meta">
+                        <span class="badge">${book.genre}</span>
+                        ${book.status ? `<span class="badge badge-${book.status}">${book.status}</span>` : ''}
+                        ${book.archived ? '<span class="badge badge-archived">Archived</span>' : ''}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function handleSearch() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            if (query === '') {
+                renderBooks(allBooks);
+                return;
+            }
+
+            const filtered = allBooks.filter(book =>
+                book.title.toLowerCase().includes(query) ||
+                book.author.toLowerCase().includes(query) ||
+                book.genre.toLowerCase().includes(query)
+            );
+
+            renderBooks(filtered);
+        }
+
+        async function showBookDetails(bookId) {
+            const book = allBooks.find(b => b.id === bookId);
+            if (!book) return;
+
+            document.getElementById('bookModalTitle').textContent = book.title;
+            
+            let actions = '';
+            if (hasAnyRole(['borrower', 'superadmin']) && book.status === 'available' && !book.archived) {
+                actions = `<button class="btn" onclick="requestBook(${book.id})">Request to Borrow</button>`;
+            }
+            if (hasAnyRole(['librarian', 'superadmin']) && !book.archived) {
+                if (book.status === 'borrowed') {
+                    actions += `<button class="btn btn-secondary" onclick="returnBook(${book.id})">Mark as Returned</button>`;
+                }
+                actions += `<button class="btn btn-secondary" onclick="archiveBook(${book.id})">Archive Book</button>`;
+            }
+            if (hasAnyRole(['superadmin']) && book.archived) {
+                actions = `<button class="btn" onclick="unarchiveBook(${book.id})">Unarchive Book</button>`;
+            }
+
+            document.getElementById('bookModalBody').innerHTML = `
+                <div style="margin-bottom: 2rem;">
+                    <p style="margin-bottom: 1rem;"><strong>Author:</strong> ${book.author}</p>
+                    <p style="margin-bottom: 1rem;"><strong>Genre:</strong> ${book.genre}</p>
+                    <p style="margin-bottom: 1rem;"><strong>ISBN:</strong> ${book.isbn}</p>
+                    ${book.status ? `<p style="margin-bottom: 1rem;"><strong>Status:</strong> <span class="badge badge-${book.status}">${book.status}</span></p>` : ''}
+                    ${book.archived ? '<p style="margin-bottom: 1rem;"><span class="badge badge-archived">This book is archived</span></p>' : ''}
+                </div>
+                ${actions}
+            `;
+
+            document.getElementById('bookModal').classList.add('active');
+        }
+
+        function closeBookModal() {
+            document.getElementById('bookModal').classList.remove('active');
+        }
+
+        async function requestBook(bookId) {
+            try {
+                const response = await fetch(`${API_BASE}/api/requests`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${authToken}`
+                    },
+                    body: JSON.stringify({ book_id: bookId })
+                });
+
+                if (response.ok) {
+                    showAlert('Borrow request submitted!', 'success');
+                    closeBookModal();
+                    loadBooks();
+                } else {
+                    const data = await response.json();
+                    showAlert(data.error || 'Request failed', 'error');
+                }
+            } catch (error) {
+                showAlert('Error submitting request', 'error');
+            }
+        }
+
+        async function archiveBook(bookId) {
+            if (!confirm('Archive this book? All pending requests will be denied.')) return;
+
+            try {
+                const response = await fetch(`${API_BASE}/api/books/${bookId}/archive`, {
+                    method: 'POST',
+                    headers: { 'Authorization': `Bearer ${authToken}` }
+                });
+
+                if (response.ok) {
+                    showAlert('Book archived', 'success');
+                    closeBookModal();
+                    loadBooks();
+                } else {
+                    const data = await response.json();
+                    showAlert(data.error || 'Archive failed', 'error');
+                }
+            } catch (error) {
+                showAlert('Error archiving book', 'error');
+            }
+        }
+
+        async function unarchiveBook(bookId) {
+            try {
+                const response = await fetch(`${API_BASE}/api/books/${bookId}/unarchive`, {
+                    method: 'DELETE',
+                    headers: { 'Authorization': `Bearer ${authToken}` }
+                });
+
+                if (response.ok) {
+                    showAlert('Book unarchived', 'success');
+                    closeBookModal();
+                    loadBooks();
+                } else {
+                    const data = await response.json();
+                    showAlert(data.error || 'Unarchive failed', 'error');
+                }
+            } catch (error) {
+                showAlert('Error unarchiving book', 'error');
+            }
+        }
+
+        async function returnBook(bookId) {
+            try {
+                const response = await fetch(`${API_BASE}/api/books/${bookId}/return`, {
+                    method: 'PATCH',
+                    headers: { 'Authorization': `Bearer ${authToken}` }
+                });
+
+                if (response.ok) {
+                    showAlert('Book returned successfully', 'success');
+                    closeBookModal();
+                    loadBooks();
+                } else {
+                    const data = await response.json();
+                    showAlert(data.error || 'Return failed', 'error');
+                }
+            } catch (error) {
+                showAlert('Error returning book', 'error');
+            }
+        }
+
+        async function handleAddBook(e) {
+            e.preventDefault();
+
+            const book = {
+                title: document.getElementById('bookTitle').value,
+                author: document.getElementById('bookAuthor').value,
+                genre: document.getElementById('bookGenre').value,
+                isbn: document.getElementById('bookISBN').value
+            };
+
+            try {
+                const response = await fetch(`${API_BASE}/api/books`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${authToken}`
+                    },
+                    body: JSON.stringify(book)
+                });
+
+                if (response.ok) {
+                    showAlert('Book added successfully!', 'success');
+                    e.target.reset();
+                    loadBooks();
+                } else {
+                    const data = await response.json();
+                    showAlert(data.error || 'Failed to add book', 'error');
+                }
+            } catch (error) {
+                showAlert('Error adding book', 'error');
+            }
+        }
+
+        // View Management
+        function showView(view) {
+            // Hide all views
+            ['booksView', 'myRequestsView', 'myBooksView', 'myHistoryView', 'requestsView', 'addBookView', 'usersView'].forEach(v => {
+                document.getElementById(v).classList.add('hidden');
+            });
+
+            // Remove active from all nav items
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.classList.remove('active');
+            });
+
+            // Show selected view
+            document.getElementById(view + 'View').classList.remove('hidden');
+            event.target.closest('.nav-item').classList.add('active');
+
+            // Load data for view
+            if (view === 'books') loadBooks();
+            else if (view === 'myRequests') loadMyRequests();
+            else if (view === 'myBooks') loadMyBooks();
+            else if (view === 'myHistory') loadMyHistory();
+            else if (view === 'requests') loadPendingRequests();
+            else if (view === 'users') loadUsers();
+        }
+
+        async function loadMyRequests() {
+            try {
+                const response = await fetch(`${API_BASE}/api/requests/my`, {
+                    headers: { 'Authorization': `Bearer ${authToken}` }
+                });
+                const requests = await response.json();
+                
+                const container = document.getElementById('myRequestsContainer');
+                if (requests.length === 0) {
+                    container.innerHTML = `
+                        <div class="empty-state">
+                            <div class="empty-state-icon">📝</div>
+                            <h3 class="empty-state-title">No requests yet</h3>
+                            <p>Browse books and request to borrow!</p>
+                        </div>
+                    `;
+                    return;
+                }
+
+                container.innerHTML = requests.map(req => {
+                    const book = allBooks.find(b => b.id === req.book_id);
+                    return `
+                        <div class="request-card">
+                            <div class="request-info">
+                                <h3 class="request-book-title">${book ? book.title : 'Book #' + req.book_id}</h3>
+                                <p class="request-meta">Requested: ${new Date(req.requested_at).toLocaleDateString()}</p>
+                                <span class="badge badge-${req.status}">${req.status}</span>
+                            </div>
+                            ${req.status === 'pending' ? `<button class="btn btn-small btn-secondary" onclick="cancelRequest(${req.id})">Cancel</button>` : ''}
+                        </div>
+                    `;
+                }).join('');
+            } catch (error) {
+                console.error('Error loading requests:', error);
+            }
+        }
+
+        async function cancelRequest(requestId) {
+            try {
+                const response = await fetch(`${API_BASE}/api/requests/${requestId}`, {
+                    method: 'DELETE',
+                    headers: { 'Authorization': `Bearer ${authToken}` }
+                });
+
+                if (response.ok) {
+                    showAlert('Request cancelled', 'success');
+                    loadMyRequests();
+                }
+            } catch (error) {
+                showAlert('Error cancelling request', 'error');
+            }
+        }
+
+        async function loadMyBooks() {
+            try {
+                const response = await fetch(`${API_BASE}/api/my/borrowed`, {
+                    headers: { 'Authorization': `Bearer ${authToken}` }
+                });
+                const books = await response.json();
+                
+                const container = document.getElementById('myBooksContainer');
+                if (books.length === 0) {
+                    container.innerHTML = `
+                        <div class="empty-state">
+                            <div class="empty-state-icon">📚</div>
+                            <h3 class="empty-state-title">No borrowed books</h3>
+                            <p>Request a book to start reading!</p>
+                        </div>
+                    `;
+                    return;
+                }
+
+                container.innerHTML = books.map(book => `
+                    <div class="book-card">
+                        <div class="book-icon">📖</div>
+                        <h3 class="book-title">${book.title}</h3>
+                        <p class="book-author">by ${book.author}</p>
+                        <div class="book-meta">
+                            <span class="badge">${book.genre}</span>
+                            <span class="badge badge-borrowed">Currently Borrowed</span>
+                        </div>
+                    </div>
+                `).join('');
+            } catch (error) {
+                console.error('Error loading borrowed books:', error);
+            }
+        }
+
+        async function loadMyHistory() {
+            try {
+                const response = await fetch(`${API_BASE}/api/my/history`, {
+                    headers: { 'Authorization': `Bearer ${authToken}` }
+                });
+                const history = await response.json();
+                
+                const container = document.getElementById('myHistoryContainer');
+                if (history.length === 0) {
+                    container.innerHTML = `
+                        <div class="empty-state">
+                            <div class="empty-state-icon">📜</div>
+                            <h3 class="empty-state-title">No history yet</h3>
+                            <p>Your borrowing history will appear here</p>
+                        </div>
+                    `;
+                    return;
+                }
+
+                container.innerHTML = '<div class="requests-list">' + history.map(h => {
+                    const book = allBooks.find(b => b.id === h.book_id);
+                    return `
+                        <div class="request-card">
+                            <div class="request-info">
+                                <h3 class="request-book-title">${book ? book.title : 'Book #' + h.book_id}</h3>
+                                <p class="request-meta">
+                                    Borrowed: ${new Date(h.borrowed_at).toLocaleDateString()}
+                                    ${h.returned_at ? ` | Returned: ${new Date(h.returned_at).toLocaleDateString()}` : ' | Currently borrowed'}
+                                </p>
+                            </div>
+                        </div>
+                    `;
+                }).join('') + '</div>';
+            } catch (error) {
+                console.error('Error loading history:', error);
+            }
+        }
+
+        async function loadPendingRequests() {
+            try {
+                const response = await fetch(`${API_BASE}/api/requests`, {
+                    headers: { 'Authorization': `Bearer ${authToken}` }
+                });
+                const requests = await response.json();
+                
+                const container = document.getElementById('requestsContainer');
+                if (requests.length === 0) {
+                    container.innerHTML = `
+                        <div class="empty-state">
+                            <div class="empty-state-icon">✅</div>
+                            <h3 class="empty-state-title">No pending requests</h3>
+                            <p>All requests have been processed!</p>
+                        </div>
+                    `;
+                    return;
+                }
+
+                container.innerHTML = requests.map(req => {
+                    const book = allBooks.find(b => b.id === req.book_id);
+                    return `
+                        <div class="request-card">
+                            <div class="request-info">
+                                <h3 class="request-book-title">${book ? book.title : 'Book #' + req.book_id}</h3>
+                                <p class="request-meta">
+                                    Requested by User #${req.borrower_id} on ${new Date(req.requested_at).toLocaleDateString()}
+                                </p>
+                                ${book && book.status === 'borrowed' ? '<p class="alert-error" style="padding: 0.5rem; margin-top: 0.5rem;">⚠️ Book currently borrowed</p>' : ''}
+                            </div>
+                            <div class="request-actions">
+                                <button class="btn btn-small" onclick="approveRequest(${req.id})" ${book && book.status === 'borrowed' ? 'disabled' : ''}>Approve</button>
+                                <button class="btn btn-small btn-secondary" onclick="denyRequest(${req.id})">Deny</button>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+            } catch (error) {
+                console.error('Error loading requests:', error);
+            }
+        }
+
+        async function approveRequest(requestId) {
+            try {
+                const response = await fetch(`${API_BASE}/api/requests/${requestId}/approve`, {
+                    method: 'PATCH',
+                    headers: { 'Authorization': `Bearer ${authToken}` }
+                });
+
+                if (response.ok) {
+                    showAlert('Request approved!', 'success');
+                    loadPendingRequests();
+                    loadBooks();
+                } else {
+                    const data = await response.json();
+                    showAlert(data.error || 'Approval failed', 'error');
+                }
+            } catch (error) {
+                showAlert('Error approving request', 'error');
+            }
+        }
+
+        async function denyRequest(requestId) {
+            const reason = prompt('Reason for denial (optional):');
+            
+            try {
+                const response = await fetch(`${API_BASE}/api/requests/${requestId}/deny`, {
+                    method: 'PATCH',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${authToken}`
+                    },
+                    body: JSON.stringify({ reason: reason || '' })
+                });
+
+                if (response.ok) {
+                    showAlert('Request denied', 'success');
+                    loadPendingRequests();
+                } else {
+                    const data = await response.json();
+                    showAlert(data.error || 'Denial failed', 'error');
+                }
+            } catch (error) {
+                showAlert('Error denying request', 'error');
+            }
+        }
+
+        async function loadUsers() {
+            try {
+                const response = await fetch(`${API_BASE}/api/users`, {
+                    headers: { 'Authorization': `Bearer ${authToken}` }
+                });
+                const users = await response.json();
+                
+                const container = document.getElementById('usersContainer');
+                container.innerHTML = '<div class="requests-list">' + users.map(user => `
+                    <div class="request-card">
+                        <div class="request-info">
+                            <h3 class="request-book-title">${user.name}</h3>
+                            <p class="request-meta">${user.email}</p>
+                            <div style="margin-top: 0.5rem;">
+                                ${user.roles.map(role => `<span class="badge role-badge">${role}</span>`).join(' ')}
+                            </div>
+                        </div>
+                    </div>
+                `).join('') + '</div>';
+            } catch (error) {
+                console.error('Error loading users:', error);
+            }
+        }
+
+        // Alert Function
+        function showAlert(message, type = 'success') {
+            const container = document.getElementById('alertContainer');
+            container.innerHTML = `
+                <div class="alert alert-${type}">
+                    ${type === 'success' ? '✅' : '⚠️'} ${message}
+                </div>
+            `;
+
+            setTimeout(() => {
+                container.innerHTML = '';
+            }, 3000);
+        }
+
+        // Close modal on outside click
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.classList.remove('active');
+            }
+        }
+    </script>
+</body>
+</html>
